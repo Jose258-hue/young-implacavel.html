@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/0GAN5poHYfCikVaEI7buJjdXssWBDudJ/9fb0f113-c6ef-4879-b4de-d2efba13dd81/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Young Implacável — Organize your life. Build yourself. Take action.</title>
+<style>
+:root{
+  --bg:#0a0a12; --bg2:#101020; --card:#15152a; --card2:#1b1b33;
+  --line:#272747; --txt:#eef0ff; --mut:#8b8bb0;
+  --or:#ff6a00; --or2:#ff2d55; --pu:#7c3aed; --gr:#22c55e; --bl:#3b82f6;
+  --grad:linear-gradient(135deg,#ff6a00,#ff2d55);
+  --rad:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;
+  min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(700px 400px at 12% -5%,rgba(255,106,0,.16),transparent 60%),
+             radial-gradient(700px 500px at 95% 8%,rgba(124,58,237,.16),transparent 60%)}
+.app{position:relative;z-index:1;display:flex;min-height:100vh}
+
+/* ---------- SIDEBAR ---------- */
+.side{width:246px;flex:0 0 246px;background:rgba(12,12,26,.92);backdrop-filter:blur(12px);
+  border-right:1px solid var(--line);padding:18px 14px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 16px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.brand .flame{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-size:19px;
+  box-shadow:0 6px 22px rgba(255,80,40,.4)}
+.brand h1{font-size:15px;font-weight:800;letter-spacing:.4px;line-height:1.15}
+.brand h1 span{display:block;font-size:9px;color:var(--mut);font-weight:600;letter-spacing:1.4px;text-transform:uppercase}
+.nav{display:flex;flex-direction:column;gap:3px}
+.nav button{display:flex;align-items:center;gap:11px;width:100%;padding:10px 12px;border:0;border-radius:12px;
+  background:transparent;color:var(--mut);font-size:13.5px;font-weight:600;cursor:pointer;text-align:left;font-family:inherit;
+  transition:.16s}
+.nav button:hover{background:var(--card);color:var(--txt)}
+.nav button.on{background:linear-gradient(90deg,rgba(255,106,0,.2),rgba(255,45,85,.06));color:#fff;
+  box-shadow:inset 2px 0 0 var(--or)}
+.nav button i{font-style:normal;width:20px;text-align:center;font-size:15px}
+.nav .lbl{font-size:10px;color:#5d5d85;text-transform:uppercase;letter-spacing:1.3px;padding:14px 12px 6px;font-weight:800}
+.pro-card{margin-top:16px;padding:14px;border-radius:14px;background:linear-gradient(135deg,rgba(124,58,237,.25),rgba(255,106,0,.16));
+  border:1px solid rgba(124,58,237,.4)}
+.pro-card p{font-size:11px;color:#cfcfe8;margin:6px 0 10px;line-height:1.5}
+.pro-card b{font-size:12.5px}
+
+/* ---------- MAIN ---------- */
+.main{flex:1;min-width:0;padding:20px 26px 90px;max-width:1180px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.top .hello{flex:1;min-width:220px}
+.top .hello h2{font-size:23px;font-weight:800;letter-spacing:-.3px}
+.top .hello p{color:var(--mut);font-size:12.5px;margin-top:5px;font-style:italic}
+.pill{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);
+  padding:8px 13px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.streak{border-color:rgba(255,106,0,.45);color:#ffb27a}
+.pill.pro{border-color:rgba(124,58,237,.55);color:#c4b5fd}
+.ring{margin-left:auto;display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  padding:9px 15px;border-radius:15px}
+.ring .bar{width:130px;height:7px;background:#2a2a4d;border-radius:99px;overflow:hidden}
+.ring .bar i{display:block;height:100%;background:var(--grad);border-radius:99px;transition:width .6s}
+.ring small{font-size:10.5px;color:var(--mut);display:block;margin-top:4px}
+.ring b{font-size:19px;line-height:1}
+
+.grid{display:grid;gap:15px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);
+  border-radius:var(--rad);padding:17px;position:relative;overflow:hidden}
+.card h3{font-size:13px;font-weight:800;display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.card h3 .tag{margin-left:auto;font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:99px;
+  background:rgba(255,255,255,.06);color:var(--mut);letter-spacing:.6px;text-transform:uppercase}
+.card p.sub{font-size:11.5px;color:var(--mut);margin-bottom:10px}
+.kpi{font-size:29px;font-weight:850;letter-spacing:-1px;line-height:1.1}
+.kpi small{font-size:13px;color:var(--mut);font-weight:700;letter-spacing:0}
+.stat{display:flex;align-items:center;gap:12px}
+.stat .ic{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:20px;background:var(--card2);
+  border:1px solid var(--line);flex:0 0 42px}
+
+.sec-title{font-size:17px;font-weight:800;margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+.sec-title .line{flex:1;height:1px;background:var(--line)}
+.empty{text-align:center;color:var(--mut);font-size:12.5px;padding:22px;border:1px dashed var(--line);border-radius:14px}
+
+button.btn{background:var(--grad);color:#fff;border:0;border-radius:11px;padding:10px 17px;font-weight:800;font-size:12.5px;
+  cursor:pointer;font-family:inherit;transition:.16s;box-shadow:0 5px 18px rgba(255,80,40,.28)}
+button.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+button.btn:active{transform:translateY(0)}
+button.btn.ghost{background:var(--card);border:1px solid var(--line);box-shadow:none;color:var(--txt)}
+button.btn.ghost:hover{border-color:#3d3d68}
+button.btn.mini{padding:6px 11px;font-size:11px;border-radius:9px;box-shadow:none}
+button.btn.warn{background:#2a1020;border:1px solid #7f2038;color:#ff8fa8}
+button.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+input,select,textarea{width:100%;background:#0e0e1f;border:1px solid var(--line);color:var(--txt);
+  padding:10px 12px;border-radius:11px;font-size:13px;font-family:inherit;outline:none;transition:.16s}
+input:focus,select:focus,textarea:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(255,106,0,.13)}
+label{font-size:11px;color:var(--mut);font-weight:700;display:block;margin:0 0 5px;letter-spacing:.3px}
+.field{margin-bottom:12px}
+
+.bar{height:8px;background:#262646;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--grad);border-radius:99px;transition:width .6s}
+.bar.gr i{background:linear-gradient(90deg,#16a34a,#22c55e)}
+.bar.bl i{background:linear-gradient(90deg,#2563eb,#3b82f6)}
+.bar.pu i{background:linear-gradient(90deg,#6d28d9,#a855f7)}
+
+.row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:13px;background:rgba(255,255,255,.028);
+  border:1px solid var(--line);margin-bottom:9px;transition:.16s}
+.row:hover{border-color:#38386a}
+.row .txt{flex:1;min-width:0}
+.row .txt b{font-size:13px;display:block;font-weight:700}
+.row .txt small{font-size:11px;color:var(--mut)}
+.chk{width:22px;height:22px;border-radius:7px;border:2px solid #43436e;flex:0 0 22px;cursor:pointer;display:grid;
+  place-items:center;font-size:12px;color:transparent;transition:.16s;background:transparent}
+.chk:hover{border-color:var(--or)}
+.chk.on{background:var(--grad);border-color:transparent;color:#fff}
+.row.done .txt b{text-decoration:line-through;color:#6c6c95}
+
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--line);
+  padding:7px 12px;border-radius:999px;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--mut);transition:.16s}
+.chip:hover{color:var(--txt);border-color:#41416e}
+.chip.on{background:rgba(255,106,0,.18);border-color:rgba(255,106,0,.55);color:#ffb27a}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+
+/* focus */
+.timer-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 16px;text-align:center}
+.timer{font-size:76px;font-weight:850;letter-spacing:-4px;font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+@media(max-width:700px){.timer{font-size:58px}}
+.timer-wrap h3{font-size:16px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.timer-wrap .msg{color:var(--mut);font-size:12.5px;margin:8px 0 20px;font-weight:600}
+
+.hero{padding:22px;border-radius:20px;background:linear-gradient(135deg,rgba(255,106,0,.16),rgba(124,58,237,.14));
+  border:1px solid rgba(255,106,0,.3);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,45,85,.28),transparent 70%)}
+.hero h2{font-size:20px;font-weight:850;margin-bottom:6px}
+.hero p{font-size:12.5px;color:#d3d3ee;line-height:1.6;max-width:640px}
+
+.lesson{padding:14px;border-radius:14px;background:var(--card2);border:1px solid var(--line);cursor:pointer;transition:.16s}
+.lesson:hover{border-color:rgba(255,106,0,.5);transform:translateY(-2px)}
+.lesson b{font-size:13px;display:block;margin-bottom:5px}
+.lesson small{font-size:11px;color:var(--mut);line-height:1.5;display:block}
+.lesson .badge{font-size:9.5px;font-weight:800;color:var(--or);letter-spacing:.8px;text-transform:uppercase}
+
+.ai-msg{padding:13px 15px;border-radius:14px;font-size:13px;line-height:1.65;margin-bottom:11px;white-space:pre-wrap;word-wrap:break-word}
+.ai-msg.u{background:linear-gradient(135deg,rgba(255,106,0,.2),rgba(255,45,85,.12));border:1px solid rgba(255,106,0,.35);
+  margin-left:auto;max-width:82%}
+.ai-msg.b{background:var(--card2);border:1px solid var(--line);max-width:94%}
+.ai-msg b{color:#ffb27a}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:8px 10px;
+  border-bottom:1px solid var(--line);font-weight:800}
+td{padding:11px 10px;border-bottom:1px solid rgba(39,39,71,.6)}
+tr.me td{background:rgba(255,106,0,.1);font-weight:800}
+.rank{font-weight:850;width:34px}
+
+#toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(80px);background:#1a1a33;
+  border:1px solid var(--or);padding:12px 20px;border-radius:14px;font-size:13px;font-weight:700;z-index:99;
+  transition:.35s cubic-bezier(.2,1,.3,1);box-shadow:0 12px 40px rgba(0,0,0,.6);opacity:0;pointer-events:none;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+.modal{position:fixed;inset:0;background:rgba(5,5,12,.82);backdrop-filter:blur(5px);z-index:100;display:none;
+  align-items:center;justify-content:center;padding:18px}
+.modal.on{display:flex}
+.modal .box{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:22px;width:100%;max-width:460px;
+  max-height:88vh;overflow-y:auto;box-shadow:0 24px 70px rgba(0,0,0,.7);animation:pop .25s}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.modal .box h3{font-size:16.5px;margin-bottom:16px}
+
+.mobile-nav{display:none}
+@media(max-width:920px){
+  .side{display:none}
+  .main{padding:16px 14px 100px}
+  .g4,.g3{grid-template-columns:repeat(2,1fr)}
+  .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,20,.97);
+    border-top:1px solid var(--line);padding:8px 6px;justify-content:space-around;z-index:50;backdrop-filter:blur(12px)}
+  .mobile-nav button{background:transparent;border:0;color:var(--mut);font-size:10px;font-weight:700;display:flex;
+    flex-direction:column;gap:3px;align-items:center;cursor:pointer;font-family:inherit;padding:4px 8px;border-radius:10px}
+  .mobile-nav button span{font-size:18px}
+  .mobile-nav button.on{color:var(--or)}
+}
+@media(max-width:560px){.g4,.g3,.g2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="flame">🔥</div>
+      <h1>YOUNG IMPLACÁVEL<span>Build yourself</span></h1>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="pro-card" id="proCard"></div>
+  </aside>
+
+  <main class="main">
+    <div class="top">
+      <div class="hello">
+        <h2 id="greet">Bom dia!</h2>
+        <p id="quote">"O teu futuro é construído pelas ações que repetes hoje."</p>
+      </div>
+      <div class="pill streak" id="streakPill">🔥 0 dias</div>
+      <div class="pill pro" id="proPill" style="display:none">💎 PRO</div>
+      <div class="ring">
+        <div>
+          <b id="lvlName">🥉 Beginner</b>
+          <small id="xpTxt">0 / 200 XP</small>
+        </div>
+        <div>
+          <div class="bar"><i id="xpBar" style="width:0%"></i></div>
+        </div>
+      </div>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<div class="mobile-nav" id="mnav"></div>
+<div id="toast"></div>
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+
+<script>
+/* ============================================================
+   YOUNG IMPLACÁVEL — SaaS engine
+   ============================================================ */
+const KEY='yi_saas_v1';
+const $=s=>document.querySelector(s);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const today=()=>new Date().toISOString().slice(0,10);
+
+const LEVELS=[
+  {n:'Beginner',e:'🥉',xp:0},
+  {n:'Disciplined',e:'🥈',xp:200},
+  {n:'Focused',e:'🥇',xp:500},
+  {n:'Determined',e:'🔥',xp:1000},
+  {n:'Unstoppable',e:'⚡',xp:2000},
+  {n:'Leader',e:'👑',xp:3500}
+];
+const QUOTES=[
+ '"O teu futuro é construído pelas ações que repetes hoje."',
+ '"Disciplina é escolher entre o que queres agora e o que queres mais."',
+ '"Não precisas de motivação. Precisas de um sistema."',
+ '"Pequenas ações diárias constroem resultados impossíveis de ignorar."',
+ '"A consistência vence o talento quando o talento não é consistente."',
+ '"Faz hoje o que outros não querem, e terás amanhã o que outros não têm."',
+ '"Foco não é dizer sim. É dizer não a mil coisas."'
+];
+
+const DEFAULT={
+  user:{name:'Jovem', pro:false, xp:340, streak:12, lastDay:today(), joined:today()},
+  goals:[
+    {id:uid(),title:'Ler 12 livros este ano',cat:'Pessoal',prog:35},
+    {id:uid(),title:'Melhorar notas de Matemática',cat:'Académico',prog:70},
+    {id:uid(),title:'Criar o meu CV profissional',cat:'Carreira',prog:20}
+  ],
+  tasks:[
+    {id:uid(),title:'Estudar 1h de Matemática',done:false,xp:10},
+    {id:uid(),title:'Ler 10 páginas',done:false,xp:10},
+    {id:uid(),title:'Fazer 30 min de exercício',done:false,xp:10}
+  ],
+  habits:[
+    {id:uid(),title:'Acordar cedo',emoji:'🌅',streak:12,done:false},
+    {id:uid(),title:'Ler 10 páginas',emoji:'📖',streak:8,done:false},
+    {id:uid(),title:'Estudar 1 hora',emoji:'📚',streak:5,done:false}
+  ],
+  subjects:[
+    {id:uid(),name:'Matemática',prog:70,next:'Segunda — 18:00',hours:4.5},
+    {id:uid(),name:'Inglês',prog:45,next:'Terça — 19:00',hours:2}
+  ],
+  focus:{sessions:12,minutes:310},
+  challenges:[
+    {id:'c7',name:'7 dias — Vencer a Procrastinação',days:7,done:0,xp:50},
+    {id:'c21',name:'21 dias — Construir Disciplina',days:21,done:3,xp:150},
+    {id:'c30',name:'30 dias — Transformar a Rotina',days:30,done:0,xp:250},
+    {id:'c90',name:'90 dias — A Melhor Versão de Ti',days:90,done:0,xp:500}
+  ],
+  lessons:[],
+  cv:{name:'',education:'',experience:'',skills:'',courses:'',objective:''},
+  interview:{answered:0},
+  community:[
+    {author:'Maria',text:'Comecei o desafio de 21 dias hoje! Quem mais? 🔥'},
+    {author:'Carlos',text:'Dica: estudar 50min + 10min de pausa mudou o meu foco por completo.'}
+  ],
+  finance:{goal:2000,saved:650,purpose:'Comprar computador'},
+  week:{goalProgress:80,studyMin:390,habitRate:85,focusSessions:12}
+};
+
+let S=load();
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY);
+    if(!raw) return structuredClone(DEFAULT);
+    const p=JSON.parse(raw);
+    return Object.assign(structuredClone(DEFAULT),p);
+  }catch(e){return structuredClone(DEFAULT)}
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+function dayCheck(){
+  if(S.user.lastDay!==today()){
+    S.tasks.forEach(t=>t.done=false);
+    S.habits.forEach(h=>h.done=false);
+    S.user.lastDay=today();
+    save();
+  }
+}
+
+function levelInfo(xp){
+  let idx=0;
+  for(let i=0;i<LEVELS.length;i++) if(xp>=LEVELS[i].xp) idx=i;
+  const cur=LEVELS[idx], nxt=LEVELS[idx+1];
+  const base=cur.xp, cap=nxt?nxt.xp:cur.xp+1000;
+  const pct=Math.min(100,Math.round(((xp-base)/(cap-base))*100));
+  return {cur,nxt,pct,idx};
+}
+function addXP(n,reason){
+  const before=levelInfo(S.user.xp).idx;
+  S.user.xp+=n; save();
+  const after=levelInfo(S.user.xp).idx;
+  toast('⚡ +'+n+' XP — '+(reason||'boa ação!'));
+  if(after>before) setTimeout(()=>toast('🎉 Novo nível: '+LEVELS[after].e+' '+LEVELS[after].n),700);
+  paintTop();
+}
+function toast(msg){
+  const t=$('#toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2400);
+}
+
+/* ============== NAV ============== */
+const NAV=[
+  {g:'Principal'},
+  {id:'home',ic:'🏠',t:'Home'},
+  {id:'goals',ic:'🎯',t:'Objetivos'},
+  {id:'habits',ic:'🔥',t:'Hábitos'},
+  {id:'focus',ic:'⏱️',t:'Foco'},
+  {g:'Desenvolvimento'},
+  {id:'study',ic:'📚',t:'Estudo'},
+  {id:'dev',ic:'🧠',t:'Desenvolvimento'},
+  {id:'career',ic:'💼',t:'Carreira'},
+  {id:'income',ic:'💰',t:'Rendimento'},
+  {id:'ai',ic:'🤖',t:'IMPA AI'},
+  {g:'Comunidade'},
+  {id:'challenges',ic:'🏆',t:'Desafios'},
+  {id:'community',ic:'👥',t:'Comunidade'},
+  {id:'progress',ic:'📊',t:'Progresso'},
+  {g:'Sistema'},
+  {id:'settings',ic:'⚙️',t:'Definições'}
+];
+const MOBILE=['home','goals','habits','focus','ai','progress'];
+let view='home';
+
+function buildNav(){
+  $('#nav').innerHTML=NAV.map(n=>n.g?`<div class="lbl">${n.g}</div>`:
+    `<button data-v="${n.id}" class="${view===n.id?'on':''}"><i>${n.ic}</i>${n.t}</button>`).join('');
+  $('#mnav').innerHTML=MOBILE.map(id=>{
+    const n=NAV.find(x=>x.id===id);
+    return `<button data-v="${id}" class="${view===id?'on':''}"><span>${n.ic}</span>${n.t}</button>`;
+  }).join('');
+  document.querySelectorAll('#nav button,#mnav button').forEach(b=>{
+    b.onclick=()=>{view=b.dataset.v; if(view==='focus') stopTimer(false); buildNav(); render(); window.scrollTo(0,0)};
+  });
+}
+function paintTop(){
+  const li=levelInfo(S.user.xp);
+  $('#lvlName').textContent=li.cur.e+' '+li.cur.n;
+  $('#xpTxt').textContent=S.user.xp+' / '+(li.nxt?li.nxt.xp:li.cur.xp+1000)+' XP';
+  $('#xpBar').style.width=li.pct+'%';
+  $('#streakPill').textContent='🔥 '+S.user.streak+' dias';
+  $('#proPill').style.display=S.user.pro?'inline-flex':'none';
+  const h=new Date().getHours();
+  const part=h<12?'Bom dia':(h<19?'Boa tarde':'Boa noite');
+  $('#greet').textContent=part+', '+S.user.name+'! 🔥';
+  $('#quote').textContent=QUOTES[new Date().getDate()%QUOTES.length];
+  $('#proCard').innerHTML=S.user.pro
+    ? `<b>💎 PRO activo</b><p>Todos os módulos desbloqueados. Continua assim.</p>
+       <button class="btn ghost mini" onclick="togglePro(false)">Voltar ao Free</button>`
+    : `<b>💎 Young Implacável PRO</b><p>Hábitos ilimitados, IMPA AI, CV Builder, Simulador de Entrevista, Centro de Rendimento e desafios premium.<br><b>49–99 MT/mês</b></p>
+       <button class="btn mini" onclick="togglePro(true)">Fazer upgrade</button>`;
+}
+function togglePro(v){
+  S.user.pro=v; save(); paintTop();
+  if(v) toast('💎 Bem-vindo ao PRO!'); else toast('Plano Free activo');
+  render();
+}
+function lock(moduleName){
+  return `<div class="empty" style="padding:40px 22px">
+    <div style="font-size:38px;margin-bottom:10px">💎</div>
+    <b style="font-size:15px;display:block;margin-bottom:8px">${moduleName} é PRO</b>
+    Faz upgrade para desbloquear este módulo, planos personalizados e conteúdo completo.<br><br>
+    <button class="btn" onclick="togglePro(true)">Fazer upgrade — 49 MT/mês</button>
+  </div>`;
+}
+
+/* ============== RENDER ============== */
+function render(){
+  const v={home:vHome,goals:vGoals,habits:vHabits,focus:vFocus,study:vStudy,dev:vDev,career:vCareer,
+    income:vIncome,ai:vAI,challenges:vChallenges,community:vCommunity,progress:vProgress,settings:vSettings}[view];
+  $('#view').innerHTML=v?v():'';
+  paintTop();
+}
+
+/* ---------- HOME ---------- */
+function vHome(){
+  const li=levelInfo(S.user.xp);
+  const tasksDone=S.tasks.filter(t=>t.done).length;
+  const habitsDone=S.habits.filter(h=>h.done).length;
+  const mainGoal=S.goals[0];
+  const studyH=Math.floor(S.subjects.reduce((a,s)=>a+s.hours,0));
+  const dailyChallenge=DAILY[new Date().getDate()%DAILY.length];
+  const finPct=S.finance.goal?Math.round(S.finance.saved/S.finance.goal*100):0;
+  return `
+  <div class="hero">
+    <h2>🔥 Bom trabalho, ${S.user.name}.</h2>
+    <p>Estás no nível <b>${li.cur.e} ${li.cur.n}</b> com <b>${S.user.xp} XP</b>. ${
+      li.nxt?`Faltam <b>${li.nxt.xp-S.user.xp} XP</b> para ${li.nxt.e} ${li.nxt.n}.`:'És um Leader. Mantém o padrão.'
+    } ${tasksDone<S.tasks.length?'Ainda tens tarefas por fechar hoje.':'Todas as tarefas de hoje estão feitas. Implacável.'}</p>
+  </div>
+
+  <div class="sec-title">📋 Visão de hoje<span class="line"></span></div>
+  <div class="grid g4">
+    <div class="card"><div class="stat"><div class="ic">🎯</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">OBJETIVO PRINCIPAL</small>
+      <div style="font-size:13px;font-weight:750;margin:3px 0 6px">${mainGoal?mainGoal.title:'Sem objetivo'}</div>
+      <div class="bar"><i style="width:${mainGoal?mainGoal.prog:0}%"></i></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">✅</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">TAREFAS HOJE</small>
+      <div class="kpi">${tasksDone}<small>/${S.tasks.length}</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">🔥</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">SEQUÊNCIA DE HÁBITOS</small>
+      <div class="kpi">${S.user.streak}<small> dias</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">📚</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">PLANO DE ESTUDO</small>
+      <div class="kpi">${studyH}h<small> esta semana</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">🧠</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">DESAFIO DIÁRIO</small>
+      <div style="font-size:12.5px;font-weight:750;margin-top:4px;line-height:1.4">${dailyChallenge}</div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">💰</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">OBJETIVO FINANCEIRO</small>
+      <div class="kpi">${finPct}<small>%</small></div>
+      <div class="bar gr" style="margin-top:6px"><i style="width:${finPct}%"></i></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">⏱️</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">TEMPO DE FOCO</small>
+      <div class="kpi">${Math.floor(S.focus.minutes/60)}h<small> ${S.focus.minutes%60}m</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">⚡</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">XP TOTAL</small>
+      <div class="kpi">${S.user.xp}</div></div></div></div>
+  </div>
+
+  <div class="sec-title">✅ Tarefas de hoje<span class="line"></span>
+    <button class="btn mini" onclick="addTask()">+ Nova tarefa</button></div>
+  <div class="grid g2" style="align-items:start">
+    <div>${S.tasks.map(t=>`
+      <div class="row ${t.done?'done':''}">
+        <div class="chk ${t.done?'on':''}" onclick="toggleTask('${t.id}')">✓</div>
+        <div class="txt"><b>${esc(t.title)}</b><small>+${t.xp} XP</small></div>
+      </div>`).join('')||'<div class="empty">Sem tarefas. Cria a primeira.</div>'}
+    </div>
+    <div class="card">
+      <h3>⚡ Ações rápidas</h3><p class="sub">Cada ação dá XP imediato.</p>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <button class="btn ghost" onclick="quick(20,'30 min de estudo')">📚 Estudar 30 min · +20 XP</button>
+        <button class="btn ghost" onclick="quick(5,'lição lida')">🧠 Lição de desenvolvimento · +5 XP</button>
+        <button class="btn ghost" onclick="quick(50,'desafio concluído')">🏆 Completar desafio · +50 XP</button>
+        <button class="btn ghost" onclick="quick(25,'sequência mantida')">🔥 Manter sequência · +25 XP</button>
+      </div>
+    </div>
+  </div>`;
+}
+const DAILY=[
+ 'Escreve a tarefa mais difícil e faz 15 minutos dela antes de qualquer distração.',
+ 'Sem telefone durante 90 minutos. Um bloco profundo vale por um dia.',
+ 'Revê as tuas 3 prioridades de amanhã antes de dormir.',
+ 'Diz "não" a uma coisa que te rouba tempo hoje.',
+ 'Ensina a alguém algo que aprendeste esta semana.',
+ 'Corrige um hábito em vez de criar um novo.',
+ 'Fecha o dia com uma vitória escrita.'
+];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function quick(n,r){addXP(n,r);render()}
+function toggleTask(id){const t=S.tasks.find(x=>x.id===id);t.done=!t.done;if(t.done)addXP(t.xp,'tarefa concluída');save();render()}
+function addTask(){openModal('Nova tarefa',`
+  <div class="field"><label>Tarefa</label><input id="f1" placeholder="Ex: Revisar capítulo 4"></div>
+  <div class="field"><label>XP</label><input id="f2" type="number" value="10"></div>`,()=>{
+    const t=$('#f1').value.trim(); if(!t)return;
+    S.tasks.push({id:uid(),title:t,done:false,xp:+$('#f2').value||10}); save(); render();
+  })}
+
+/* ---------- GOALS ---------- */
+const CATS=['Pessoal','Académico','Carreira','Financeiro'];
+const CAT_IDEAS={
+  'Pessoal':['Construir disciplina','Ler mais','Melhorar confiança'],
+  'Académico':['Melhorar notas','Preparar exames','Dominar uma matéria'],
+  'Carreira':['Conseguir um emprego','Aprender uma nova competência','Criar um CV'],
+  'Financeiro':['Poupar dinheiro','Começar um negócio','Aumentar o rendimento']
+};
+function vGoals(){
+  return `
+  <div class="sec-title">🎯 Objetivos<span class="line"></span><button class="btn mini" onclick="addGoal()">+ Novo objetivo</button></div>
+  <div class="chips" style="margin-bottom:16px">${CATS.map(c=>`<div class="chip">${c}</div>`).join('')}</div>
+  ${CATS.map(cat=>`
+    <div class="sec-title" style="font-size:14px;margin:18px 0 10px">${cat}<span class="line"></span></div>
+    ${(S.goals.filter(g=>g.cat===cat).map(g=>`
+      <div class="row">
+        <div class="txt">
+          <b>${esc(g.title)}</b>
+          <div class="bar" style="margin-top:8px"><i style="width:${g.prog}%"></i></div>
+        </div>
+        <div style="text-align:right;min-width:96px">
+          <b style="font-size:15px">${g.prog}%</b>
+          <div style="margin-top:7px;display:flex;gap:5px;justify-content:flex-end">
+            <button class="btn ghost mini" onclick="bumpGoal('${g.id}',10)">+10%</button>
+            <button class="btn warn mini" onclick="delGoal('${g.id}')">✕</button>
+          </div>
+        </div>
+      </div>`).join('')||`<div class="empty">Ainda sem objetivos em ${cat}.<br>
+      ${CAT_IDEAS[cat].map(i=>`<button class="chip" style="margin-top:8px" onclick="quickGoal('${cat}','${i}')">${i}</button>`).join(' ')}</div>`)}
+  `).join('')}
+  <div class="card" style="margin-top:22px">
+    <h3>🔻 Transformar em ações diárias</h3>
+    <p class="sub">O sistema quebra objetivos grandes em passos pequenos e repetíveis.</p>
+    <div class="grid g3">
+      <div style="font-size:12px;line-height:1.7"><b style="color:#ffb27a">1. Reduzir</b><br>Corta o objetivo para uma ação de 10–30 min.</div>
+      <div style="font-size:12px;line-height:1.7"><b style="color:#ffb27a">2. Agendar</b><br>Define hora e gatilho fixo no teu dia.</div>
+      <div style="font-size:12px;line-height:1.7"><b style="color:#ffb27a">3. Medir</b><br>Marca no app todos os dias. XP é a prova.</div>
+    </div>
+  </div>`;
+}
+function addGoal(){openModal('Novo objetivo',`
+  <div class="field"><label>Título</label><input id="f1" placeholder="Ex: Aprender programação"></div>
+  <div class="field"><label>Categoria</label><select id="f2">${CATS.map(c=>`<option>${c}</option>`).join('')}</select></div>`,()=>{
+    const t=$('#f1').value.trim(); if(!t)return;
+    S.goals.push({id:uid(),title:t,cat:$('#f2').value,prog:0}); save(); render();
+  })}
+function quickGoal(cat,title){S.goals.push({id:uid(),title,cat,prog:0});save();render();toast('🎯 Objetivo criado')}
+function bumpGoal(id,n){const g=S.goals.find(x=>x.id===id);g.prog=Math.min(100,g.prog+n);
+  if(g.prog>=100)addXP(50,'objetivo 100% concluído');save();render();if(g.prog<100)toast('Progresso: '+g.prog+'%')}
+function delGoal(id){S.goals=S.goals.filter(x=>x.id!==id);save();render()}
+
+/* ---------- HABITS ---------- */
+const HABIT_IDEAS=[['🌅','Acordar cedo'],['📖','Ler 10 páginas'],['📚','Estudar 1 hora'],['💪','Fazer exercício'],
+  ['🚫','Sem redes sociais ao estudar'],['😴','Dormir a horas']];
+function vHabits(){
+  const freeLimit=3;
+  const done=S.habits.filter(h=>h.done).length;
+  const rate=S.habits.length?Math.round(done/S.habits.length*100):0;
+  return `
+  <div class="sec-title">🔥 Rastreador de hábitos<span class="line"></span>
+    <button class="btn mini" onclick="addHabit()">+ Novo hábito</button></div>
+  <div class="grid g3" style="margin-bottom:18px">
+    <div class="card"><div class="stat"><div class="ic">🔥</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">SEQUÊNCIA ACTUAL</small>
+      <div class="kpi">${S.user.streak}<small> dias</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">📅</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">HOJE</small>
+      <div class="kpi">${done}<small>/${S.habits.length}</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">📈</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">TAXA DE CUMPRIMENTO</small>
+      <div class="kpi">${rate}<small>%</small></div></div></div></div>
+  </div>
+  ${S.habits.map((h,i)=>`
+    <div class="row ${h.done?'done':''}">
+      <div class="chk ${h.done?'on':''}" onclick="toggleHabit('${h.id}')">✓</div>
+      <div class="txt"><b>${h.emoji} ${esc(h.title)}</b><small>Sequência: ${h.streak} dias · +10 XP</small></div>
+      <button class="btn warn mini" onclick="delHabit('${h.id}')">✕</button>
+    </div>`).join('')||'<div class="empty">Sem hábitos. Cria o primeiro.</div>'}
+
+  ${!S.user.pro&&S.habits.length>=freeLimit?`<div class="card" style="margin-top:14px;border-color:rgba(124,58,237,.5)">
+    <h3>💎 Limite do plano Free atingido</h3>
+    <p class="sub">O plano Free permite ${freeLimit} hábitos. Faz upgrade para hábitos ilimitados.</p>
+    <button class="btn" onclick="togglePro(true)">Desbloquear ilimitado</button></div>`:''}
+
+  <div class="sec-title" style="font-size:14px">Sugestões<span class="line"></span></div>
+  <div class="chips">${HABIT_IDEAS.map(([e,t])=>`<div class="chip" onclick="quickHabit('${e}','${t}')">${e} ${t}</div>`).join('')}</div>`;
+}
+function toggleHabit(id){
+  const h=S.habits.find(x=>x.id===id);
+  h.done=!h.done;
+  if(h.done){h.streak++;S.user.streak=Math.max(S.user.streak,Math.max(...S.habits.map(x=>x.streak)));
+    const all=S.habits.every(x=>x.done); if(all){addXP(35,'todos os hábitos de hoje + sequência');} else addXP(10,'hábito concluído');}
+  else h.streak--;
+  save(); render();
+}
+function addHabit(){
+  if(!S.user.pro&&S.habits.length>=3){toast('💎 Limite Free: 3 hábitos. Faz upgrade.');return;}
+  openModal('Novo hábito',`
+    <div class="field"><label>Nome</label><input id="f1" placeholder="Ex: Meditar 10 min"></div>
+    <div class="field"><label>Emoji</label><input id="f2" value="✅" maxlength="2"></div>`,()=>{
+    const t=$('#f1').value.trim(); if(!t)return;
+    S.habits.push({id:uid(),title:t,emoji:$('#f2').value||'✅',streak:0,done:false}); save(); render();
+  })}
+function quickHabit(e,t){
+  if(!S.user.pro&&S.habits.length>=3){toast('💎 Limite Free: 3 hábitos. Faz upgrade.');return;}
+  S.habits.push({id:uid(),title:t,emoji:e,streak:0,done:false});save();render()
+}
+function delHabit(id){S.habits=S.habits.filter(x=>x.id!==id);save();render()}
+
+/* ---------- FOCUS ---------- */
+let T={left:25*60,total:25*60,run:false,iv:null};
+function vFocus(){
+  return `
+  <div class="sec-title">⏱️ Modo Foco<span class="line"></span></div>
+  <div class="card timer-wrap">
+    <h3>🔥 FOCUS MODE</h3>
+    <div class="msg" id="focusMsg">Escolhe a duração e começa. Não desistas.</div>
+    <div class="timer" id="tDisp">${fmt(T.left)}</div>
+    <div style="height:10px"></div>
+    <div class="bar" style="width:min(420px,100%)"><i id="tBar" style="width:${(1-T.left/T.total)*100}%"></i></div>
+    <div class="chips" style="justify-content:center;margin:20px 0 18px">
+      <div class="chip ${T.total===1500?'on':''}" onclick="setFocus(25)">25 min</div>
+      <div class="chip ${T.total===3000?'on':''}" onclick="setFocus(50)">50 min</div>
+      <div class="chip ${T.total===5400?'on':''}" onclick="setFocus(90)">90 min</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <button class="btn" id="tPlay" onclick="toggleTimer()">${T.run?'⏸ Pausar':'▶ Começar'}</button>
+      <button class="btn ghost" onclick="stopTimer(true)">↺ Reiniciar</button>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:15px">
+    <div class="card"><div class="stat"><div class="ic">🎯</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">SESSÕES TOTAIS</small>
+      <div class="kpi">${S.focus.sessions}</div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">🕐</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">TEMPO TOTAL</small>
+      <div class="kpi">${Math.floor(S.focus.minutes/60)}h<small> ${S.focus.minutes%60}m</small></div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">⚡</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">RECOMPENSA</small>
+      <div class="kpi">+50<small> XP</small></div></div></div></div>
+  </div>
+  <div class="card" style="margin-top:15px">
+    <h3>🧭 Regras do Modo Foco</h3>
+    <p class="sub">O que conta como foco real</p>
+    <div class="grid g3">
+      <div style="font-size:12px;line-height:1.7">📵 Telefone fora do alcance</div>
+      <div style="font-size:12px;line-height:1.7">🎯 Uma única tarefa na mesa</div>
+      <div style="font-size:12px;line-height:1.7">🚪 Zero notificações activas</div>
+    </div>
+  </div>`;
+}
+function fmt(s){const m=Math.floor(s/60),x=s%60;return String(m).padStart(2,'0')+':'+String(x).padStart(2,'0')}
+function setFocus(min){stopTimer(false);T.total=T.left=min*60;$('#tDisp').textContent=fmt(T.left);render()}
+function toggleTimer(){
+  if(T.run){clearInterval(T.iv);T.run=false;}
+  else{
+    T.run=true;
+    T.iv=setInterval(()=>{
+      T.left--;
+      const d=$('#tDisp'),b=$('#tBar');
+      if(d)d.textContent=fmt(Math.max(0,T.left));
+      if(b)b.style.width=((1-T.left/T.total)*100)+'%';
+      if(T.left<=0)completeFocus();
+    },1000);
+  }
+  const p=$('#tPlay'); if(p)p.textContent=T.run?'⏸ Pausar':'▶ Começar';
+  const m=$('#focusMsg'); if(m&&T.run)m.textContent='🔥 Fica no teu trabalho. Não desistas.';
+}
+function stopTimer(reset){
+  clearInterval(T.iv);T.run=false;
+  if(reset){T.left=T.total;}
+  if($('#tDisp')){$('#tDisp').textContent=fmt(T.left);$('#tBar').style.width=((1-T.left/T.total)*100)+'%';
+    $('#tPlay').textContent='▶ Começar';$('#focusMsg').textContent='Escolhe a duração e começa. Não desistas.'}
+}
+function completeFocus(){
+  clearInterval(T.iv);T.run=false;T.left=T.total;
+  S.focus.sessions++; S.focus.minutes+=Math.round(T.total/60);
+  addXP(50,'sessão de foco completa'); save();
+  toast('✅ Sessão concluída! +50 XP');
+  render();
+}
+
+/* ---------- STUDY ---------- */
+function vStudy(){
+  const totalH=S.subjects.reduce((a,s)=>a+s.hours,0);
+  return `
+  <div class="sec-title">📚 Centro de Estudo<span class="line"></span>
+    <button class="btn mini" onclick="addSubject()">+ Nova matéria</button></div>
+  <div class="grid g3" style="margin-bottom:18px">
+    <div class="card"><div class="stat"><div class="ic">📖</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">MATÉRIAS</small>
+      <div class="kpi">${S.subjects.length}</div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">⏳</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">HORAS ESTUDADAS</small>
+      <div class="kpi">${totalH.toFixed(1)}h</div></div></div></div>
+    <div class="card"><div class="stat"><div class="ic">📈</div><div>
+      <small style="font-size:10.5px;color:var(--mut);font-weight:700">PROGRESSO MÉDIO</small>
+      <div class="kpi">${S.subjects.length?Math.round(S.subjects.reduce((a,s)=>a+s.prog,0)/S.subjects.length):0}<small>%</small></div></div></div></div>
+  </div>
+  ${S.subjects.map(s=>`
+    <div class="card" style="margin-bottom:11px">
+      <h3>📘 ${esc(s.name)}<span class="tag">${s.prog}%</span></h3>
+      <div class="bar bl" style="margin:9px 0"><i style="width:${s.prog}%"></i></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <small style="font-size:11.5px;color:var(--mut)">Próxima revisão: <b style="color:#8fb4ff">${s.next||'—'}</b> · ${s.hours}h registadas</small>
+        <div style="display:flex;gap:6px">
+          <button class="btn ghost mini" onclick="studySession('${s.id}')">+30 min · +20 XP</button>
+          <button class="btn ghost mini" onclick="bumpSub('${s.id}')">+10%</button>
+          <button class="btn warn mini" onclick="delSub('${s.id}')">✕</button>
+        </div>
+      </div>
+    </div>`).join('')||'<div class="empty">Sem matérias. Cria a primeira e o plano começa a organizar-se.</div>'}
+  <div class="card" style="margin-top:16px">
+    <h3>🗓️ Plano de revisão inteligente</h3>
+    <p class="sub">Repetição espaçada — revê cada matéria nos dias 1, 3, 7, 21.</p>
+    <div class="grid g4">
+      ${['Dia 1 — Memorizar','Dia 3 — Praticar','Dia 7 — Testar','Dia 21 — Consolidar'].map(x=>
+      `<div style="font-size:11.5px;padding:11px;background:var(--card2);border:1px solid var(--line);border-radius:12px;line-height:1.5">${x}</div>`).join('')}
+    </div>
+  </div>`;
+}
+function addSubject(){openModal('Nova matéria',`
+  <div class="field"><label>Nome</label><input id="f1" placeholder="Ex: Física"></div>
+  <div class="field"><label>Próxima revisão</label><input id="f2" placeholder="Ex: Quarta — 17:00"></div>`,()=>{
+    const t=$('#f1').value.trim(); if(!t)return;
+    S.subjects.push({id:uid(),name:t,prog:0,next:$('#f2').value||'A definir',hours:0}); save(); render();
+  })}
+function studySession(id){const s=S.subjects.find(x=>x.id===id);s.hours+=.5;s.prog=Math.min(100,s.prog+2);
+  S.focus.minutes+=30;addXP(20,'sessão de estudo 30 min');save();render()}
+function bumpSub(id){const s=S.subjects.find(x=>x.id===id);s.prog=Math.min(100,s.prog+10);save();render();toast('📚 '+s.name+': '+s.prog+'%')}
+function delSub(id){S.subjects=S.subjects.filter(x=>x.id!==id);save();render()}
+
+/* ---------- DEVELOPMENT ---------- */
+const LESSONS=[
+ {t:'Disciplina',d:'Disciplina não é força de vontade. É desenho de ambiente.',b:'Remove a fricção do que queres fazer e adiciona fricção ao que te distrai. Se queres estudar, o livro fica aberto na mesa e o telefone fica noutra sala. Decisão tomada uma vez vale por cinquenta decisões diárias.'},
+ {t:'Foco',d:'Foco é a capacidade de dizer não.',b:'Faz uma lista de 3 tarefas por dia, não 10. Quando terminares a primeira, só então olhas para a segunda. Multitarefa reduz a qualidade de tudo o que toca.'},
+ {t:'Inteligência emocional',d:'Nomeia o que sentes antes de agir.',b:'Diz: "Estou frustrado porque..." — nomear a emoção reduz a sua intensidade e devolve-te o controlo. Pausa de 6 segundos antes de responder a algo que te irrita.'},
+ {t:'Comunicação',d:'Clareza vence a eloquência.',b:'Estrutura: ponto principal → razão → exemplo. Fala mais devagar do que pensas. Pausa em vez de "hmm".'},
+ {t:'Liderança',d:'Liderar é servir com padrão.',b:'Faz o que dizes que vais fazer, especialmente quando ninguém vê. A tua reputação é o histórico das tuas promessas cumpridas.'},
+ {t:'Confiança',d:'Confiança é evidência acumulada.',b:'Não se constrói a repetir afirmações no espelho — constrói-se a completar coisas difíceis. Faz um registo semanal de provas: o que enfrentaste e venceste.'},
+ {t:'Produtividade',d:'O

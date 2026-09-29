@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Young Implacável — Organize your life. Build yourself. Take action.</title>
+<meta name="description" content="SaaS de crescimento pessoal e produtividade: metas, hábitos, foco, estudo, carreira, rendimento e IA.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="theme-color" content="#0a0c11">
+<style>
+:root{
+  --bg:#0a0c11; --bg2:#0f131b; --panel:#141924; --panel2:#1a2030; --line:#252d3d;
+  --txt:#eaedf5; --muted:#8b95ab; --dim:#5f6a80;
+  --acc:#ff6b2c; --acc2:#ffb02e; --acc3:#ff3d6e;
+  --ok:#2fd07a; --warn:#ffc93c; --bad:#ff5b6e; --info:#4aa8ff;
+  --r:16px; --grad:linear-gradient(135deg,#ff6b2c,#ffb02e); --grad2:linear-gradient(135deg,#ff3d6e,#ff6b2c);
+  --sh:0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Roboto,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(700px 420px at 12% -8%, rgba(255,107,44,.16), transparent 62%),
+    radial-gradient(600px 380px at 92% 4%, rgba(255,61,110,.10), transparent 60%),
+    radial-gradient(700px 500px at 60% 110%, rgba(74,168,255,.07), transparent 65%);
+}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:#2a3448;border-radius:8px;border:2px solid var(--bg)}
+::-webkit-scrollbar-track{background:transparent}
+#landing,#onboard,#app{position:relative;z-index:1}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;font-weight:600;font-size:14px;transition:.16s}
+.btn:hover{transform:translateY(-1px);background:#212a3d}
+.btn.primary{background:var(--grad);border:0;color:#160b03;box-shadow:0 6px 20px rgba(255,107,44,.32)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:7px 12px;font-size:12.5px;border-radius:10px}
+.btn.block{width:100%}
+.btn.danger{color:var(--bad);border-color:#4a2230}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.card{background:linear-gradient(180deg,var(--panel),#111621);border:1px solid var(--line);border-radius:var(--r);padding:18px;position:relative}
+.card.pad{padding:20px}
+.grid{display:grid;gap:16px}
+.row{display:flex;gap:12px;align-items:center}
+.col{display:flex;flex-direction:column;gap:10px}
+.between{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.grow{flex:1}
+.muted{color:var(--muted)}.dim{color:var(--dim)}
+.small{font-size:12.5px}.tiny{font-size:11.5px}
+.bold{font-weight:700}.center{text-align:center}
+h1,h2,h3{line-height:1.2}
+h1{font-size:26px}h2{font-size:19px}h3{font-size:15.5px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:11.5px;font-weight:700;letter-spacing:.3px;background:#212a3d;border:1px solid var(--line)}
+.badge.pro{background:var(--grad);color:#160b03;border:0}
+.badge.ok{background:rgba(47,208,122,.12);color:var(--ok);border-color:rgba(47,208,122,.3)}
+.badge.warn{background:rgba(255,201,60,.12);color:var(--warn);border-color:rgba(255,201,60,.3)}
+.badge.bad{background:rgba(255,91,110,.12);color:var(--bad);border-color:rgba(255,91,110,.3)}
+label.fld{display:block;margin-bottom:12px}
+label.fld>span{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;letter-spacing:.3px;text-transform:uppercase}
+input,select,textarea{width:100%;padding:11px 13px;border-radius:11px;border:1px solid var(--line);background:#0e1219;outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px rgba(255,107,44,.14)}
+textarea{resize:vertical;min-height:88px}
+input[type=range]{padding:0;background:transparent}
+.bar{height:9px;border-radius:999px;background:#1d2434;overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px;background:var(--grad);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.bar.blue>i{background:linear-gradient(90deg,#4aa8ff,#7b6bff)}
+.bar.green>i{background:linear-gradient(90deg,#2fd07a,#7ce0aa)}
+.bar.pink>i{background:var(--grad2)}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;font-size:13px;font-weight:600;white-space:nowrap;transition:.15s}
+.chip:hover{border-color:#3a4762}
+.chip.on{background:var(--grad);color:#160b03;border-color:transparent}
+.scroller{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.scroller::-webkit-scrollbar{height:6px}
+.divider{height:1px;background:var(--line);margin:16px 0}
+.lock{position:absolute;inset:0;border-radius:var(--r);background:rgba(8,10,15,.82);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;z-index:5}
+
+/* language switcher */
+.langsw{display:inline-flex;gap:4px;background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:4px}
+.langsw button{background:none;border:0;padding:5px 11px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);transition:.15s}
+.langsw button:hover{color:var(--txt)}
+.langsw button.on{background:var(--grad);color:#160b03}
+
+/* landing */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 28px;max-width:1180px;margin:0 auto;width:100%}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.4px;font-size:18px}
+.logo .fl{width:38px;height:38px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-size:20px;box-shadow:0 6px 18px rgba(255,107,44,.4)}
+.hero{max-width:1180px;margin:0 auto;width:100%;padding:40px 28px 30px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(31px,4.4vw,52px);letter-spacing:-1.4px;margin:14px 0 16px}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--muted);font-size:17px;max-width:520px;margin-bottom:26px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.stats b{display:block;font-size:22px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.preview{background:linear-gradient(180deg,#151b27,#0e1219);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--sh);transform:perspective(1400px) rotateY(-7deg) rotateX(3deg)}
+.pmini{display:grid;gap:10px}
+.pcard{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:13px}
+.features{max-width:1180px;margin:0 auto;width:100%;padding:30px 28px 10px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;transition:.2s}
+.fcard:hover{transform:translateY(-3px);border-color:#3a4762}
+.fcard .ico{font-size:24px;margin-bottom:10px;display:block}
+.pricing{max-width:1000px;margin:0 auto;width:100%;padding:34px 28px 70px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:810px;margin:0 auto}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;position:relative}
+.plan.hot{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc),0 20px 50px rgba(255,107,44,.16)}
+.plan .price{font-size:36px;font-weight:800;letter-spacing:-1.5px;margin:10px 0 4px}
+.plan ul{list-style:none;margin:18px 0;display:grid;gap:9px}
+.plan li{display:flex;gap:9px;font-size:14px;color:var(--muted)}
+.plan li i{color:var(--ok);font-style:normal}
+footer{border-top:1px solid var(--line);padding:24px 28px;text-align:center;color:var(--dim);font-size:13px}
+
+/* onboarding */
+.obwrap{display:none;position:fixed;inset:0;z-index:180;background:rgba(5,7,11,.88);backdrop-filter:blur(9px);align-items:center;justify-content:center;padding:18px}
+.obwrap.on{display:flex}
+.ob{background:linear-gradient(180deg,var(--panel),#111621);border:1px solid var(--line);border-radius:22px;width:100%;max-width:620px;padding:30px;box-shadow:var(--sh);max-height:92vh;overflow-y:auto}
+.obsteps{display:flex;gap:6px;margin-bottom:22px}
+.obsteps i{flex:1;height:5px;border-radius:99px;background:#222b3d;transition:.3s}
+.obsteps i.on{background:var(--grad)}
+.obstep{display:none;animation:fade .3s ease}
+.obstep.on{display:block}
+.obstep .big{font-size:44px;margin-bottom:12px;display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.obnav{display:flex;gap:10px;justify-content:space-between;margin-top:24px}
+.langcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:8px}
+.langcard{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;text-align:center;transition:.15s}
+.langcard:hover{border-color:#3a4762;transform:translateY(-2px)}
+.langcard.on{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.langcard b{display:block;font-size:15px}
+.langcard span{font-size:11.5px;color:var(--muted)}
+
+/* app shell */
+#app{display:none;min-height:100vh}
+.shell{display:grid;grid-template-columns:252px 1fr;min-height:100vh}
+.side{background:linear-gradient(180deg,#0f131b,#0b0e14);border-right:1px solid var(--line);padding:20px 14px;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+.side .brand{padding:4px 10px 16px}
+.navitem{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:11px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px;transition:.14s;border:1px solid transparent}
+.navitem:hover{background:#161d2b;color:var(--txt)}
+.navitem.on{background:linear-gradient(90deg,rgba(255,107,44,.16),rgba(255,107,44,.03));color:var(--txt);border-color:rgba(255,107,44,.28)}
+.navitem .ic{width:22px;text-align:center;font-size:16px}
+.navitem .tag{margin-left:auto;font-size:10px;padding:2px 7px;border-radius:999px;background:var(--grad);color:#160b03;font-weight:800}
+.navsep{height:1px;background:var(--line);margin:10px 6px}
+.main{padding:26px 30px 90px;max-width:1080px;width:100%}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.xpbox{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:9px 14px}
+.lvl{width:40px;height:40px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-size:19px}
+.view{animation:fade .28s ease}
+.sechead{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.sechead p{color:var(--muted);font-size:14px;margin-top:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.kpi{background:linear-gradient(180deg,var(--panel),#111621);border:1px solid var(--line);border-radius:var(--r);padding:15px}
+.kpi .k{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700}
+.kpi .v{font-size:25px;font-weight:800;letter-spacing:-.8px;margin:6px 0 2px}
+.hero-card{background:linear-gradient(120deg,rgba(255,107,44,.15),rgba(255,61,110,.07) 55%,transparent);border:1px solid rgba(255,107,44,.28);border-radius:20px;padding:24px;margin-bottom:18px}
+.hero-card h2{font-size:23px;letter-spacing:-.6px}
+.quote{font-style:italic;color:var(--muted);margin-top:8px;font-size:15px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.list{display:grid;gap:9px}
+.item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:var(--panel2);border:1px solid var(--line);transition:.15s}
+.item:hover{border-color:#3a4762}
+.item.done{opacity:.55}
+.item.done .txt{text-decoration:line-through}
+.chk{width:22px;height:22px;border-radius:7px;border:2px solid #3a4762;display:grid;place-items:center;cursor:pointer;flex:none;transition:.15s;font-size:13px;color:transparent}
+.chk.on{background:var(--grad);border-color:transparent;color:#160b03}
+.del{margin-left:auto;background:none;border:0;color:var(--dim);cursor:pointer;font-size:16px;padding:2px 6px;border-radius:8px}
+.del:hover{color:var(--bad);background:rgba(255,91,110,.1)}
+.daygrid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:280px}
+.day{aspect-ratio:1;border-radius:9px;border:1px solid var(--line);background:#161d2b;cursor:pointer;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--dim);transition:.14s}
+.day.on{background:var(--grad);border-color:transparent;color:#160b03}
+.timer{text-align:center;padding:8px 0}
+.timer .big{font-size:clamp(52px,12vw,86px);font-weight:800;letter-spacing:-3px;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dial{width:230px;height:230px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;position:relative}
+.dial::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--line)}
+.chat{display:flex;flex-direction:column;gap:12px;max-height:52vh;overflow-y:auto;padding-right:6px;margin-bottom:14px}
+.msg{max-width:86%;padding:12px 15px;border-radius:15px;font-size:14.5px;white-space:pre-wrap}
+.msg.me{align-self:flex-end;background:var(--grad);color:#160b03;border-bottom-right-radius:5px}
+.msg.ai{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-bottom-left-radius:5px}
+.lb{display:grid;gap:8px}
+.lbrow{display:flex;align-items:center;gap:13px;padding:12px 14px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
+.lbrow.me{border-color:var(--acc);background:linear-gradient(90deg,rgba(255,107,44,.14),transparent)}
+.rank{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-weight:800;background:#222b3d;font-size:13px}
+.rank.g1{background:linear-gradient(135deg,#ffd76e,#ff9d2e);color:#3a2400}
+.rank.g2{background:linear-gradient(135deg,#e2e8f5,#aab6cf);color:#20293c}
+.rank.g3{background:linear-gradient(135deg,#e8a86a,#c47a3c);color:#2e1700}
+.n{width:36px;height:36px;border-radius:11px;background:#212a3d;display:grid;place-items:center;flex:none;font-size:18px}
+.cv{background:#fff;color:#111;border-radius:14px;padding:26px;font-size:13px}
+.cv h1{font-size:25px;color:#111;margin-bottom:3px}
+.cv h3{font-size:11.5px;text-transform:uppercase;letter-spacing:1.2px;color:#ff6b2c;border-bottom:1px solid #ddd;padding-bottom:4px;margin:16px 0 8px}
+.cv p,.cv li{color:#333}
+.cv ul{padding-left:18px}
+.toastwrap{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.toast{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:12px;padding:12px 17px;box-shadow:var(--sh);font-size:14px;font-weight:600;animation:slide .3s ease;max-width:330px}
+@keyframes slide{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.modalwrap{position:fixed;inset:0;background:rgba(5,7,11,.75);backdrop-filter:blur(6px);z-index:150;display:none;align-items:center;justify-content:center;padding:20px}
+.modalwrap.on{display:flex}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;max-width:540px;width:100%;box-shadow:var(--sh);max-height:90vh;overflow-y:auto}
+.mobilebar{display:none}
+.metric{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:7px}
+.metric b{font-variant-numeric:tabular-nums}
+.cal{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.cal .t{padding:9px;border-radius:11px;background:var(--panel2);border:1px solid var(--line);text-align:center;font-size:11.5px;color:var(--muted)}
+.cal .t b{display:block;font-size:14px;color:var(--txt);margin-bottom:2px}
+.secdot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:6px;box-shadow:0 0 8px var(--ok)}
+@media(max-width:960px){.hero{grid-template-columns:1fr;gap:30px;padding-top:20px}.preview{transform:none}.pgrid{grid-template-columns:1fr}.cols2{grid-template-columns:1fr}}
+@media(max-width:820px){
+  .shell{grid-template-columns:1fr}.side{display:none}
+  .main{padding:18px 16px 110px}
+  .mobilebar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:120;background:rgba(15,19,27,.96);border-top:1px solid var(--line);padding:7px 4px calc(7px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}
+  .mobilebar .mi{flex:1;text-align:center;padding:7px 2px;border-radius:11px;cursor:pointer;color:var(--muted);font-size:10px;font-weight:700}
+  .mobilebar .mi.on{color:var(--acc);background:rgba(255,107,44,.1)}
+  .mobilebar .mi span{display:block;font-size:18px;margin-bottom:2px}
+  .toastwrap{bottom:96px;right:14px;left:14px;align-items:stretch}
+  .nav{padding:14px 16px}.ob{padding:22px}
+}
+@media print{.side,.topbar,.mobilebar,.toastwrap,.modalwrap{display:none!important}body{background:#fff}.cv{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div id="landing"></div>
+<div id="onboard" class="obwrap"></div>
+
+<div id="app">
+  <div class="shell">
+    <aside class="side">
+      <div class="brand logo"><span class="fl">🔥</span> <span id="brandName">Young Implacável</span></div>
+      <div id="sideNav"></div>
+      <div style="flex:1"></div>
+      <div class="navsep"></div>
+      <div id="sideLang" style="padding:6px 10px 10px"></div>
+      <div class="navitem" onclick="openPricing()"><span class="ic">💎</span> <span id="navUpgrade"></span></div>
+      <div class="navitem" onclick="logout()"><span class="ic">↩︎</span> <span id="navLogout"></span></div>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <div class="small muted bold" id="crumb">—</div>
+          <h1 id="viewTitle">—</h1>
+        </div>
+        <div class="row" style="gap:10px">
+          <div class="xpbox">
+            <div class="lvl" id="lvlIcon">🥉</div>
+            <div><div class="tiny bold" id="lvlName">—</div><div class="tiny muted" id="xpText">—</div></div>
+          </div>
+          <button class="btn sm" onclick="openModal('help')">?</button>
+        </div>
+      </div>
+      <div id="view" class="view"></div>
+    </main>
+  </div>
+  <div class="mobilebar" id="mobileBar"></div>
+</div>
+
+<div class="toastwrap" id="toasts"></div>
+<div class="modalwrap" id="modal" onclick="if(event.target===this)closeModal()"><div class="modal" id="modalBody"></div></div>
+
+<script>
+/* ==========================================================================
+   YOUNG IMPLACÁVEL — SPA i18n  (pt · en · es · fr)
+   ========================================================================== */
+const I18N={
+pt:{
+'meta.title':'Young Implacável — Organize a tua vida. Constrói-te. Toma ação.',
+'meta.desc':'Plataforma de crescimento pessoal e produtividade: metas, hábitos, foco, estudo, carreira, rendimento e IA.',
+/* landing */
+'l.badge':'🚀 Para jovens que querem evoluir',
+'l.h1a':'Organize a tua vida.',
+'l.h1b':'Constrói-te a ti mesmo.',
+'l.lead':'Uma plataforma completa de crescimento pessoal e produtividade: metas, hábitos, foco, estudo, carreira, rendimento e a tua assistente IA — IMPA.',
+'l.cta1':'Começar agora — é grátis',
+'l.cta2':'Ver planos',
+'l.s1':'dias de streak médio','l.s2':'XP por semana','l.s3':'módulos integrados',
+'l.featTitle':'Tudo o que precisas num só lugar','l.featSub':'Da disciplina diária ao primeiro salário.',
+'l.priceTitle':'Planos simples','l.priceSub':'Começa grátis. Faz upgrade quando estiveres pronto.',
+'l.free':'GRÁTIS','l.freePrice':'0 MT','l.freePer':'para sempre',
+'l.freeF1':'Dashboard e visão do dia','l.freeF2':'Metas em 4 categorias','l.freeF3':'Até 3 hábitos','l.freeF4':'Timer de foco 25/50/90','l.freeF5':'Lições básicas de desenvolvimento','l.freeF6':'1 desafio por mês',
+'l.pro':'PRO','l.proPrice':'49 MT','l.proPer':'/mês','l.proNote':'ou 499 MT/ano — poupa ~15%',
+'l.proF1':'Hábitos ilimitados','l.proF2':'Planos personalizados','l.proF3':'IMPA AI (assistente)','l.proF4':'Biblioteca completa de conteúdo','l.proF5':'CV Builder + Simulador de entrevista','l.proF6':'Income Center + Gerador de ideias','l.proF7':'Desafios premium e analytics','l.proF8':'Planos de estudo personalizados',
+'l.startFree':'Começar grátis','l.tryPro':'Experimentar Pro',
+'l.footer':'Young Implacável · "O teu futuro é construído pelas ações que repetes hoje." · Moçambique 🇲🇿',
+'l.langLabel':'Idioma',
+'f1.t':'🎯 Metas inteligentes','f1.d':'Objetivos em 4 áreas, divididos automaticamente em ações diárias.',
+'f2.t':'🔥 Rastreador de hábitos','f2.d':'Streaks, grelha semanal e consistência visual.',
+'f3.t':'⏱️ Modo Foco','f3.d':'Blocos de 25, 50 ou 90 minutos que valem XP.',
+'f4.t':'📚 Centro de Estudo','f4.d':'Matérias, revisão espaçada e sessões registadas.',
+'f5.t':'🧠 Desenvolvimento Pessoal','f5.d':'Lições práticas sobre disciplina, foco e mentalidade.',
+'f6.t':'💼 Carreira','f6.d':'CV profissional e simulador de entrevista com feedback.',
+'f7.t':'💰 Centro de Rendimento','f7.d':'Caminhos reais para ganhar + gerador de ideias de negócio.',
+'f8.t':'🤖 IMPA AI','f8.d':'Assistente que transforma conselhos em planos de ação.',
+'f9.t':'🏆 Desafios','f9.d':'7, 21, 30 e 90 dias para mudar a tua rotina.',
+'f10.t':'📊 Relatórios','f10.d':'Progresso semanal de metas, estudo, hábitos e foco.',
+'f11.t':'👥 Comunidade','f11.d':'Ranking, discussões e conquistas.',
+'f12.t':'⚡ XP e Níveis','f12.d':'6 níveis: de Beginner a Leader.',
+/* auth */
+'a.login':'Entrar','a.signup':'Criar conta','a.welcomeBack':'Bem-vindo de volta','a.createSub':'Começa grátis. Sem cartão de crédito.','a.subSignup':'Cria a tua conta em 30 segundos.',
+'a.name':'Nome','a.namePh':'Ex: Samuel','a.city':'Cidade / Província','a.cityPh':'Ex: Tete',
+'a.email':'Email','a.emailPh':'tu@email.com','a.pass':'Palavra-passe','a.passPh':'••••••••',
+'a.createBtn':'Criar conta grátis','a.loginBtn':'Entrar','a.demoNote':'Demonstração local — os teus dados ficam só neste dispositivo.',
+'a.welcomeToast':'🔥 Bem-vindo, {name}! Vamos construir.',
+/* onboarding */
+'ob.of':'Passo {n} de {t}','ob.optional':'podes saltar','ob.next':'Continuar','ob.back':'Voltar','ob.skip':'Saltar','ob.finish':'Começar agora',
+'ob.s1t':'Bem-vindo ao Young Implacável 🔥','ob.s1d':'Vou guiar-te em 5 passos rápidos para montar o teu sistema. Leva menos de 1 minuto.',
+'ob.s1a':'Define metas e divide-as em ações diárias','ob.s1b':'Constrói hábitos com streaks','ob.s1c':'Ganha XP, sobe de nível e vê o teu progresso',
+'ob.s2t':'Escolhe o teu idioma','ob.s2d':'Podes mudar isto sempre nas Definições.',
+'ob.s3t':'Como te chamas?','ob.s3d':'Uso o teu nome e cidade para personalizar planos e ideias de negócio.',
+'ob.s4t':'Qual é o teu foco agora?','ob.s4d':'Escolhe a área onde queres resultados primeiro. Crio a primeira meta por ti.',
+'ob.s5t':'Escolhe o teu primeiro hábito','ob.s5d':'Começa pequeno. Um hábito de 5 minutos cumprido vale mais que um plano perfeito.',
+'ob.h1':'Acordar cedo','ob.h2':'Ler 10 páginas','ob.h3':'Estudar 1 hora','ob.h4':'Exercitar 20 minutos',
+'ob.s6t':'Está tudo pronto 🚀','ob.s6d':'Criei a tua conta, um plano inicial e os teus primeiros itens. Volta todos os dias — é assim que se constrói.',
+'ob.ready1':'A tua conta está criada','ob.ready2':'A tua primeira meta está ativa','ob.ready3':'O teu primeiro hábito está registado','ob.ready4':'A tua streak começa hoje',
+/* nav */
+'n.home':'Início','n.goals':'Metas','n.habits':'Hábitos','n.focus':'Foco','n.study':'Estudo','n.dev':'Desenvolvimento','n.career':'Carreira','n.income':'Rendimento','n.impa':'IMPA AI','n.challenges':'Desafios','n.community':'Comunidade','n.progress':'Progresso','n.settings':'Definições','n.more':'Mais','n.upgrade':'Upgrade Pro','n.logout':'Sair',
+/* common */
+'c.xp':'XP','c.free':'GRÁTIS','c.pro':'PRO','c.max':'máximo','c.streak':'Streak','c.days':'dias','c.level':'Nível','c.of':'de','c.remove':'Remover',
+/* home */
+'h.greetM':'Bom dia','h.greetA':'Boa tarde','h.greetE':'Boa noite',
+'h.heroT':'{name}, o teu futuro começa agora.','h.quote':'"O teu futuro é construído pelas ações que repetes hoje."',
+'h.kGoals':'🎯 Metas','h.kTasks':'📋 Tarefas','h.kHabits':'🔥 Hábitos','h.kFocus':'⏱️ Foco',
+'h.doneToday':'concluídas hoje','h.today':'hoje','h.avgProgress':'progresso médio','h.createFirst':'cria a primeira','h.streakLbl':'Streak','h.toNext':'XP para {level}','h.maxLevel':'Nível máximo 👑',
+'h.tasksToday':'📋 Tarefas de hoje','h.addTaskPh':'Nova tarefa...','h.noTasks':'Sem tarefas. Adiciona abaixo 👇',
+'h.mainGoal':'🎯 Meta principal','h.manage':'Gerir','h.noGoals':'Ainda sem metas definidas. Cria a tua primeira meta.','h.dailyActions':'AÇÕES DIÁRIAS','h.donePct':'{p}% concluído','h.inProgress':'em progresso',
+'h.habitsToday':'🔥 Hábitos — hoje','h.noHabits':'Sem hábitos.','h.freeLimit':'Plano Grátis: máximo 3 hábitos.','h.upgradeLink':'Fazer upgrade',
+'h.finGoal':'💰 Meta financeira','h.edit':'Editar','h.saved':'Poupado','h.setGoal':'Define um objetivo','h.addMt':'Adicionar MT','h.save':'Poupar','h.pctGoal':'{p}% do objetivo',
+'h.studyPlan':'📚 Plano de estudo','h.view':'Ver','h.noReview':'sem revisão agendada',
+'h.challengeDay':'🧠 Desafio diário','h.challengeWord':'Desafio','h.challengeNote':'Um pequeno ato hoje, todos os dias, muda a tua direção.','h.worthXp':'vale +{x} XP',
+'h.focusMode':'⏱️ Modo Foco','h.focusSub':'Stay focused. Don\'t quit.','h.openFocus':'Abrir Foco',
+/* goals */
+'g.sub':'Divide grandes objetivos em ações diárias pequenas.',
+'g.new':'+ Nova meta','g.all':'Todas','g.none':'Nenhuma meta nesta categoria ainda.','g.create':'Criar meta',
+'g.completed':'✅ Concluída','g.inProgress':'em progresso','g.cat':'Categoria','g.objective':'Objetivo','g.objectivePh':'Ex: Dominar Matemática','g.why':'Porquê (motivação)','g.whyPh':'Ex: Quero entrar na universidade','g.createBtn':'Criar meta','g.errTitle':'Escreve o objetivo',
+/* habits */
+'ha.sub':'Cria hábitos pequenos. Cumpre todos os dias. Torna-te inevitável.','ha.new':'+ Novo hábito',
+'ha.streakCur':'🔥 Streak actual','ha.consecutive':'dias consecutivos','ha.today':'✅ Hoje','ha.done':'hábitos cumpridos','ha.week':'📈 Esta semana','ha.consistency':'consistência',
+'ha.days':'dias','ha.records':'registos','ha.doneToday':'✓ Feito hoje','ha.mark':'Marcar hoje',
+'ha.limitT':'Hábitos ilimitados','ha.limitD':'No plano Grátis podes ter até 3 hábitos. Faz upgrade para hábitos ilimitados e planos personalizados.','ha.pro':'Ver Pro','ha.promptNew':'Novo hábito:',
+/* focus */
+'fo.sub':'Um bloco de foco vale mais que um dia distraído.','fo.sessions':'Sessões hoje: {n}',
+'fo.mode':'🔥 MODO FOCO','fo.modeSub':'Stay focused. Don\'t quit.','fo.start':'Iniciar','fo.pause':'Pausar','fo.reset':'Reiniciar',
+'fo.earn':'Ao concluir uma sessão ganhas +{x} XP.','fo.rules':'Regras do foco','fo.history':'Histórico','fo.total':'Total de sessões','fo.timeFocused':'Tempo focado','fo.none':'Sem sessões ainda.',
+'fo.r1':'Telemóvel fora do campo de visão','fo.r2':'Uma tarefa por bloco','fo.r3':'Água na mesa, notificações off','fo.r4':'Se um pensamento surgir: escreve e volta',
+/* study */
+'st.sub':'Cria matérias, agenda revisões e regista sessões de estudo.','st.new':'+ Nova matéria',
+'st.progress':'Progresso','st.min':'min estudados','st.next':'Próxima revisão','st.none2':'não agendada','st.add30':'+30 min','st.add60':'+1 h','st.schedule':'Agendar',
+'st.none':'Sem matérias. Começa por uma.','st.cal':'🗓️ Agenda de revisão','st.spaced':'Revisão espaçada: revê 1 dia, 3 dias, 7 dias e 21 dias depois de estudar.',
+'st.personalT':'🧭 Planos de estudo personalizados','st.personalD':'A IMPA AI cria um plano semana a semana para as tuas matérias e exames.',
+'st.promptName':'Nome da matéria:','st.promptReview':'Próxima revisão:',
+/* dev */
+'d.sub':'5 minutos por dia podem mudar a tua direção.','d.read':'✅ lida','d.unread':'não lida','d.mark':'Marcar como lida (+{x} XP)','d.readBtn':'Lida ✓',
+'d.full':'Biblioteca completa','d.fullD':'Desbloqueia todas as lições e as atualizações semanais.','d.unlock':'Desbloquear biblioteca completa 💎',
+/* career */
+'c.sub':'CV profissional + treino de entrevista com feedback.',
+'c.cv':'📄 CV Builder','c.fullName':'Nome completo','c.contact':'Email · Telefone · Cidade','c.contactPh':'tu@email.com · +258 84 000 0000 · Tete',
+'c.edu':'Educação','c.eduPh':'Ex: 12ª classe — Escola Secundária de Tete (2024)','c.exp':'Experiência','c.expPh':'Ex: Estágio — Empresa X (2023): apoio administrativo e atendimento',
+'c.skills':'Competências','c.skillsPh':'Design gráfico, Excel, Inglês, Comunicação','c.courses':'Cursos','c.coursesPh':'Ex: Curso de Informática básica — 2023',
+'c.obj':'Objetivo profissional','c.objPh':'Ex: Integrar uma equipa dinâmica onde possa aplicar e desenvolver as minhas competências.',
+'c.gen':'Gerar CV','c.print':'Imprimir / PDF','c.yourCv':'O teu CV','c.objective':'Objetivo',
+'c.interview':'🎤 Simulador de Entrevista','c.question':'PERGUNTA','c.answerPh':'Escreve ou cola a tua resposta...','c.evaluate':'Avaliar resposta','c.nextQ':'Próxima pergunta','c.global':'Pontuação global','c.feedback':'FEEDBACK',
+'c.clarity':'Clareza','c.structure':'Estrutura','c.confidence':'Confiança','c.relevance':'Relevância',
+'c.tipShort':'Resposta curta: aponta para 90–120 palavras.','c.tipLong':'Está longa: corta 30% e mantém o essencial.','c.tipStructure':'Usa estrutura: ponto → razão → exemplo.',
+'c.tipExample':'Adiciona um exemplo concreto (o que fizeste, onde, resultado).','c.tipNumber':'Inclui um número ou resultado mensurável.','c.tipFirst':'Fala na 1ª pessoa: "eu fiz", "eu aprendi".','c.tipGreat':'Excelente. Ensaia em voz alta em 90 segundos.','c.tipMore':'Escreve uma resposta mais completa.',
+/* income */
+'i.sub':'Começa a ganhar com o que já sabes fazer.','i.genT':'💡 Gerador de ideias de negócio','i.genD':'Diz-nos a tua situação e geramos ideias práticas e realistas.',
+'i.budget':'Orçamento (MT)','i.location':'Localização','i.skills':'Competências','i.skillPh':'Ex: Design gráfico','i.generate':'Gerar ideias','i.capital':'Capital necessário','i.budgetUsed':'Orçamento considerado',
+/* impa */
+'m.sub':'A tua assistente pessoal. Transforma conselhos em ações.','m.ph':'Escreve a tua pergunta...','m.send':'Enviar',
+'m.greet':'Olá! Sou a IMPA 🤖 — a tua assistente pessoal.\n\nPergunta-me coisas como:\n• "Como estudo para o exame de amanhã?"\n• "Ajuda-me a criar um plano para arranjar emprego."\n• "Como começo um negócio com 3.000 MT?"\n• "Estou a procrastinar. O que faço agora?"',
+'m.note':'A IMPA responde com planos práticos, offline e sem enviar os teus dados para fora.',
+'m.q1':'Como estudo para o exame de amanhã?','m.q2':'Cria um plano para arranjar emprego','m.q3':'Como começo um negócio com 3.000 MT?','m.q4':'Estou a procrastinar, o que faço agora?',
+'ip.plan':'PLANO','ip.study.t':'Plano de estudo urgente',
+'ip.study.1':'Bloco 1 (25 min) — lista os 5 tópicos que vão sair no exame.','ip.study.2':'Bloco 2 (25 min) — resolve 5 exercícios SEM ver a solução.','ip.study.3':'Bloco 3 (25 min) — corrige e escreve num cartão os erros repetidos.','ip.study.4':'Bloco 4 (20 min) — explica em voz alta o que aprendeste (técnica Feynman).','ip.study.5':'Últimos 10 min — dorme. Cérebro cansado memoriza menos.','ip.study.n':'Regra: 25 min de foco + 5 de pausa. Sem telemóvel na mesa.',
+'ip.job.t':'Plano para conseguir emprego','ip.job.1':'Hoje: lista 15 empresas onde queres trabalhar.','ip.job.2':'Hoje: cria/actualiza o CV no módulo Carreira (1 página, foco em resultados).','ip.job.3':'Amanhã: escreve 3 versões de "Fala-me de ti" (60–90 segundos).','ip.job.4':'Amanhã: envia 5 candidaturas personalizadas.','ip.job.5':'Semana: pede 2 pessoas para simular entrevista contigo.','ip.job.6':'Sempre: regista cada candidatura para seguimento em 7 dias.','ip.job.n':'Números vencem sorte: 5 candidaturas por dia durante 2 semanas.',
+'ip.biz.t':'Plano para começar com pouco capital','ip.biz.1':'Passo 1 — escreve o problema que vais resolver e para QUEM.','ip.biz.2':'Passo 2 — fala com 10 pessoas desse grupo (não vendas: pergunta).','ip.biz.3':'Passo 3 — define a oferta mais simples possível e o preço.','ip.biz.4':'Passo 4 — vende ANTES de produzir em escala.','ip.biz.5':'Passo 5 — reinveste 50% do lucro, poupa 30%, usa 20%.','ip.biz.6':'Passo 6 — em 30 dias mede: clientes, receita, custo, lucro.','ip.biz.n':'Capital baixo vence com velocidade, não com volume.','ip.biz.mt':'Vi que mencionaste {v} MT. Mantém o stock inicial abaixo de 60% desse valor.',
+'ip.proc.t':'Plano anti-procrastinação (agora)','ip.proc.1':'Regra dos 2 minutos: começa só 2 minutos. Para depois se quiseres.','ip.proc.2':'Reduz o passo: "abrir o caderno na página 12".','ip.proc.3':'Remove o atrito: telemóvel noutra sala, material pronto antes.','ip.proc.4':'Usa o timer de 25 min no módulo Foco e só isso.','ip.proc.5':'Recompensa depois: 10 min de algo que gostas, só no fim.','ip.proc.n':'O objetivo é começar, não terminar. O início resolve 80% da luta.',
+'ip.focus.t':'Protocolo de foco','ip.focus.1':'Escolhe UMA tarefa e escreve-a num papel visível.','ip.focus.2':'Ativa modo Foco 25/50/90 min aqui na app.','ip.focus.3':'Notificações off, telemóvel fora do campo de visão.','ip.focus.4':'Se aparecer um pensamento: escreve numa lista "Depois" e volta.','ip.focus.5':'Regista no fim quantos blocos completaste.','ip.focus.n':'Profundidade vence velocidade. 2 blocos feitos > 6 blocos começados.',
+'ip.habit.t':'Como instalar um hábito','ip.habit.1':'Gatilho claro: "depois de X, faço Y".','ip.habit.2':'Torna minúsculo: 5 min, não 1 hora.','ip.habit.3':'Torna visível: marca aqui no módulo Hábitos todos os dias.','ip.habit.4':'Nunca falhes duas vezes seguidas.','ip.habit.5':'Em 21 dias, aumenta a dose.','ip.habit.n':'Tu não subes ao nível das metas. Desces ao nível dos teus sistemas.',
+'ip.money.t':'Plano financeiro em 4 semanas','ip.money.1':'Semana 1 — registra TODOS os gastos, sem julgar.','ip.money.2':'Semana 2 — corta 2 gastos inúteis e cria a reserva.','ip.money.3':'Semana 3 — define % fixo: 50% essencial, 30% poupança, 20% livre.','ip.money.4':'Semana 4 — abre uma fonte extra de rendimento (ver Rendimento).','ip.money.n':'Poupar 100 MT por semana = 5.200 MT por ano. Começa hoje.',
+'ip.conf.t':'Construir confiança','ip.conf.1':'Cumpre 3 pequenas promessas a ti mesmo esta semana.','ip.conf.2':'Fala 1 minuto por dia em voz alta (grava-te).','ip.conf.3':'Entra em 3 conversas novas, com uma pergunta simples.','ip.conf.4':'Regista 1 vitória por dia aqui na app.','ip.conf.5':'Vai ao módulo Carreira e faz o Simulador de Entrevista.','ip.conf.n':'A confiança é memória de promessas cumpridas.',
+'ip.gen.body':'Vamos organizar isso em passos concretos:\n\n• Escreve exactamente o que queres alcançar (1 frase).\n• Divide em 3 tarefas que podes fazer HOJE.\n• Marca 1 bloco de 25 min no módulo Foco e faz a mais difícil primeiro.\n• Regista o progresso — sem registo não há evolução.\n\nDiz-me mais detalhes (prazo, recurso, maior obstáculo) e transformo isto num plano diário.',
+/* challenges */
+'ch.sub':'Escolhe um desafio. Cumpre. Transforma-te.','ch.days':'{n} dias','ch.enter':'Entrar no desafio','ch.active':'Desafio activo','ch.day':'Dia {a} de {b}','ch.mark':'Marcar dia de hoje','ch.quit':'Sair','ch.premium':'Desafio Premium','ch.premT':'💎 Desafio Premium','ch.started':'Desafio iniciado: {n}','ch.done':'🏆 Desafio concluído: {n}','ch.dayDone':'Dia do desafio cumprido',
+'ch.c7.n':'7 Dias — Vencer a Procrastinação','ch.c7.1':'Faz a tarefa mais difícil primeiro','ch.c7.2':'Sem redes sociais antes do meio-dia','ch.c7.3':'Planeia o dia em 3 linhas',
+'ch.c21.n':'21 Dias — Construir Disciplina','ch.c21.1':'Acordar à hora marcada','ch.c21.2':'30 min de estudo focado','ch.c21.3':'Diário de 3 linhas à noite',
+'ch.c30.n':'30 Dias — Transformar a Rotina','ch.c30.1':'Treino ou caminhada 20 min','ch.c30.2':'Sem telemóvel na 1ª hora','ch.c30.3':'Revisão do dia',
+'ch.c90.n':'90 Dias — A Melhor Versão de Ti','ch.c90.1':'Meta trimestral revista','ch.c90.2':'Competência nova praticada','ch.c90.3':'Networking semanal',
+/* community */
+'cm.sub':'Não construis isto sozinho.','cm.members':'{n} membros activos','cm.rank':'🏆 Ranking semanal','cm.week':'semanal','cm.disc':'💬 Discussões','cm.reply':'responder','cm.ach':'🏅 As tuas conquistas','cm.you':'tu','cm.note':'Grupos de produtividade, discussões e desafios em grupo chegam com a comunidade Pro.',
+'cm.a1':'Primeiros 7 dias','cm.a2':'100 XP','cm.a3':'Nível Focused','cm.a4':'10 sessões de foco','cm.a5':'Meta concluída',
+'cm.p1t':'Consegui 7 dias sem falhar o hábito de estudar! 🔥','cm.p2t':'Dica: bloquear o telemóvel durante o bloco de foco mudou tudo.','cm.p3t':'Comecei a vender design para negócios locais. Primeiro cliente hoje 💪','cm.p4t':'Alguém quer formar um grupo de estudo de Matemática?',
+/* progress */
+'p.sub':'O teu relatório desta semana.','p.goals':'🎯 Metas','p.study':'📚 Estudo','p.habits':'🔥 Hábitos','p.sessions':'⏱️ Sessões','p.xp':'🏆 XP',
+'p.avgProgress':'progresso médio','p.loggedTime':'tempo registado','p.consistency':'consistência','p.focusBlocks':'blocos de foco','p.total':'total acumulado',
+'p.perf':'Desempenho por área','p.quote':'"Foste melhor esta semana do que na semana passada. Continua."',
+'p.next':'Próximos passos sugeridos','p.activity':'Registo de actividade','p.lessons':'Lições lidas','p.habitsA':'Hábitos activos','p.subjects':'Matérias','p.goalsN':'Metas','p.focusSessions':'Sessões de foco',
+'p.s1':'Define pelo menos 2 metas (uma académica, uma pessoal).','p.s2':'Adiciona hábitos pequenos: ler 10 páginas, acordar cedo.','p.s3':'Faz 3 blocos de foco de 25 min esta semana.','p.s4':'Lê a primeira lição de Desenvolvimento Pessoal (+5 XP).','p.s5':'Preenche o teu CV no módulo Carreira.','p.s6':'Cria as tuas matérias no Centro de Estudo.','p.s7':'Excelente ritmo. Aumenta a dificuldade e mantém a consistência.',
+/* settings */
+'se.sub':'Personaliza a tua experiência.','se.profile':'👤 Perfil','se.name':'Nome','se.city':'Cidade / Província','se.skill':'Competência principal','se.skillPh':'Ex: Design gráfico','se.save':'Guardar',
+'se.plan':'💎 Plano','se.freeActive':'Funcionalidades limitadas','se.proActive':'Acesso total activo','se.downgrade':'Voltar ao Grátis','se.upgrade':'Fazer upgrade para Pro','se.prices':'Preços: 49–99 MT/mês ou 499–799 MT/ano.',
+'se.data':'📊 Dados','se.export':'Exportar dados (JSON)','se.demo':'Carregar dados de exemplo','se.erase':'Apagar tudo','se.note':'Tudo é guardado localmente no teu dispositivo. Nada é enviado para servidores.',
+'se.lang':'🌐 Idioma','se.langD':'Escolhe o idioma da aplicação.','se.security':'🔒 Segurança',
+/* modal */
+'mo.howT':'Como funciona 🔥','mo.howD':'Ganha XP ao completar ações. O XP sobe o teu nível.','mo.gotIt':'Entendido',
+'mo.proT':'Upgrade para Pro 💎','mo.proD':'Desbloqueia hábitos ilimitados, IMPA AI, CV Builder, Simulador de Entrevista, Income Center, desafios premium e analytics avançados.',
+'mo.monthly':'Mensal','mo.annual':'Anual','mo.save':'poupa ~15%','mo.activate':'Ativar Pro (demonstração)','mo.notNow':'Agora não','mo.demo':'Demonstração: nenhuma cobrança é feita.',
+'mo.eraseConfirm':'Apagar todos os teus dados? Esta ação é irreversível.',
+'mo.secure':'Ligação segura (HTTPS)','mo.secureOff':'Ligação não segura — a usar cópia local',
+/* xp labels */
+'x.task':'Tarefa concluída','x.study':'Sessão de estudo','x.habit':'Hábito completo','x.lesson':'Lição lida','x.challenge':'Desafio concluído','x.streak':'Streak mantida','x.focus':'Sessão de foco concluída','x.goalAction':'Ação da meta','x.goalDone':'Meta concluída 🎉','x.interview':'Treino de entrevista','x.saving':'Poupança registada','x.ideas':'Ideias de negócio geradas','x.impa':'Interação com a IMPA','x.daily':'Desafio diário concluído',
+/* levels */
+'lv.1':'Beginner','lv.2':'Disciplined','lv.3':'Focused','lv.4':'Determined','lv.5':'Unstoppable','lv.6':'Leader',
+/* categories */
+'cat.pessoal':'Pessoal','cat.academico':'Académico','cat.carreira':'Carreira','cat.financeiro':'Financeiro',
+/* daily actions */
+'da.ac.1':'Rever 1 tópico (25 min)','da.ac.2':'Resolver 5 exercícios','da.ac.3':'Escrever 3 dúvidas para perguntar',
+'da.car.1':'Ler 1 vaga e adaptar o CV','da.car.2':'Falar com 1 pessoa do setor','da.car.3':'Praticar 1 pergunta de entrevista',
+'da.fin.1':'Registar gastos do dia','da.fin.2':'Transferir 50 MT para poupança','da.fin.3':'Procurar 1 oportunidade de renda',
+'da.pes.1':'Ler 10 páginas','da.pes.2':'Escrever 1 reflexão','da.pes.3':'Cumprir 1 promessa a ti mesmo',
+/* lessons */
+'ls.1.t':'Disciplina','ls.1.d':'Disciplina não é motivação. É decidir antes da emoção chegar.','ls.1.k1':'Regra dos 2 minutos','ls.1.k2':'Ambiente > força de vontade','ls.1.k3':'Compromissos pequenos e diários',
+'ls.2.t':'Foco','ls.2.d':'Foco é escolher uma coisa e dizer não a mil outras.','ls.2.k1':'Técnica Pomodoro 25/5','ls.2.k2':'Bloquear notificações','ls.2.k3':'Uma tarefa por bloco',
+'ls.3.t':'Inteligência Emocional','ls.3.d':'Percebe o que sentes antes de reagir ao que sentes.','ls.3.k1':'Nomear a emoção','ls.3.k2':'Pausa de 6 segundos','ls.3.k3':'Diário emocional',
+'ls.4.t':'Comunicação','ls.4.d':'Clareza vence eloquência. Diz menos, diz melhor.','ls.4.k1':'Estrutura: ponto → razão → exemplo','ls.4.k2':'Escuta ativa','ls.4.k3':'Fala em frases curtas',
+'ls.5.t':'Liderança','ls.5.d':'Liderar é servir com direção, não mandar com ego.','ls.5.k1':'Dá o exemplo primeiro','ls.5.k2':'Reconhece em público','ls.5.k3':'Corrige em privado',
+'ls.6.t':'Confiança','ls.6.d':'Confiança é memória de promessas cumpridas a ti mesmo.','ls.6.k1':'Cumpre pequenas promessas','ls.6.k2':'Postura e voz','ls.6.k3':'Regista as tuas vitórias',
+'ls.7.t':'Produtividade','ls.7.d':'Não é fazer mais. É fazer o que importa primeiro.','ls.7.k1':'Regra 1-3-5','ls.7.k2':'Começa pelo mais difícil','ls.7.k3':'Revê o dia em 3 minutos',
+'ls.8.t':'Gestão de Tempo','ls.8.d':'O tempo não se gere. Gere-se a atenção.','ls.8.k1':'Blocos de tempo','ls.8.k2':'Prioridades do dia','ls.8.k3':'Domingo = planeamento',
+'ls.9.t':'Hábitos','ls.9.d':'Tu não subes ao nível das metas. Desces ao nível dos sistemas.','ls.9.k1':'Gatilho + ação + recompensa','ls.9.k2':'Nunca falhes duas vezes','ls.9.k3':'Empilha hábitos',
+'ls.10.t':'Mentalidade','ls.10.d':'Mentalidade de crescimento: ainda não, em vez de não consigo.','ls.10.k1':'Erro = dado, não identidade','ls.10.k2':'Celebra o progresso','ls.10.k3':'Rodeia-te de quem constrói',
+/* income items */
+'in.1.t':'Freelancing','in.1.d':'Vende competências que já tens: design, escrita, tradução, dados, redes sociais.','in.1.s1':'Cria 3 amostras de trabalho','in.1.s2':'Perfil em plataformas + grupos locais','in.1.s3':'Entrega impecável, preço simples',
+'in.2.t':'Criação de Conteúdo','in.2.d':'Ensina o que sabes. Audiência local vira clientes reais.','in.2.s1':'Escolhe um nicho específico','in.2.s2':'3 vídeos por semana','in.2.s3':'Transforma comentários em serviços',
+'in.3.t':'Produtos Digitais','in.3.d':'Templates, ebooks, presets, cursos curtos — cria uma vez, vende muitas.','in.3.s1':'Resolve um problema específico','in.3.s2':'Preço baixo, volume alto','in.3.s3':'Usa pagamentos móveis locais',
+'in.4.t':'Pequenos Negócios','in.4.d':'Resolve um problema do teu bairro com custo baixo e margem clara.','in.4.s1':'Valida com 10 pessoas','in.4.s2':'Começa com stock mínimo','in.4.s3':'Controla custos semanalmente',
+'in.5.t':'Marketing','in.5.d':'Negócios locais pagam por visibilidade e organização de redes.','in.5.s1':'Pacote: 3 posts + 1 vídeo/semana','in.5.s2':'Mostra resultados com números','in.5.s3':'Contratos mensais, não pontuais',
+'in.6.t':'Serviços','in.6.d':'Aulas, reparações, limpeza, organização, apoio escolar, montagem.','in.6.s1':'Escolhe 1 serviço','in.6.s2':'Define preço/hora','in.6.s3':'Pede avaliação a cada cliente',
+'in.7.t':'Ferramentas de IA','in.7.d':'Usa IA para entregar mais rápido: copy, design, transcrição, análise.','in.7.s1':'Aprende 3 ferramentas a fundo','in.7.s2':'Oferece o resultado, não a ferramenta','in.7.s3':'Cobra por projeto',
+'in.8.t':'Oportunidades Online','in.8.d':'Concursos, bolsas, microtarefas e programas para jovens.','in.8.s1':'Aplica a 5 por semana','in.8.s2':'Guarda prazos num calendário','in.8.s3':'Adapta o CV a cada candidatura',
+/* biz ideas */
+'bi.micro':'micro','bi.small':'pequena','bi.medium':'média',
+'bi.1.t':'Serviço de {skill} para negócios locais em {loc}','bi.1.w':'Baixo custo inicial, pagamento por projeto, procura constante.','bi.1.s1':'Cria 3 amostras em 2 dias','bi.1.s2':'Visita 10 negócios locais','bi.1.s3':'Pacote inicial acessível + entrega rápida','bi.1.c':'~40% do orçamento em material',
+'bi.2.t':'Conteúdo pago para marcas de {loc}','bi.2.w':'Marcas locais precisam de visibilidade semanal.','bi.2.s1':'Define um pacote mensal (4 posts + 1 vídeo)','bi.2.s2':'Mostra resultados com números','bi.2.s3':'Fecha contratos mensais','bi.2.c':'Tempo, não dinheiro',
+'bi.3.t':'Revenda com valor acrescentado (escala {tier})','bi.3.w':'Compra barato, agrega serviço, vende com margem.','bi.3.s1':'Escolhe 1 produto procurado','bi.3.s2':'Compra lote pequeno','bi.3.s3':'Revende com entrega e garantia','bi.3.c':'Stock inicial abaixo de {v} MT',
+'bi.4.t':'Aulas e formação em {skill}','bi.4.w':'Ensina o que sabes — margem alta, custo quase zero.','bi.4.s1':'Turmas de 5–8 pessoas','bi.4.s2':'Cobra por mês adiantado','bi.4.s3':'Grava 1 aula para vender depois','bi.4.c':'Espaço + tempo',
+'bi.5.t':'Serviços digitais ({skill}) para clientes fora de {loc}','bi.5.w':'Trabalha remoto e recebe em moeda estável.','bi.5.s1':'Perfil profissional + portefólio','bi.5.s2':'Aplica a 5 propostas por dia','bi.5.s3':'Entrega impecável e pede avaliação','bi.5.c':'Internet + portátil',
+/* interview questions */
+'q.1':'Fala-me de ti.','q.2':'Porque queres trabalhar connosco?','q.3':'Qual é a tua maior fraqueza?','q.4':'Conta-me um desafio que superaste.','q.5':'Onde te vês daqui a 3 anos?','q.6':'Porque devemos contratar-te?',
+/* toasts */
+'t.welcome':'🔥 Bem-vindo, {name}! Vamos construir.','t.goalCreated':'🎯 Meta criada!','t.habitCreated':'🔥 Hábito criado!','t.habitLimit':'💎 Limite do plano Grátis — faz upgrade','t.lessonRead':'Lição lida','t.sessionDone':'🏆 Sessão concluída! +{x} XP','t.proOn':'💎 Pro ativado! Tudo desbloqueado.','t.proOff':'Voltaste ao plano Grátis','t.saved':'Perfil guardado','t.exported':'Dados exportados','t.demo':'Dados de exemplo carregados','t.erased':'Dados apagados','t.typeGoal':'Escreve o objetivo','t.typeAnswer':'Escreve uma resposta mais completa','t.cv':'📄 CV gerado!','t.goodJob':'🎯 Bom trabalho!','t.nextLevel':'🎉 Subiste para {level}!','t.goalDone':'🏆 Meta alcançada: {n}','t.langChanged':'Idioma alterado',
+/* security / https */
+'sec.https':'Ligação segura · HTTPS','sec.local':'Cópia local · sem servidor'
+},
+en:{
+'meta.title':'Young Implacável — Organize your life. Build yourself. Take action.',
+'meta.desc':'Personal growth and productivity platform: goals, habits, focus, study, career, income and AI.',
+'l.badge':'🚀 For young people who want to grow',
+'l.h1a':'Organize your life.',
+'l.h1b':'Build yourself.',
+'l.lead':'A complete personal growth and productivity platform: goals, habits, focus, study, career, income and your AI assistant — IMPA.',
+'l.cta1':'Start now — it is free',
+'l.cta2':'See plans',
+'l.s1':'average habit streak','l.s2':'XP per week','l.s3':'built-in modules',
+'l.featTitle':'Everything you need in one place','l.featSub':'From daily discipline to your first paycheck.',
+'l.priceTitle':'Simple plans','l.priceSub':'Start free. Upgrade when you are ready.',
+'l.free':'FREE','l.freePrice':'0 MT','l.freePer':'forever',
+'l.freeF1':'Dashboard and daily overview','l.freeF2':'Goals in 4 categories','l.freeF3':'Up to 3 habits','l.freeF4':'25/50/90 focus timer','l.freeF5':'Basic development lessons','l.freeF6':'1 challenge per month',
+'l.pro':'PRO','l.proPrice':'49 MT','l.proPer':'/month','l.proNote':'or 499 MT/year — save ~15%',
+'l.proF1':'Unlimited habits','l.proF2':'Personalized plans','l.proF3':'IMPA AI assistant','l.proF4':'Full content library','l.proF5':'CV Builder + Interview Simulator','l.proF6':'Income Center + Idea Generator','l.proF7':'Premium challenges and analytics','l.proF8':'Personalized study plans',
+'l.startFree':'Start free','l.tryPro':'Try Pro',
+'l.footer':'Young Implacável · "Your future is built by the actions you repeat today." · Mozambique 🇲🇿',
+'l.langLabel':'Language',
+'f1.t':'🎯 Smart goals','f1.d':'Objectives in 4 areas, automatically split into daily actions.',
+'f2.t':'🔥 Habit tracker','f2.d':'Streaks, weekly grid and visual consistency.',
+'f3.t':'⏱️ Focus mode','f3.d':'25, 50 or 90 minute blocks that earn XP.',
+'f4.t':'📚 Study center','f4.d':'Subjects, spaced review and logged sessions.',
+'f5.t':'🧠 Personal development','f5.d':'Practical lessons on discipline, focus and mindset.',
+'f6.t':'💼 Career','f6.d':'Professional CV and interview simulator with feedback.',
+'f7.t':'💰 Income center','f7.d':'Real ways to earn + a business idea generator.',
+'f8.t':'🤖 IMPA AI','f8.d':'An assistant that turns advice into action plans.',
+'f9.t':'🏆 Challenges','f9.d':'7, 21, 30 and 90 days to change your routine.',
+'f10.t':'📊 Reports','f10.d':'Weekly progress on goals, study, habits and focus.',
+'f11.t':'👥 Community','f11.d':'Leaderboard, discussions and achievements.',
+'f12.t':'⚡ XP and levels','f12.d':'6 levels: from Beginner to Leader.',
+'a.login':'Log in','a.signup':'Sign up','a.welcomeBack':'Welcome back','a.createSub':'Start free. No credit card.',
+'a.subSignup':'Create your account in 30 seconds.',
+'a.name':'Name','a.namePh':'e.g. Samuel','a.city':'City / Province','a.cityPh':'e.g. Tete',
+'a.email':'Email','a.emailPh':'you@email.com','a.pass':'Password','a.passPh':'••••••••',
+'a.createBtn':'Create free account','a.loginBtn':'Log in','a.demoNote':'Local demo — your data stays on this device only.',
+'a.welcomeToast':'🔥 Welcome, {name}! Let us build.',
+'ob.of':'Step {n} of {t}','ob.optional':'you can skip','ob.next':'Continue','ob.back':'Back','ob.skip':'Skip','ob.finish':'Start now',
+'ob.s1t':'Welcome to Young Implacável 🔥','ob.s1d':'I will guide you through 5 quick steps to set up your system. It takes less than a minute.',
+'ob.s1a':'Set goals and break them into daily actions','ob.s1b':'Build habits with streaks','ob.s1c':'Earn XP, level up and track your progress',
+'ob.s2t':'Choose your language','ob.s2d':'You can change this any time in Settings.',
+'ob.s3t':'What is your name?','ob.s3d':'I use your name and city to personalize plans and business ideas.',
+'ob.s4t':'What is your focus right now?','ob.s4d':'Pick the area where you want results first. I will create your first goal.',
+'ob.s5t':'Choose your first habit','ob.s5d':'Start small. A 5-minute habit you keep beats a perfect plan you never follow.',
+'ob.h1':'Wake up early','ob.h2':'Read 10 pages','ob.h3':'Study for 1 hour','ob.h4':'Exercise for 20 minutes',
+'ob.s6t':'You are all set 🚀','ob.s6d':'I created your account, a starter plan and your first items. Come back every day — that is how it gets built.',
+'ob.ready1':'Your account is created','ob.ready2':'Your first goal is active','ob.ready3':'Your first habit is tracked','ob.ready4':'Your streak starts today',
+'n.home':'Home','n.goals':'Goals','n.habits':'Habits','n.focus':'Focus','n.study':'Study','n.dev':'Development','n.career':'Career','n.income':'Income','n.impa':'IMPA AI','n.challenges':'Challenges','n.community':'Community','n.progress':'Progress','n.settings':'Settings','n.more':'More','n.upgrade':'Upgrade Pro','n.logout':'Log out',
+'c.xp':'XP','c.free':'FREE','c.pro':'PRO','c.max':'max','c.streak':'Streak','c.days':'days','c.level':'Level','c.of':'of','c.remove':'Remove',
+'h.greetM':'Good morning','h.greetA':'Good afternoon','h.greetE':'Good evening',
+'h.heroT':'{name}, your future starts now.','h.quote':'"Your future is built by the actions you repeat today."',
+'h.kGoals':'🎯 Goals','h.kTasks':'📋 Tasks','h.kHabits':'🔥 Habits','h.kFocus':'⏱️ Focus',
+'h.doneToday':'completed today','h.today':'today','h.avgProgress':'average progress','h.createFirst':'create your first','h.streakLbl':'Streak','h.toNext':'XP to {level}','h.maxLevel':'Max level 👑',
+'h.tasksToday':"📋 Today's tasks",'h.addTaskPh':'New task...','h.noTasks':'No tasks yet. Add one below 👇',
+'h.mainGoal':'🎯 Main goal','h.manage':'Manage','h.noGoals':'No goals yet. Create your first one.','h.dailyActions':'DAILY ACTIONS','h.donePct':'{p}% complete','h.inProgress':'in progress',
+'h.habitsToday':'🔥 Habits — today','h.noHabits':'No habits yet.','h.freeLimit':'Free plan: up to 3 habits.','h.upgradeLink':'Upgrade',
+'h.finGoal':'💰 Financial goal','h.edit':'Edit','h.saved':'Saved','h.setGoal':'Set a target','h.addMt':'Add MT','h.save':'Save','h.pctGoal':'{p}% of target',
+'h.studyPlan':'📚 Study plan','h.view':'View','h.noReview':'no review scheduled',
+'h.challengeDay':'🧠 Daily challenge','h.challengeWord':'Challenge','h.challengeNote':'A small act today, every day, changes your direction.','h.worthXp':'worth +{x} XP',
+'h.focusMode':'⏱️ Focus mode','h.focusSub':"Stay focused. Don't quit.",'h.openFocus':'Open Focus',
+'g.sub':'Break big objectives into small daily actions.',
+'g.new':'+ New goal','g.all':'All','g.none':'No goals in this category yet.','g.create':'Create goal',
+'g.completed':'✅ Completed','g.inProgress':'in progress','g.cat':'Category','g.objective':'Objective','g.objectivePh':'e.g. Master Mathematics','g.why':'Why (motivation)','g.whyPh':'e.g. I want to get into university','g.createBtn':'Create goal','g.errTitle':'Write your objective',
+'ha.sub':'Create small habits. Keep them every day. Become inevitable.','ha.new':'+ New habit',
+'ha.streakCur':'🔥 Current streak','ha.consecutive':'consecutive days','ha.today':'✅ Today','ha.done':'habits completed','ha.week':'📈 This week','ha.consistency':'consistency',
+'ha.days':'days','ha.records':'records','ha.doneToday':'✓ Done today','ha.mark':'Mark today',
+'ha.limitT':'Unlimited habits','ha.limitD':'On the Free plan you can have up to 3 habits. Upgrade for unlimited habits and personalized plans.','ha.pro':'See Pro','ha.promptNew':'New habit:',
+'fo.sub':'One focused block beats a distracted day.','fo.sessions':'Sessions today: {n}',
+'fo.mode':'🔥 FOCUS MODE','fo.modeSub':"Stay focused. Don't quit.",'fo.start':'Start','fo.pause':'Pause','fo.reset':'Reset',
+'fo.earn':'Complete a session and earn +{x} XP.','fo.rules':'Focus rules','fo.history':'History','fo.total':'Total sessions','fo.timeFocused':'Time focused','fo.none':'No sessions yet.',
+'fo.r1':'Phone out of sight','fo.r2':'One task per block','fo.r3':'Water on the desk, notifications off','fo.r4':'If a thought appears: write it down and return',
+'st.sub':'Create subjects, schedule reviews and log study sessions.','st.new':'+ New subject',
+'st.progress':'Progress','st.min':'min studied','st.next':'Next review','st.none2':'not scheduled','st.add30':'+30 min','st.add60':'+1 h','st.schedule':'Schedule',
+'st.none':'No subjects yet. Start with one.','st.cal':'🗓️ Review calendar','st.spaced':'Spaced review: revisit 1 day, 3 days, 7 days and 21 days after studying.',
+'st.personalT':'🧭 Personalized study plans','st.personalD':'IMPA AI builds a week-by-week plan for your subjects and exams.',
+'st.promptName':'Subject name:','st.promptReview':'Next review:',
+'d.sub':'5 minutes a day can change your direction.','d.read':'✅ read','d.unread':'not read','d.mark':'Mark as read (+{x} XP)','d.readBtn':'Read ✓',
+'d.full':'Full library','d.fullD':'Unlock every lesson and weekly updates.','d.unlock':'Unlock the full library 💎',
+'c.sub':'Professional CV + interview practice with feedback.',
+'c.cv':'📄 CV Builder','c.fullName':'Full name','c.contact':'Email · Phone · City','c.contactPh':'you@email.com · +258 84 000 0000 · Tete',
+'c.edu':'Education','c.eduPh':'e.g. Grade 12 — Tete Secondary School (2024)','c.exp':'Experience','c.expPh':'e.g. Internship — Company X (2023): admin support and customer service',
+'c.skills':'Skills','c.skillsPh':'Graphic design, Excel, English, Communication','c.courses':'Courses','c.coursesPh':'e.g. Basic IT course — 2023',
+'c.obj':'Career objective','c.objPh':'e.g. To join a dynamic team where I can apply and develop my skills.',
+'c.gen':'Generate CV','c.print':'Print / PDF','c.yourCv':'Your CV','c.objective':'Objective',
+'c.interview':'🎤 Interview Simulator','c.question':'QUESTION','c.answerPh':'Type or paste your answer...','c.evaluate':'Evaluate answer','c.nextQ':'Next question','c.global':'Overall score','c.feedback':'FEEDBACK',
+'c.clarity':'Clarity','c.structure':'Structure','c.confidence':'Confidence','c.relevance':'Relevance',
+'c.tipShort':'Answer is short: aim for 90–120 words.','c.tipLong':'Too long: cut 30% and keep the essentials.','c.tipStructure':'Use structure: point → reason → example.',
+'c.tipExample':'Add a concrete example (what you did, where, the result).','c.tipNumber':'Include a number or measurable result.','c.tipFirst':'Speak in the first person: "I did", "I learned".','c.tipGreat':'Excellent. Rehearse it out loud in 90 seconds.','c.tipMore':'Write a more complete answer.',
+'i.sub':'Start earning with what you already know.','i.genT':'💡 Business idea generator','i.genD':'Tell us your situation and we generate practical, realistic ideas.',
+'i.budget':'Budget (MT)','i.location':'Location','i.skills':'Skills','i.skillPh':'e.g. Graphic design','i.generate':'Generate ideas','i.capital':'Capital needed','i.budgetUsed':'Budget considered',
+'m.sub':'Your personal assistant. Turns advice into actions.','m.ph':'Type your question...','m.send':'Send',
+'m.greet':'Hi! I am IMPA 🤖 — your personal assistant.\n\nAsk me things like:\n• "How do I study for tomorrow\'s exam?"\n• "Help me create a plan to get a job."\n• "How do I start a business with 3,000 MT?"\n• "I am procrastinating. What should I do now?"',
+'m.note':'IMPA answers with practical plans, offline, without sending your data anywhere.',
+'m.q1':'How do I study for tomorrow\'s exam?','m.q2':'Create a plan to get a job','m.q3':'How do I start a business with 3,000 MT?','m.q4':'I am procrastinating, what should I do now?',
+'ip.plan':'PLAN','ip.study.t':'Urgent study plan',
+'ip.study.1':'Block 1 (25 min) — list the 5 topics most likely to appear.','ip.study.2':'Block 2 (25 min) — solve 5 exercises WITHOUT looking at the solution.','ip.study.3':'Block 3 (25 min) — correct them and write repeated mistakes on a card.','ip.study.4':'Block 4 (20 min) — explain out loud what you learned (Feynman technique).','ip.study.5':'Last 10 min — sleep. A tired brain memorizes less.','ip.study.n':'Rule: 25 min focus + 5 min break. Phone off the desk.',
+'ip.job.t':'Plan to get a job','ip.job.1':'Today: list 15 companies where you want to work.','ip.job.2':'Today: create/update your CV in the Career module (1 page, results-focused).','ip.job.3':'Tomorrow: write 3 versions of "Tell me about yourself" (60–90 seconds).','ip.job.4':'Tomorrow: send 5 tailored applications.','ip.job.5':'This week: ask 2 people to practice an interview with you.','ip.job.6':'Always: track every application and follow up in 7 days.','ip.job.n':'Numbers beat luck: 5 applications a day for 2 weeks.',
+'ip.biz.t':'Plan to start with little capital','ip.biz.1':'Step 1 — write the problem you will solve and FOR WHOM.','ip.biz.2':'Step 2 — talk to 10 people in that group (do not sell: ask).','ip.biz.3':'Step 3 — define the simplest possible offer and its price.','ip.biz.4':'Step 4 — sell BEFORE producing at scale.','ip.biz.5':'Step 5 — reinvest 50% of profit, save 30%, use 20%.','ip.biz.6':'Step 6 — in 30 days measure: customers, revenue, cost, profit.','ip.biz.n':'Small capital wins with speed, not volume.','ip.biz.mt':'You mentioned {v} MT. Keep initial stock below 60% of that amount.',
+'ip.proc.t':'Anti-procrastination plan (now)','ip.proc.1':'2-minute rule: start for just 2 minutes. Stop after if you want.','ip.proc.2':'Shrink the step: "open the notebook at page 12".','ip.proc.3':'Remove friction: phone in another room, materials ready before.','ip.proc.4':'Use the 25 min timer in the Focus module and nothing else.','ip.proc.5':'Reward after: 10 min of something you like, only at the end.','ip.proc.n':'The goal is to start, not to finish. Starting solves 80% of the fight.',
+'ip.focus.t':'Focus protocol','ip.focus.1':'Choose ONE task and write it on visible paper.','ip.focus.2':'Turn on Focus mode 25/50/90 min here in the app.','ip.focus.3':'Notifications off, phone out of sight.','ip.focus.4':'If a thought appears: put it on a "Later" list and return.','ip.focus.5':'At the end, log how many blocks you completed.','ip.focus.n':'Depth beats speed. 2 blocks done > 6 blocks started.',
+'ip.habit.t':'How to install a habit','ip.habit.1':'Clear trigger: "after X, I do Y".','ip.habit.2':'Make it tiny: 5 min, not 1 hour.','ip.habit.3':'Make it visible: mark it daily in the Habits module.','ip.habit.4':'Never miss twice in a row.','ip.habit.5':'After 21 days, increase the dose.','ip.habit.n':'You do not rise to the level of your goals. You fall to the level of your systems.',
+'ip.money.t':'4-week money plan','ip.money.1':'Week 1 — log EVERY expense, without judging.','ip.money.2':'Week 2 — cut 2 useless expenses and start a reserve.','ip.money.3':'Week 3 — set fixed %: 50% essentials, 30% savings, 20% free.','ip.money.4':'Week 4 — open an extra income stream (see Income).','ip.money.n':'Saving 100 MT a week = 5,200 MT a year. Start today.',
+'ip.conf.t':'Building confidence','ip.conf.1':'Keep 3 small promises to yourself this week.','ip.conf.2':'Speak out loud for 1 minute a day (record yourself).','ip.conf.3':'Start 3 new conversations with one simple question.','ip.conf.4':'Log 1 win per day here in the app.','ip.conf.5':'Go to the Career module and use the Interview Simulator.','ip.conf.n':'Confidence is the memory of promises kept.',
+'ip.gen.body':'Let us organize this into concrete steps:\n\n• Write exactly what you want to achieve (1 sentence).\n• Split it into 3 tasks you can do TODAY.\n• Book one 25 min block in the Focus module and do the hardest first.\n• Log your progress — no tracking means no growth.\n\nGive me more detail (deadline, resources, biggest obstacle) and I will turn this into a daily plan.',
+'ch.sub':'Pick a challenge. Keep it. Transform yourself.','ch.days':'{n} days','ch.enter':'Join challenge','ch.active':'Active challenge','ch.day':'Day {a} of {b}','ch.mark':'Mark today','ch.quit':'Leave','ch.premium':'Premium challenge','ch.premT':'💎 Premium challenge','ch.started':'Challenge started: {n}','ch.done':'🏆 Challenge completed: {n}','ch.dayDone':'Challenge day completed',
+'ch.c7.n':'7 Days — Beat Procrastination','ch.c7.1':'Do the hardest task first','ch.c7.2':'No social media before noon','ch.c7.3':'Plan the day in 3 lines',
+'ch.c21.n':'21 Days — Build Discipline','ch.c21.1':'Wake up at the set time','ch.c21.2':'30 min of focused study','ch.c21.3':'Three-line journal at night',
+'ch.c30.n':'30 Days — Transform Your Routine','ch.c30.1':'Workout or 20 min walk','ch.c30.2':'No phone in the first hour','ch.c30.3':'Daily review',
+'ch.c90.n':'90 Days — Become Your Best Version','ch.c90.1':'Quarterly goal reviewed','ch.c90.2':'New skill practised','ch.c90.3':'Weekly networking',
+'cm.sub':'You are not building this alone.','cm.members':'{n} active members','cm.rank':'🏆 Weekly leaderboard','cm.week':'weekly','cm.disc':'💬 Discussions','cm.reply':'reply','cm.ach':'🏅 Your achievements','cm.you':'you','cm.note':'Productivity groups, discussions and team challenges arrive with the Pro community.',
+'cm.a1':'First 7 days','cm.a2':'100 XP','cm.a3':'Focused level','cm.a4':'10 focus sessions','cm.a5':'Goal completed',
+'cm.p1t':'7 days without missing my study habit! 🔥','cm.p2t':'Tip: blocking my phone during focus blocks changed everything.','cm.p3t':'Started selling design to local businesses. First client today 💪','cm.p4t':'Anyone wants to start a Maths study group?',
+'p.sub':'Your report for this week.','p.goals':'🎯 Goals','p.study':'📚 Study','p.habits':'🔥 Habits','p.sessions':'⏱️ Sessions','p.xp':'🏆 XP',
+'p.avgProgress':'average progress','p.loggedTime':'logged time','p.consistency':'consistency','p.focusBlocks':'focus blocks','p.total':'total earned',
+'p.perf':'Performance by area','p.quote':'"You were better this week than last week. Keep going."',
+'p.next':'Suggested next steps','p.activity':'Activity log','p.lessons':'Lessons read','p.habitsA':'Active habits','p.subjects':'Subjects','p.goalsN':'Goals','p.focusSessions':'Focus sessions',
+'p.s1':'Set at least 2 goals (one academic, one personal).','p.s2':'Add small habits: read 10 pages, wake up early.','p.s3':'Do three 25 min focus blocks this week.','p.s4':'Read your first Personal Development lesson (+5 XP).','p.s5':'Fill in your CV in the Career module.','p.s6':'Create your subjects in the Study Center.','p.s7':'Great pace. Increase the difficulty and stay consistent.',
+'se.sub':'Personalize your experience.','se.profile':'👤 Profile','se.name':'Name','se.city':'City / Province','se.skill':'Main skill','se.skillPh':'e.g. Graphic design','se.save':'Save',
+'se.plan':'💎 Plan','se.freeActive':'Limited features','se.proActive':'Full access active','se.downgrade':'Back to Free','se.upgrade':'Upgrade to Pro','se.prices':'Prices: 49–99 MT/month or 499–799 MT/year.',
+'se.data':'📊 Data','se.export':'Export data (JSON)','se.demo':'Load sample data','se.erase':'Erase everything','se.note':'Everything is stored locally on your device. Nothing is sent to servers.',
+'se.lang':'🌐 Language','se.langD':'Choose the application language.','se.security':'🔒 Security',
+'mo.howT':'How it works 🔥','mo.howD':'Earn XP by completing actions. XP raises your level.','mo.gotIt':'Got it',
+'mo.proT':'Upgrade to Pro 💎','mo.proD':'Unlock unlimited habits, IMPA AI, CV Builder, Interview Simulator, Income Center, premium challenges and advanced analytics.',
+'mo.monthly':'Monthly','mo.annual':'Annual','mo.save':'save ~15%','mo.activate':'Activate Pro (demo)','mo.notNow':'Not now','mo.demo':'Demo: no charge is made.',
+'mo.eraseConfirm':'Erase all your data? This cannot be undone.',
+'mo.secure':'Secure connection (HTTPS)','mo.secureOff':'Not secure — running a local copy',
+'x.task':'Task completed','x.study':'Study session','x.habit':'Habit completed','x.lesson':'Lesson read','x.challenge':'Challenge completed','x.streak':'Streak kept','x.focus':'Focus session completed','x.goalAction':'Goal action','x.goalDone':'Goal completed 🎉','x.interview':'Interview practice','x.saving':'Saving logged','x.ideas':'Business ideas generated','x.impa':'IMPA interaction','x.daily':'Daily challenge completed',
+'lv.1':'Beginner','lv.2':'Disciplined','lv.3':'Focused','lv.4':'Determined','lv.5':'Unstoppable','lv.6':'Leader',
+'cat.pessoal':'Personal','cat.academico':'Academic','cat.carreira':'Career','cat.financeiro':'Financial',
+'da.ac.1':'Review 1 topic (25 min)','da.ac.2':'Solve 5 exercises','da.ac.3':'Write 3 questions to ask',
+'da.car.1':'Read 1 job ad and adapt your CV','da.car.2':'Talk to 1 person in the field','da.car.3':'Practise 1 interview question',
+'da.fin.1':'Log today\'s expenses','da.fin.2':'Move 50 MT to savings','da.fin.3':'Find 1 income opportunity',
+'da.pes.1':'Read 10 pages','da.pes.2':'Write 1 reflection','da.pes.3':'Keep 1 promise to yourself',
+'ls.1.t':'Discipline','ls.1.d':'Discipline is not motivation. It is deciding before emotion arrives.','ls.1.k1':'The 2-minute rule','ls.1.k2':'Environment > willpower','ls.1.k3':'Small daily commitments',
+'ls.2.t':'Focus','ls.2.d':'Focus is choosing one thing and saying no to a thousand others.','ls.2.k1':'Pomodoro 25/5','ls.2.k2':'Block notifications','ls.2.k3':'One task per block',
+'ls.3.t':'Emotional intelligence','ls.3.d':'Notice what you feel before reacting to what you feel.','ls.3.k1':'Name the emotion','ls.3.k2':'The 6-second pause','ls.3.k3':'Emotion journal',
+'ls.4.t':'Communication','ls.4.d':'Clarity beats eloquence. Say less, say it better.','ls.4.k1':'Structure: point → reason → example','ls.4.k2':'Active listening','ls.4.k3':'Speak in short sentences',
+'ls.5.t':'Leadership','ls.5.d':'Leading is serving with direction, not ordering with ego.','ls.5.k1':'Set the example first','ls.5.k2':'Praise in public','ls.5.k3':'Correct in private',
+'ls.6.t':'Confidence','ls.6.d':'Confidence is the memory of promises kept to yourself.','ls.6.k1':'Keep small promises','ls.6.k2':'Posture and voice','ls.6.k3':'Record your wins',
+'ls.7.t':'Productivity','ls.7.d':'It is not about doing more. It is about doing what matters first.','ls.7.k1':'The 1-3-5 rule','ls.7.k2':'Eat the frog','ls.7.k3':'Review your day in 3 minutes',
+'ls.8.t':'Time management','ls.8.d':'You do not manage time. You manage attention.','ls.8.k1':'Time blocks','ls.8.k2':'Daily priorities','ls.8.k3':'Sunday = planning',
+'ls.9.t':'Habits','ls.9.d':'You do not rise to the level of your goals. You fall to the level of your systems.','ls.9.k1':'Trigger + action + reward','ls.9.k2':'Never miss twice','ls.9.k3':'Stack habits',
+'ls.10.t':'Mindset','ls.10.d':'Growth mindset: not yet, instead of I cannot.','ls.10.k1':'Mistake = data, not identity','ls.10.k2':'Celebrate progress','ls.10.k3':'Surround yourself with builders',
+'in.1.t':'Freelancing','in.1.d':'Sell skills you already have: design, writing, translation, data, social media.','in.1.s1':'Create 3 work samples','in.1.s2':'Profiles on platforms + local groups','in.1.s3':'Flawless delivery, simple pricing',
+'in.2.t':'Content creation','in.2.d':'Teach what you know. A local audience becomes real clients.','in.2.s1':'Pick a specific niche','in.2.s2':'3 videos per week','in.2.s3':'Turn comments into services',
+'in.3.t':'Digital products','in.3.d':'Templates, ebooks, presets, short courses — build once, sell many times.','in.3.s1':'Solve one specific problem','in.3.s2':'Low price, high volume','in.3.s3':'Use local mobile payments',
+'in.4.t':'Small businesses','in.4.d':'Solve a problem in your neighbourhood with low cost and clear margin.','in.4.s1':'Validate with 10 people','in.4.s2':'Start with minimal stock','in.4.s3':'Track costs weekly',
+'in.5.t':'Marketing','in.5.d':'Local businesses pay for visibility and organized social media.','in.5.s1':'Package: 3 posts + 1 video/week','in.5.s2':'Show results with numbers','in.5.s3':'Monthly contracts, not one-offs',
+'in.6.t':'Services','in.6.d':'Tutoring, repairs, cleaning, organizing, school support, assembly.','in.6.s1':'Choose 1 service','in.6.s2':'Set an hourly price','in.6.s3':'Ask every client for a review',
+'in.7.t':'AI tools','in.7.d':'Use AI to deliver faster: copy, design, transcription, analysis.','in.7.s1':'Learn 3 tools deeply','in.7.s2':'Offer the outcome, not the tool','in.7.s3':'Charge per project',
+'in.8.t':'Online opportunities','in.8.d':'Competitions, scholarships, microtasks and programmes for young people.','in.8.s1':'Apply to 5 per week','in.8.s2':'Keep deadlines in a calendar','in.8.s3':'Tailor your CV for each application',
+'bi.micro':'micro','bi.small':'small','bi.medium':'medium',
+'bi.1.t':'{skill} service for local businesses in {loc}','bi.1.w':'Low start-up cost, paid per project, steady demand.','bi.1.s1':'Create 3 samples in 2 days','bi.1.s2':'Visit 10 local businesses','bi.1.s3':'Affordable starter package + fast delivery','bi.1.c':'~40% of budget on materials',
+'bi.2.t':'Paid content for brands in {loc}','bi.2.w':'Local brands need weekly visibility.','bi.2.s1':'Define a monthly package (4 posts + 1 video)','bi.2.s2':'Show results with numbers','bi.2.s3':'Close monthly contracts','bi.2.c':'Time, not money',
+'bi.3.t':'Reselling with added value ({tier} scale)','bi.3.w':'Buy cheap, add a service, sell with margin.','bi.3.s1':'Pick 1 product in demand','bi.3.s2':'Buy a small batch','bi.3.s3':'Resell with delivery and guarantee','bi.3.c':'Initial stock below {v} MT',
+'bi.4.t':'Classes and training in {skill}','bi.4.w':'Teach what you know — high margin, near zero cost.','bi.4.s1':'Groups of 5–8 people','bi.4.s2':'Charge monthly in advance','bi.4.s3':'Record 1 class to sell later','bi.4.c':'Space + time',
+'bi.5.t':'Digital services ({skill}) for clients outside {loc}','bi.5.w':'Work remotely and get paid in a stable currency.','bi.5.s1':'Professional profile + portfolio','bi.5.s2':'Apply to 5 proposals per day','bi.5.s3':'Deliver flawlessly and ask for a review','bi.5.c':'Internet + laptop',
+'q.1':'Tell me about yourself.','q.2':'Why do you want to work with us?','q.3':'What is your biggest weakness?','q.4':'Tell me about a challenge you overcame.','q.5':'Where do you see yourself in 3 years?','q.6':'Why should we hire you?',
+'t.welcome':'🔥 Welcome, {name}! Let us build.','t.goalCreated':'🎯 Goal created!','t.habitCreated':'🔥 Habit created!','t.habitLimit':'💎 Free plan limit — upgrade','t.lessonRead':'Lesson read','t.sessionDone':'🏆 Session complete! +{x} XP','t.proOn':'💎 Pro activated! Everything unlocked.','t.proOff':'You are back on the Free plan','t.saved':'Profile saved','t.exported':'Data exported','t.demo':'Sample data loaded','t.erased':'Data erased','t.typeGoal':'Write your objective','t.typeAnswer':'Write a more complete answer','t.cv':'📄 CV generated!','t.goodJob':'🎯 Good work!','t.nextLevel':'🎉 You reached {level}!','t.goalDone':'🏆 Goal achieved: {n}','t.langChanged':'Language changed',
+'sec.https':'Secure connection · HTTPS','sec.local':'Local copy · no server'
+},
+es:{
+'meta.title':'Young Implacável — Organiza tu vida. Constrúyete. Actúa.',
+'meta.desc':'Plataforma de crecimiento personal y productividad: metas, hábitos, enfoque, estudio, carrera, ingresos e IA.',
+'l.badge':'🚀 Para jóvenes que quieren evolucionar',
+'l.h1a':'Organiza tu vida.','l.h1b':'Constrúyete a ti mismo.',
+'l.lead':'Una plataforma completa de crecimiento personal y productividad: metas, hábitos, enfoque, estudio, carrera, ingresos y tu asistente de IA — IMPA.',
+'l.cta1':'Empezar ahora — es gratis','l.cta2':'Ver planes',
+'l.s1':'días de racha media','l.s2':'XP por semana','l.s3':'módulos integrados',
+'l.featTitle':'Todo lo que necesitas en un solo lugar','l.featSub':'De la disciplina diaria a tu primer salario.',
+'l.priceTitle':'Planes simples','l.priceSub':'Empieza gratis. Mejora cuando estés listo.',
+'l.free':'GRATIS','l.freePrice':'0 MT','l.freePer':'para siempre',
+'l.freeF1':'Panel y visión del día','l.freeF2':'Metas en 4 categorías','l.freeF3':'Hasta 3 hábitos','l.freeF4':'Temporizador 25/50/90','l.freeF5':'Lecciones básicas de desarrollo','l.freeF6':'1 reto al mes',
+'l.pro':'PRO','l.proPrice':'49 MT','l.proPer':'/mes','l.proNote':'o 499 MT/año — ahorra ~15%',
+'l.proF1':'Hábitos ilimitados','l.proF2':'Planes personalizados','l.proF3':'IMPA AI (asistente)','l.proF4':'Biblioteca completa de contenido','l.proF5':'CV Builder + Simulador de entrevista','l.proF6':'Income Center + Generador de ideas','l.proF7':'Retos premium y analíticas','l.proF8':'Planes de estudio personalizados',
+'l.startFree':'Empezar gratis','l.tryPro':'Probar Pro',
+'l.footer':'Young Implacável · "Tu futuro se construye con las acciones que repites hoy." · Mozambique 🇲🇿',
+'l.langLabel':'Idioma',
+'f1.t':'🎯 Metas inteligentes','f1.d':'Objetivos en 4 áreas, divididos automáticamente en acciones diarias.',
+'f2.t':'🔥 Seguimiento de hábitos','f2.d':'Rachas, cuadrícula semanal y consistencia visual.',
+'f3.t':'⏱️ Modo enfoque','f3.d':'Bloques de 25, 50 o 90 minutos que valen XP.',
+'f4.t':'📚 Centro de estudio','f4.d':'Materias, repaso espaciado y sesiones registradas.',
+'f5.t':'🧠 Desarrollo personal','f5.d':'Lecciones prácticas sobre disciplina, enfoque y mentalidad.',
+'f6.t':'💼 Carrera','f6.d':'CV profesional y simulador de entrevista con feedback.',
+'f7.t':'💰 Centro de ingresos','f7.d':'Caminos reales para ganar + generador de ideas de negocio.',
+'f8.t':'🤖 IMPA AI','f8.d':'Asistente que convierte consejos en planes de acción.',
+'f9.t':'🏆 Retos','f9.d':'7, 21, 30 y 90 días para cambiar tu rutina.',
+'f10.t':'📊 Informes','f10.d':'Progreso semanal de metas, estudio, hábitos y enfoque.',
+'f11.t':'👥 Comunidad','f11.d':'Clasificación, debates y logros.',
+'f12.t':'⚡ XP y niveles','f12.d':'6 niveles: de Beginner a Leader.',
+'a.login':'Entrar','a.signup':'Crear cuenta','a.welcomeBack':'Bienvenido de nuevo','a.createSub':'Empieza gratis. Sin tarjeta de crédito.','a.subSignup':'Crea tu cuenta en 30 segundos.',
+'a.name':'Nombre','a.namePh':'Ej: Samuel','a.city':'Ciudad / Provincia','a.cityPh':'Ej: Tete',
+'a.email':'Correo','a.emailPh':'tu@email.com','a.pass':'Contraseña','a.passPh':'••••••••',
+'a.createBtn':'Crear cuenta gratis','a.loginBtn':'Entrar','a.demoNote':'Demo local — tus datos se quedan solo en este dispositivo.',
+'a.welcomeToast':'🔥 ¡Bienvenido, {name}! Vamos a construir.',
+'ob.of':'Paso {n} de {t}','ob.optional':'puedes saltar','ob.next':'Continuar','ob.back':'Atrás','ob.skip':'Saltar','ob.finish':'Empezar ahora',
+'ob.s1t':'Bienvenido a Young Implacável 🔥','ob.s1d':'Te guiaré en 5 pasos rápidos para montar tu sistema. Toma menos de un minuto.',
+'ob.s1a':'Define metas y divídelas en acciones diarias','ob.s1b':'Construye hábitos con rachas','ob.s1c':'Gana XP, sube de nivel y mira tu progreso',
+'ob.s2t':'Elige tu idioma','ob.s2d':'Puedes cambiarlo cuando quieras en Ajustes.',
+'ob.s3t':'¿Cómo te llamas?','ob.s3d':'Uso tu nombre y ciudad para personalizar planes e ideas de negocio.',
+'ob.s4t':'¿Cuál es tu enfoque ahora?','ob.s4d':'Elige el área donde quieres resultados primero. Creo tu primera meta.',
+'ob.s5t':'Elige tu primer hábito','ob.s5d':'Empieza pequeño. Un hábito de 5 minutos cumplido vale más que un plan perfecto.',
+'ob.h1':'Madrugar','ob.h2':'Leer 10 páginas','ob.h3':'Estudiar 1 hora','ob.h4':'Ejercicio 20 minutos',
+'ob.s6t':'Todo listo 🚀','ob.s6d':'Creé tu cuenta, un plan inicial y tus primeros elementos. Vuelve cada día — así se construye.',
+'ob.ready1':'Tu cuenta está creada','ob.ready2':'Tu primera meta está activa','ob.ready3':'Tu primer hábito está registrado','ob.ready4':'Tu racha empieza hoy',
+'n.home':'Inicio','n.goals':'Metas','n.habits':'Hábitos','n.focus':'Enfoque','n.study':'Estudio','n.dev':'Desarrollo','n.career':'Carrera','n.income':'Ingresos','n.impa':'IMPA AI','n.challenges':'Retos','n.community':'Comunidad','n.progress':'Progreso','n.settings':'Ajustes','n.more':'Más','n.upgrade':'Mejorar a Pro','n.logout':'Salir',
+'c.xp':'XP','c.free':'GRATIS','c.pro':'PRO','c.max':'máximo','c.streak':'Racha','c.days':'días','c.level':'Nivel','c.of':'de','c.remove':'Eliminar',
+'h.greetM':'Buenos días','h.greetA':'Buenas tardes','h.greetE':'Buenas noches',
+'h.heroT':'{name}, tu futuro empieza ahora.','h.quote':'"Tu futuro se construye con las acciones que repites hoy."',
+'h.kGoals':'🎯 Metas','h.kTasks':'📋 Tareas','h.kHabits':'🔥 Hábitos','h.kFocus':'⏱️ Enfoque',
+'h.doneToday':'completadas hoy','h.today':'hoy','h.avgProgress':'progreso medio','h.createFirst':'crea la primera','h.streakLbl':'Racha','h.toNext':'XP para {level}','h.maxLevel':'Nivel máximo 👑',
+'h.tasksToday':'📋 Tareas de hoy','h.addTaskPh':'Nueva tarea...','h.noTasks':'Sin tareas. Añade una abajo 👇',
+'h.mainGoal':'🎯 Meta principal','h.manage':'Gestionar','h.noGoals':'Aún sin metas. Crea tu primera meta.','h.dailyActions':'ACCIONES DIARIAS','h.donePct':'{p}% completado','h.inProgress':'en curso',
+'h.habitsToday':'🔥 Hábitos — hoy','h.noHabits':'Sin hábitos.','h.freeLimit':'Plan Gratis: máximo 3 hábitos.','h.upgradeLink':'Mejorar',
+'h.finGoal':'💰 Meta financiera','h.edit':'Editar','h.saved':'Ahorrado','h.setGoal':'Define un objetivo','h.addMt':'Añadir MT','h.save':'Ahorrar','h.pctGoal':'{p}% del objetivo',
+'h.studyPlan':'📚 Plan de estudio','h.view':'Ver','h.noReview':'sin repaso programado',
+'h.challengeDay':'🧠 Reto diario','h.challengeWord':'Reto','h.challengeNote':'Un pequeño acto hoy, cada día, cambia tu dirección.','h.worthXp':'vale +{x} XP',
+'h.focusMode':'⏱️ Modo enfoque','h.focusSub':'Stay focused. Don\'t quit.','h.openFocus':'Abrir Enfoque',
+'g.sub':'Divide grandes objetivos en pequeñas acciones diarias.',
+'g.new':'+ Nueva meta','g.all':'Todas','g.none':'Aún no hay metas en esta categoría.','g.create':'Crear meta',
+'g.completed':'✅ Completada','g.inProgress':'en curso','g.cat':'Categoría','g.objective':'Objetivo','g.objectivePh':'Ej: Dominar Matemáticas','g.why':'Por qué (motivación)','g.whyPh':'Ej: Quiero entrar a la universidad','g.createBtn':'Crear meta','g.errTitle':'Escribe el objetivo',
+'ha.sub':'Crea hábitos pequeños. Cúmplelos cada día. Vuélvete inevitable.','ha.new':'+ Nuevo hábito',
+'ha.streakCur':'🔥 Racha actual','ha.consecutive':'días consecutivos','ha.today':'✅ Hoy','ha.done':'hábitos cumplidos','ha.week':'📈 Esta semana','ha.consistency':'consistencia',
+'ha.days':'días','ha.records':'registros','ha.doneToday':'✓ Hecho hoy','ha.mark':'Marcar hoy',
+'ha.limitT':'Hábitos ilimitados','ha.limitD':'En el plan Gratis puedes tener hasta 3 hábitos. Mejora para hábitos ilimitados y planes personalizados.','ha.pro':'Ver Pro','ha.promptNew':'Nuevo hábito:',
+'fo.sub':'Un bloque de enfoque vale más que un día distraído.','fo.sessions':'Sesiones hoy: {n}',
+'fo.mode':'🔥 MODO ENFOQUE','fo.modeSub':'Stay focused. Don\'t quit.','fo.start':'Iniciar','fo.pause':'Pausar','fo.reset':'Reiniciar',
+'fo.earn':'Al completar una sesión ganas +{x} XP.','fo.rules':'Reglas del enfoque','fo.history':'Historial','fo.total':'Total de sesiones','fo.timeFocused':'Tiempo enfocado','fo.none':'Aún sin sesiones.',
+'fo.r1':'Móvil fuera de la vista','fo.r2':'Una tarea por bloque','fo.r3':'Agua en la mesa, notificaciones off','fo.r4':'Si surge un pensamiento: anótalo y vuelve',
+'st.sub':'Crea materias, programa repasos y registra sesiones de estudio.','st.new':'+ Nueva materia',
+'st.progress':'Progreso','st.min':'min estudiados','st.next':'Próximo repaso','st.none2':'no programado','st.add30':'+30 min','st.add60':'+1 h','st.schedule':'Programar',
+'st.none':'Sin materias. Empieza por una.','st.cal':'🗓️ Calendario de repaso','st.spaced':'Repaso espaciado: repasa a 1 día, 3 días, 7 días y 21 días.',
+'st.personalT':'🧭 Planes de estudio personalizados','st.personalD':'IMPA AI crea un plan semana a semana para tus materias y exámenes.',
+'st.promptName':'Nombre de la materia:','st.promptReview':'Próximo repaso:',
+'d.sub':'5 minutos al día pueden cambiar tu dirección.','d.read':'✅ leída','d.unread':'no leída','d.mark':'Marcar como leída (+{x} XP)','d.readBtn':'Leída ✓',
+'d.full':'Biblioteca completa','d.fullD':'Desbloquea todas las lecciones y las actualizaciones semanales.','d.unlock':'Desbloquear la biblioteca completa 💎',
+'c.sub':'CV profesional + práctica de entrevista con feedback.',
+'c.cv':'📄 CV Builder','c.fullName':'Nombre completo','c.contact':'Correo · Teléfono · Ciudad','c.contactPh':'tu@email.com · +258 84 000 0000 · Tete',
+'c.edu':'Educación','c.eduPh':'Ej: 12º curso — Escuela Secundaria de Tete (2024)','c.exp':'Experiencia','c.expPh':'Ej: Prácticas — Empresa X (2023): apoyo administrativo y atención al cliente',
+'c.skills':'Competencias','c.skillsPh':'Diseño gráfico, Excel, Inglés, Comunicación','c.courses':'Cursos','c.coursesPh':'Ej: Curso de Informática básica — 2023',
+'c.obj':'Objetivo profesional','c.objPh':'Ej: Integrar un equipo dinámico donde pueda aplicar y desarrollar mis competencias.',
+'c.gen':'Generar CV','c.print':'Imprimir / PDF','c.yourCv':'Tu CV','c.objective':'Objetivo',
+'c.interview':'🎤 Simulador de Entrevista','c.question':'PREGUNTA','c.answerPh':'Escribe o pega tu respuesta...','c.evaluate':'Evaluar respuesta','c.nextQ':'Siguiente pregunta','c.global':'Puntuación global','c.feedback':'FEEDBACK',
+'c.clarity':'Claridad','c.structure':'Estructura','c.confidence':'Confianza','c.relevance':'Relevancia',
+'c.tipShort':'Respuesta corta: apunta a 90–120 palabras.','c.tipLong':'Es larga: corta el 30% y mantén lo esencial.','c.tipStructure':'Usa estructura: punto → razón → ejemplo.',
+'c.tipExample':'Añade un ejemplo concreto (qué hiciste, dónde, resultado).','c.tipNumber':'Incluye un número o resultado medible.','c.tipFirst':'Habla en 1ª persona: "yo hice", "yo aprendí".','c.tipGreat':'Excelente. Ensáyalo en voz alta en 90 segundos.','c.tipMore':'Escribe una respuesta más completa.',
+'i.sub':'Empieza a ganar con lo que ya sabes hacer.','i.genT':'💡 Generador de ideas de negocio','i.genD':'Dinos tu situación y generamos ideas prácticas y realistas.',
+'i.budget':'Presupuesto (MT)','i.location':'Ubicación','i.skills':'Competencias','i.skillPh':'Ej: Diseño gráfico','i.generate':'Generar ideas','i.capital':'Capital necesario','i.budgetUsed':'Presupuesto considerado',
+'m.sub':'Tu asistente personal. Convierte consejos en acciones.','m.ph':'Escribe tu pregunta...','m.send':'Enviar',
+'m.greet':'¡Hola! Soy IMPA 🤖 — tu asistente personal.\n\nPregúntame cosas como:\n• "¿Cómo estudio para el examen de mañana?"\n• "Ayúdame a crear un plan para conseguir empleo."\n• "¿Cómo empiezo un negocio con 3.000 MT?"\n• "Estoy procrastinando. ¿Qué hago ahora?"',
+'m.note':'IMPA responde con planes prácticos, sin conexión y sin enviar tus datos a ningún sitio.',
+'m.q1':'¿Cómo estudio para el examen de mañana?','m.q2':'Crea un plan para conseguir empleo','m.q3':'¿Cómo empiezo un negocio con 3.000 MT?','m.q4':'Estoy procrastinando, ¿qué hago ahora?',
+'ip.plan':'PLAN','ip.study.t':'Plan de estudio urgente',
+'ip.study.1':'Bloque 1 (25 min) — lista los 5 temas que saldrán en el examen.','ip.study.2':'Bloque 2 (25 min) — resuelve 5 ejercicios SIN ver la solución.','ip.study.3':'Bloque 3 (25 min) — corrige y anota en una tarjeta los errores repetidos.','ip.study.4':'Bloque 4 (20 min) — explica en voz alta lo aprendido (técnica Feynman).','ip.study.5':'Últimos 10 min — duerme. Un cerebro cansado memoriza menos.','ip.study.n':'Regla: 25 min de enfoque + 5 de pausa. Sin móvil en la mesa.',
+'ip.job.t':'Plan para conseguir empleo','ip.job.1':'Hoy: lista 15 empresas donde quieres trabajar.','ip.job.2':'Hoy: crea/actualiza el CV en el módulo Carrera (1 página, con resultados).','ip.job.3':'Mañana: escribe 3 versiones de "Háblame de ti" (60–90 segundos).','ip.job.4':'Mañana: envía 5 candidaturas personalizadas.','ip.job.5':'Semana: pide a 2 personas que simulen una entrevista contigo.','ip.job.6':'Siempre: registra cada candidatura y haz seguimiento en 7 días.','ip.job.n':'Los números ganan a la suerte: 5 candidaturas al día durante 2 semanas.',
+'ip.biz.t':'Plan para empezar con poco capital','ip.biz.1':'Paso 1 — escribe el problema que vas a resolver y PARA QUIÉN.','ip.biz.2':'Paso 2 — habla con 10 personas de ese grupo (no vendas: pregunta).','ip.biz.3':'Paso 3 — define la oferta más simple posible y el precio.','ip.biz.4':'Paso 4 — vende ANTES de producir en escala.','ip.biz.5':'Paso 5 — reinvierte 50% del beneficio, ahorra 30%, usa 20%.','ip.biz.6':'Paso 6 — en 30 días mide: clientes, ingresos, coste, beneficio.','ip.biz.n':'El capital pequeño gana con velocidad, no con volumen.','ip.biz.mt':'Mencionaste {v} MT. Mantén el stock inicial por debajo del 60% de ese valor.',
+'ip.proc.t':'Plan anti-procrastinación (ahora)','ip.proc.1':'Regla de los 2 minutos: empieza solo 2 minutos. Luego para si quieres.','ip.proc.2':'Reduce el paso: "abrir el cuaderno en la página 12".','ip.proc.3':'Quita el roce: móvil en otra habitación, material listo antes.','ip.proc.4':'Usa el temporizador de 25 min en el módulo Enfoque y nada más.','ip.proc.5':'Recompensa después: 10 min de algo que te guste, solo al final.','ip.proc.n':'El objetivo es empezar, no terminar. Empezar resuelve el 80% de la lucha.',
+'ip.focus.t':'Protocolo de enfoque','ip.focus.1':'Elige UNA tarea y escríbela en un papel visible.','ip.focus.2':'Activa el modo Enfoque 25/50/90 min aquí en la app.','ip.focus.3':'Notificaciones off, móvil fuera de la vista.','ip.focus.4':'Si aparece un pensamiento: anótalo en una lista "Después" y vuelve.','ip.focus.5':'Al final, registra cuántos bloques completaste.','ip.focus.n':'La profundidad gana a la velocidad. 2 bloques hechos > 6 empezados.',
+'ip.habit.t':'Cómo instalar un hábito','ip.habit.1':'Disparador claro: "después de X, hago Y".','ip.habit.2':'Hazlo minúsculo: 5 min, no 1 hora.','ip.habit.3':'Hazlo visible: márcalo cada día en el módulo Hábitos.','ip.habit.4':'Nunca falles dos veces seguidas.','ip.habit.5':'A los 21 días, aumenta la dosis.','ip.habit.n':'No subes al nivel de tus metas. Bajas al nivel de tus sistemas.',
+'ip.money.t':'Plan financiero en 4 semanas','ip.money.1':'Semana 1 — registra TODOS los gastos, sin juzgar.','ip.money.2':'Semana 2 — corta 2 gastos inútiles y crea una reserva.','ip.money.3':'Semana 3 — define % fijo: 50% esencial, 30% ahorro, 20% libre.','ip.money.4':'Semana 4 — abre una fuente extra de ingresos (ver Ingresos).','ip.money.n':'Ahorrar 100 MT por semana = 5.200 MT al año. Empieza hoy.',
+'ip.conf.t':'Construir confianza','ip.conf.1':'Cumple 3 pequeñas promesas contigo mismo esta semana.','ip.conf.2':'Habla 1 minuto al día en voz alta (grábate).','ip.conf.3':'Inicia 3 conversaciones nuevas con una pregunta simple.','ip.conf.4':'Registra 1 victoria al día aquí en la app.','ip.conf.5':'Ve al módulo Carrera y usa el Simulador de Entrevista.','ip.conf.n':'La confianza es la memoria de las promesas cumplidas.',
+'ip.gen.body':'Vamos a organizarlo en pasos concretos:\n\n• Escribe exactamente qué quieres lograr (1 frase).\n• Divídelo en 3 tareas que puedas hacer HOY.\n• Marca 1 bloque de 25 min en el módulo Enfoque y haz primero lo más difícil.\n• Registra el progreso — sin registro no hay evolución.\n\nDame más detalles (plazo, recursos, mayor obstáculo) y lo convierto en un plan diario.',
+'ch.sub':'Elige un reto. Cúmplelo. Transfórmate.','ch.days':'{n} días','ch.enter':'Entrar al reto','ch.active':'Reto activo','ch.day':'Día {a} de {b}','ch.mark':'Marcar el día de hoy','ch.quit':'Salir','ch.premium':'Reto Premium','ch.premT':'💎 Reto Premium','ch.started':'Reto iniciado: {n}','ch.done':'🏆 Reto completado: {n}','ch.dayDone':'Día del reto cumplido',
+'ch.c7.n':'7 Días — Vencer la Procrastinación','ch.c7.1':'Haz la tarea más difícil primero','ch.c7.2':'Sin redes sociales antes del mediodía','ch.c7.3':'Planifica el día en 3 líneas',
+'ch.c21.n':'21 Días — Construir Disciplina','ch.c21.1':'Levantarse a la hora marcada','ch.c21.2':'30 min de estudio enfocado','ch.c21.3':'Diario de 3 líneas por la noche',
+'ch.c30.n':'30 Días — Transformar la Rutina','ch.c30.1':'Entreno o caminata de 20 min','ch.c30.2':'Sin móvil en la 1ª hora','ch.c30.3':'Revisión del día',
+'ch.c90.n':'90 Días — Tu Mejor Versión','ch.c90.1':'Meta trimestral revisada','ch.c90.2':'Nueva competencia practicada','ch.c90.3':'Networking semanal',
+'cm.sub':'No construyes esto solo.','cm.members':'{n} miembros activos','cm.rank':'🏆 Clasificación semanal','cm.week':'semanal','cm.disc':'💬 Debates','cm.reply':'responder','cm.ach':'🏅 Tus logros','cm.you':'tú','cm.note':'Grupos de productividad, debates y retos en grupo llegan con la comunidad Pro.',
+'cm.a1':'Primeros 7 días','cm.a2':'100 XP','cm.a3':'Nivel Focused','cm.a4':'10 sesiones de enfoque','cm.a5':'Meta completada',
+'cm.p1t':'¡Conseguí 7 días sin fallar el hábito de estudiar! 🔥','cm.p2t':'Consejo: bloquear el móvil durante el bloque de enfoque lo cambió todo.','cm.p3t':'Empecé a vender diseño a negocios locales. Primer cliente hoy 💪','cm.p4t':'¿Alguien quiere formar un grupo de estudio de Matemáticas?',
+'p.sub':'Tu informe de esta semana.','p.goals':'🎯 Metas','p.study':'📚 Estudio','p.habits':'🔥 Hábitos','p.sessions':'⏱️ Sesiones','p.xp':'🏆 XP',
+'p.avgProgress':'progreso medio','p.loggedTime':'tiempo registrado','p.consistency':'consistencia','p.focusBlocks':'bloques de enfoque','p.total':'total acumulado',
+'p.perf':'Rendimiento por área','p.quote':'"Estuviste mejor esta semana que la pasada. Sigue."',
+'p.next':'Próximos pasos sugeridos','p.activity':'Registro de actividad','p.lessons':'Lecciones leídas','p.habitsA':'Hábitos activos','p.subjects':'Materias','p.goalsN':'Metas','p.focusSessions':'Sesiones de enfoque',
+'p.s1':'Define al menos 2 metas (una académica, una personal).','p.s2':'Añade hábitos pequeños: leer 10 páginas, madrugar.','p.s3':'Haz tres bloques de enfoque de 25 min esta semana.','p.s4':'Lee tu primera lección de Desarrollo Personal (+5 XP).','p.s5':'Completa tu CV en el módulo Carrera.','p.s6':'Crea tus materias en el Centro de Estudio.','p.s7':'Ritmo excelente. Sube la dificultad y mantén la consistencia.',
+'se.sub':'Personaliza tu experiencia.','se.profile':'👤 Perfil','se.name':'Nombre','se.city':'Ciudad / Provincia','se.skill':'Competencia principal','se.skillPh':'Ej: Diseño gráfico','se.save':'Guardar',
+'se.plan':'💎 Plan','se.freeActive':'Funciones limitadas','se.proActive':'Acceso total activo','se.downgrade':'Volver al Gratis','se.upgrade':'Mejorar a Pro','se.prices':'Precios: 49–99 MT/mes o 499–799 MT/año.',
+'se.data':'📊 Datos','se.export':'Exportar datos (JSON)','se.demo':'Cargar datos de ejemplo','se.erase':'Borrar todo','se.note':'Todo se guarda localmente en tu dispositivo. Nada se envía a servidores.',
+'se.lang':'🌐 Idioma','se.langD':'Elige el idioma de la aplicación.','se.security':'🔒 Seguridad',
+'mo.howT':'Cómo funciona 🔥','mo.howD':'Gana XP completando acciones. El XP sube tu nivel.','mo.gotIt':'Entendido',
+'mo.proT':'Mejorar a Pro 💎','mo.proD':'Desbloquea hábitos ilimitados, IMPA AI, CV Builder, Simulador de Entrevista, Income Center, retos premium y analíticas avanzadas.',
+'mo.monthly':'Mensual','mo.annual':'Anual','mo.save':'ahorra ~15%','mo.activate':'Activar Pro (demo)','mo.notNow':'Ahora no','mo.demo':'Demo: no se hace ningún cobro.',
+'mo.eraseConfirm':'¿Borrar todos tus datos? Esta acción es irreversible.',
+'mo.secure':'Conexión segura (HTTPS)','mo.secureOff':'No segura — usando copia local',
+'x.task':'Tarea completada','x.study':'Sesión de estudio','x.habit':'Hábito completado','x.lesson':'Lección leída','x.challenge':'Reto completado','x.streak':'Racha mantenida','x.focus':'Sesión de enfoque','x.goalAction':'Acción de la meta','x.goalDone':'Meta completada 🎉','x.interview':'Práctica de entrevista','x.saving':'Ahorro registrado','x.ideas':'Ideas de negocio generadas','x.impa':'Interacción con IMPA','x.daily':'Reto diario completado',
+'lv.1':'Beginner','lv.2':'Disciplined','lv.3':'Focused','lv.4':'Determined','lv.5':'Unstoppable','lv.6':'Leader',
+'cat.pessoal':'Personal','cat.academico':'Académico','cat.carreira':'Carrera','cat.financeiro':'Financiero',
+'da.ac.1':'Repasar 1 tema (25 min)','da.ac.2':'Resolver 5 ejercicios','da.ac.3':'Escribir 3 dudas para preguntar',
+'da.car.1':'Leer 1 oferta y adaptar el CV','da.car.2':'Hablar con 1 persona del sector','da.car.3':'Practicar 1 pregunta de entrevista',
+'da.fin.1':'Registrar los gastos del día','da.fin.2':'Pasar 50 MT al ahorro','da.fin.3':'Buscar 1 oportunidad de ingreso',
+'da.pes.1':'Leer 10 páginas','da.pes.2':'Escribir 1 reflexión','da.pes.3':'Cumplir 1 promesa contigo mismo',
+'ls.1.t':'Disciplina','ls.1.d':'La disciplina no es motivación. Es decidir antes de que llegue la emoción.','ls.1.k1':'Regla de los 2 minutos','ls.1.k2':'Entorno > fuerza de voluntad','ls.1.k3':'Compromisos pequeños y diarios',
+'ls.2.t':'Enfoque','ls.2.d':'Enfocarse es elegir una cosa y decir no a mil otras.','ls.2.k1':'Técnica Pomodoro 25/5','ls.2.k2':'Bloquear notificaciones','ls.2.k3':'Una tarea por bloque',
+'ls.3.t':'Inteligencia emocional','ls.3.d':'Nota lo que sientes antes de reaccionar a lo que sientes.','ls.3.k1':'Nombrar la emoción','ls.3.k2':'Pausa de 6 segundos','ls.3.k3':'Diario emocional',
+'ls.4.t':'Comunicación','ls.4.d':'La claridad gana a la elocuencia. Di menos, dilo mejor.','ls.4.k1':'Estructura: punto → razón → ejemplo','ls.4.k2':'Escucha activa','ls.4.k3':'Habla en frases cortas',
+'ls.5.t':'Liderazgo','ls.5.d':'Liderar es servir con dirección, no mandar con ego.','ls.5.k1':'Da el ejemplo primero','ls.5.k2':'Reconoce en público','ls.5.k3':'Corrige en privado',
+'ls.6.t':'Confianza','ls.6.d':'La confianza es la memoria de las promesas cumplidas a ti mismo.','ls.6.k1':'Cumple pequeñas promesas','ls.6.k2':'Postura y voz','ls.6.k3':'Registra tus victorias',
+'ls.7.t':'Productividad','ls.7.d':'No es hacer más. Es hacer primero lo que importa.','ls.7.k1':'Regla 1-3-5','ls.7.k2':'Empieza por lo más difícil','ls.7.k3':'Revisa el día en 3 minutos',
+'ls.8.t':'Gestión del tiempo','ls.8.d':'No se gestiona el tiempo. Se gestiona la atención.','ls.8.k1':'Bloques de tiempo','ls.8.k2':'Prioridades del día','ls.8.k3':'Domingo = planificación',
+'ls.9.t':'Hábitos','ls.9.d':'No subes al nivel de tus metas. Bajas al nivel de tus sistemas.','ls.9.k1':'Disparador + acción + recompensa','ls.9.k2':'Nunca falles dos veces','ls.9.k3':'Apila hábitos',
+'ls.10.t':'Mentalidad','ls.10.d':'Mentalidad de crecimiento: todavía no, en vez de no puedo.','ls.10.k1':'Error = dato, no identidad','ls.10.k2':'Celebra el progreso','ls.10.k3':'Rodéate de quien construye',
+'in.1.t':'Freelancing','in.1.d':'Vende competencias que ya tienes: diseño, escritura, traducción, datos, redes.','in.1.s1':'Crea 3 muestras de trabajo','in.1.s2':'Perfil en plataformas + grupos locales','in.1.s3':'Entrega impecable, precio simple',
+'in.2.t':'Creación de contenido','in.2.d':'Enseña lo que sabes. Tu audiencia local se vuelve clientes reales.','in.2.s1':'Elige un nicho específico','in.2.s2':'3 vídeos por semana','in.2.s3':'Convierte comentarios en servicios',
+'in.3.t':'Productos digitales','in.3.d':'Plantillas, ebooks, presets, cursos cortos — crea una vez, vende muchas.','in.3.s1':'Resuelve un problema específico','in.3.s2':'Precio bajo, volumen alto','in.3.s3':'Usa pagos móviles locales',
+'in.4.t':'Pequeños negocios','in.4.d':'Resuelve un problema de tu barrio con bajo coste y margen claro.','in.4.s1':'Valida con 10 personas','in.4.s2':'Empieza con stock mínimo','in.4.s3':'Controla los costes cada semana',
+'in.5.t':'Marketing','in.5.d':'Los negocios locales pagan por visibilidad y redes organizadas.','in.5.s1':'Paquete: 3 posts + 1 vídeo/semana','in.5.s2':'Muestra resultados con números','in.5.s3':'Contratos mensuales, no puntuales',
+'in.6.t':'Servicios','in.6.d':'Clases, reparaciones, limpieza, organización, apoyo escolar, montaje.','in.6.s1':'Elige 1 servicio','in.6.s2':'Define precio/hora','in.6.s3':'Pide reseña a cada cliente',
+'in.7.t':'Herramientas de IA','in.7.d':'Usa IA para entregar más rápido: copy, diseño, transcripción, análisis.','in.7.s1':'Aprende 3 herramientas a fondo','in.7.s2':'Ofrece el resultado, no la herramienta','in.7.s3':'Cobra por proyecto',
+'in.8.t':'Oportunidades online','in.8.d':'Concursos, becas, microtareas y programas para jóvenes.','in.8.s1':'Aplica a 5 por semana','in.8.s2':'Guarda plazos en un calendario','in.8.s3':'Adapta el CV a cada candidatura',
+'bi.micro':'micro','bi.small':'pequeña','bi.medium':'media',
+'bi.1.t':'Servicio de {skill} para negocios locales en {loc}','bi.1.w':'Bajo coste inicial, pago por proyecto, demanda constante.','bi.1.s1':'Crea 3 muestras en 2 días','bi.1.s2':'Visita 10 negocios locales','bi.1.s3':'Paquete inicial accesible + entrega rápida','bi.1.c':'~40% del presupuesto en material',
+'bi.2.t':'Contenido pagado para marcas de {loc}','bi.2.w':'Las marcas locales necesitan visibilidad semanal.','bi.2.s1':'Define un paquete mensual (4 posts + 1 vídeo)','bi.2.s2':'Muestra resultados con números','bi.2.s3':'Cierra contratos mensuales','bi.2.c':'Tiempo, no dinero',
+'bi.3.t':'Reventa con valor añadido (escala {tier})','bi.3.w':'Compra barato, añade servicio, vende con margen.','bi.3.s1':'Elige 1 producto demandado','bi.3.s2':'Compra un lote pequeño','bi.3.s3':'Vende con entrega y garantía','bi.3.c':'Stock inicial por debajo de {v} MT',
+'bi.4.t':'Clases y formación en {skill}','bi.4.w':'Enseña lo que sabes — margen alto, coste casi cero.','bi.4.s1':'Grupos de 5–8 personas','bi.4.s2':'Cobra por mes por adelantado','bi.4.s3':'Graba 1 clase para vender después','bi.4.c':'Espacio + tiempo',
+'bi.5.t':'Servicios digitales ({skill}) para clientes fuera de {loc}','bi.5.w':'Trabaja en remoto y cobra en moneda estable.','bi.5.s1':'Perfil profesional + portafolio','bi.5.s2':'Aplica a 5 propuestas al día','bi.5.s3':'Entrega impecable y pide reseña','bi.5.c':'Internet + portátil',
+'q.1':'Háblame de ti.','q.2':'¿Por qué quieres trabajar con nosotros?','q.3':'¿Cuál es tu mayor debilidad?','q.4':'Cuéntame un desafío que superaste.','q.5':'¿Dónde te ves en 3 años?','q.6':'¿Por qué deberíamos contratarte?',
+'t.welcome':'🔥 ¡Bienvenido, {name}! Vamos a construir.','t.goalCreated':'🎯 ¡Meta creada!','t.habitCreated':'🔥 ¡Hábito creado!','t.habitLimit':'💎 Límite del plan Gratis — mejora','t.lessonRead':'Lección leída','t.sessionDone':'🏆 ¡Sesión completada! +{x} XP','t.proOn':'💎 ¡Pro activado! Todo desbloqueado.','t.proOff':'Volviste al plan Gratis','t.saved':'Perfil guardado','t.exported':'Datos exportados','t.demo':'Datos de ejemplo cargados','t.erased':'Datos borrados','t.typeGoal':'Escribe el objetivo','t.typeAnswer':'Escribe una respuesta más completa','t.cv':'📄 ¡CV generado!','t.goodJob':'🎯 ¡Buen trabajo!','t.nextLevel':'🎉 ¡Subiste a {level}!','t.goalDone':'🏆 Meta alcanzada: {n}','t.langChanged':'Idioma cambiado',
+'sec.https':'Conexión segura · HTTPS','sec.local':'Copia local · sin servidor'
+},
+fr:{
+'meta.title':'Young Implacável — Organise ta vie. Construis-toi. Agis.',
+'meta.desc':'Plateforme de développement personnel et de productivité : objectifs, habitudes, concentration, études, carrière, revenus et IA.',
+'l.badge':'🚀 Pour les jeunes qui veulent évoluer',
+'l.h1a':'Organise ta vie.','l.h1b':'Construis-toi toi-même.',
+'l.lead':'Une plateforme complète de développement personnel et de productivité : objectifs, habitudes, concentration, études, carrière, revenus et ton assistante IA — IMPA.',
+'l.cta1':'Commencer maintenant — c\'est gratuit','l.cta2':'Voir les offres',
+'l.s1':'jours de série en moyenne','l.s2':'XP par semaine','l.s3':'modules intégrés',
+'l.featTitle':'Tout ce dont tu as besoin au même endroit','l.featSub':'De la discipline quotidienne au premier salaire.',
+'l.priceTitle':'Des offres simples','l.priceSub':'Commence gratuitement. Passe au Pro quand tu es prêt.',
+'l.free':'GRATUIT','l.freePrice':'0 MT','l.freePer':'pour toujours',
+'l.freeF1':'Tableau de bord et vision du jour','l.freeF2':'Objectifs en 4 catégories','l.freeF3':'Jusqu\'à 3 habitudes','l.freeF4':'Minuteur 25/50/90','l.freeF5':'Leçons de base en développement','l.freeF6':'1 défi par mois',
+'l.pro':'PRO','l.proPrice':'49 MT','l.proPer':'/mois','l.proNote':'ou 499 MT/an — économise ~15%',
+'l.proF1':'Habitudes illimitées','l.proF2':'Plans personnalisés','l.proF3':'IMPA AI (assistante)','l.proF4':'Bibliothèque complète','l.proF5':'CV Builder + Simulateur d\'entretien','l.proF6':'Income Center + Générateur d\'idées','l.proF7':'Défis premium et analytique','l.proF8':'Plans d\'étude personnalisés',
+'l.startFree':'Commencer gratuitement','l.tryPro':'Essayer Pro',
+'l.footer':'Young Implacável · « Ton avenir se construit par les actions que tu répètes aujourd\'hui. » · Mozambique 🇲🇿',
+'l.langLabel':'Langue',
+'f1.t':'🎯 Objectifs intelligents','f1.d':'Des objectifs dans 4 domaines, divisés automatiquement en actions quotidiennes.',
+'f2.t':'🔥 Suivi des habitudes','f2.d':'Séries, grille hebdomadaire et régularité visuelle.',
+'f3.t':'⏱️ Mode concentration','f3.d':'Blocs de 25, 50 ou 90 minutes qui rapportent de l\'XP.',
+'f4.t':'📚 Centre d\'étude','f4.d':'Matières, révisions espacées et sessions enregistrées.',
+'f5.t':'🧠 Développement personnel','f5.d':'Leçons pratiques sur la discipline, la concentration et l\'état d\'esprit.',
+'f6.t':'💼 Carrière','f6.d':'CV professionnel et simulateur d\'entretien avec retour.',
+'f7.t':'💰 Centre de revenus','f7.d':'Des pistes réelles pour gagner + un générateur d\'idées de business.',
+'f8.t':'🤖 IMPA AI','f8.d':'Une assistante qui transforme les conseils en plans d\'action.',
+'f9.t':'🏆 Défis','f9.d':'7, 21, 30 et 90 jours pour changer ta routine.',
+'f10.t':'📊 Rapports','f10.d':'Progrès hebdomadaire : objectifs, études, habitudes et concentration.',
+'f11.t':'👥 Communauté','f11.d':'Classement, discussions et réussites.',
+'f12.t':'⚡ XP et niveaux','f12.d':'6 niveaux : de Beginner à Leader.',
+'a.login':'Se connecter','a.signup':'Créer un compte','a.welcomeBack':'Bon retour','a.createSub':'Commence gratuitement. Sans carte bancaire.','a.subSignup':'Crée ton compte en 30 secondes.',
+'a.name':'Nom','a.namePh':'Ex : Samuel','a.city':'Ville / Province','a.cityPh':'Ex : Tete',
+'a.email':'Email','a.emailPh':'toi@email.com','a.pass':'Mot de passe','a.passPh':'••••••••',
+'a.createBtn':'Créer un compte gratuit','a.loginBtn':'Se connecter','a.demoNote':'Démo locale — tes données restent sur cet appareil uniquement.',
+'a.welcomeToast':'🔥 Bienvenue, {name} ! Construisons.',
+'ob.of':'Étape {n} sur {t}','ob.optional':'tu peux passer','ob.next':'Continuer','ob.back':'Retour','ob.skip':'Passer','ob.finish':'Commencer',
+'ob.s1t':'Bienvenue sur Young Implacável 🔥','ob.s1d':'Je te guide en 5 étapes rapides pour installer ton système. Moins d\'une minute.',
+'ob.s1a':'Définis des objectifs et découpe-les en actions quotidiennes','ob.s1b':'Construis des habitudes avec des séries','ob.s1c':'Gagne de l\'XP, monte de niveau et suis tes progrès',
+'ob.s2t':'Choisis ta langue','ob.s2d':'Tu peux la changer à tout moment dans les Réglages.',
+'ob.s3t':'Comment t\'appelles-tu ?','ob.s3d':'J\'utilise ton nom et ta ville pour personnaliser les plans et les idées de business.',
+'ob.s4t':'Quel est ton objectif principal maintenant ?','ob.s4d':'Choisis le domaine où tu veux des résultats d\'abord. Je crée ton premier objectif.',
+'ob.s5t':'Choisis ta première habitude','ob.s5d':'Commence petit. Une habitude de 5 minutes tenue vaut mieux qu\'un plan parfait.',
+'ob.h1':'Se lever tôt','ob.h2':'Lire 10 pages','ob.h3':'Étudier 1 heure','ob.h4':'Faire 20 minutes de sport',
+'ob.s6t':'Tout est prêt 🚀','ob.s6d':'J\'ai créé ton compte, un plan de départ et tes premiers éléments. Reviens chaque jour — c\'est ainsi que ça se construit.',
+'ob.ready1':'Ton compte est créé','ob.ready2':'Ton premier objectif est actif','ob.ready3':'Ta première habitude est enregistrée','ob.ready4':'Ta série commence aujourd\'hui',
+'n.home':'Accueil','n.goals':'Objectifs','n.habits':'Habitudes','n.focus':'Concentration','n.study':'Études','n.dev':'Développement','n.career':'Carrière','n.income':'Revenus','n.impa':'IMPA AI','n.challenges':'Défis','n.community':'Communauté','n.progress':'Progrès','n.settings':'Réglages','n.more':'Plus','n.upgrade':'Passer Pro','n.logout':'Déconnexion',
+'c.xp':'XP','c.free':'GRATUIT','c.pro':'PRO','c.max':'maximum','c.streak':'Série','c.days':'jours','c.level':'Niveau','c.of':'sur','c.remove':'Supprimer',
+'h.greetM':'Bonjour','h.greetA':'Bon après-midi','h.greetE':'Bonsoir',
+'h.heroT':'{name}, ton avenir commence maintenant.','h.quote':'« Ton avenir se construit par les actions que tu répètes aujourd\'hui. »',
+'h.kGoals':'🎯 Objectifs','h.kTasks':'📋 Tâches','h.kHabits':'🔥 Habitudes','h.kFocus':'⏱️ Concentration',
+'h.doneToday':'terminées aujourd\'hui','h.today':'aujourd\'hui','h.avgProgress':'progrès moyen','h.createFirst':'crée le premier','h.streakLbl':'Série','h.toNext':'XP pour {level}','h.maxLevel':'Niveau maximum 👑',
+'h.tasksToday':'📋 Tâches du jour','h.addTaskPh':'Nouvelle tâche...','h.noTasks':'Aucune tâche. Ajoutes-en une ci-dessous 👇',
+'h.mainGoal':'🎯 Objectif principal','h.manage':'Gérer','h.noGoals':'Pas encore d\'objectif. Crée le premier.','h.dailyActions':'ACTIONS QUOTIDIENNES','h.donePct':'{p}% réalisé','h.inProgress':'en cours',
+'h.habitsToday':'🔥 Habitudes — aujourd\'hui','h.noHabits':'Aucune habitude.','h.freeLimit':'Offre gratuite : 3 habitudes maximum.','h.upgradeLink':'Passer au Pro',
+'h.finGoal':'💰 Objectif financier','h.edit':'Modifier','h.saved':'Épargné','h.setGoal':'Définis un objectif','h.addMt':'Ajouter MT','h.save':'Épargner','h.pctGoal':'{p}% de l\'objectif',
+'h.studyPlan':'📚 Plan d\'étude','h.view':'Voir','h.noReview':'aucune révision prévue',
+'h.challengeDay':'🧠 Défi du jour','h.challengeWord':'Défi','h.challengeNote':'Un petit acte aujourd\'hui, chaque jour, change ta direction.','h.worthXp':'vaut +{x} XP',
+'h.focusMode':'⏱️ Mode concentration','h.focusSub':'Stay focused. Don\'t quit.','h.openFocus':'Ouvrir la concentration',
+'g.sub':'Découpe les grands objectifs en petites actions quotidiennes.',
+'g.new':'+ Nouvel objectif','g.all':'Tous','g.none':'Aucun objectif dans cette catégorie pour le moment.','g.create':'Créer l\'objectif',
+'g.completed':'✅ Terminé','g.inProgress':'en cours','g.cat':'Catégorie','g.objective':'Objectif','g.objectivePh':'Ex : Maîtriser les maths','g.why':'Pourquoi (motivation)','g.whyPh':'Ex : Je veux entrer à l\'université','g.createBtn':'Créer l\'objectif','g.errTitle':'Écris ton objectif',
+'ha.sub':'Crée de petites habitudes. Tiens-les chaque jour. Deviens inévitable.','ha.new':'+ Nouvelle habitude',
+'ha.streakCur':'🔥 Série actuelle','ha.consecutive':'jours consécutifs','ha.today':'✅ Aujourd\'hui','ha.done':'habitudes tenues','ha.week':'📈 Cette semaine','ha.consistency':'régularité',
+'ha.days':'jours','ha.records':'enregistrements','ha.doneToday':'✓ Fait aujourd\'hui','ha.mark':'Marquer aujourd\'hui',
+'ha.limitT':'Habitudes illimitées','ha.limitD':'Avec l\'offre gratuite tu peux avoir jusqu\'à 3 habitudes. Passe au Pro pour l\'illimité et les plans personnalisés.','ha.pro':'Voir Pro','ha.promptNew':'Nouvelle habitude :',
+'fo.sub':'Un bloc de concentration vaut mieux qu\'une journée distraite.','fo.sessions':'Sessions aujourd\'hui : {n}',
+'fo.mode':'🔥 MODE CONCENTRATION','fo.modeSub':'Stay focused. Don\'t quit.','fo.start':'Démarrer','fo.pause':'Pause','fo.reset':'Réinitialiser',
+'fo.earn':'En terminant une session tu gagnes +{x} XP.','fo.rules':'Règles de concentration','fo.history':'Historique','fo.total':'Total des sessions','fo.timeFocused':'Temps concentré','fo.none':'Aucune session pour le moment.',
+'fo.r1':'Téléphone hors de vue','fo.r2':'Une tâche par bloc','fo.r3':'De l\'eau sur la table, notifications coupées','fo.r4':'Si une pensée surgit : note-la et reviens',
+'st.sub':'Crée des matières, planifie les révisions et enregistre tes sessions.','st.new':'+ Nouvelle matière',
+'st.progress':'Progrès','st.min':'min étudiées','st.next':'Prochaine révision','st.none2':'non planifiée','st.add30':'+30 min','st.add60':'+1 h','st.schedule':'Planifier',
+'st.none':'Aucune matière. Commence par une.','st.cal':'🗓️ Calendrier de révision','st.spaced':'Révision espacée : révise à 1 jour, 3 jours, 7 jours et 21 jours.',
+'st.personalT':'🧭 Plans d\'étude personnalisés','st.personalD':'IMPA AI construit un plan semaine par semaine pour tes matières et examens.',
+'st.promptName':'Nom de la matière :','st.promptReview':'Prochaine révision :',
+'d.sub':'5 minutes par jour peuvent changer ta direction.','d.read':'✅ lue','d.unread':'non lue','d.mark':'Marquer comme lue (+{x} XP)','d.readBtn':'Lue ✓',
+'d.full':'Bibliothèque complète','d.fullD':'Débloque toutes les leçons et les mises à jour hebdomadaires.','d.unlock':'Débloquer la bibliothèque complète 💎',
+'c.sub':'CV professionnel + entraînement à l\'entretien avec retour.',
+'c.cv':'📄 CV Builder','c.fullName':'Nom complet','c.contact':'Email · Téléphone · Ville','c.contactPh':'toi@email.com · +258 84 000 0000 · Tete',
+'c.edu':'Formation','c.eduPh':'Ex : 12e année — Lycée de Tete (2024)','c.exp':'Expérience','c.expPh':'Ex : Stage — Entreprise X (2023) : appui administratif et accueil',
+'c.skills':'Compétences','c.skillsPh':'Design graphique, Excel, Anglais, Communication','c.courses':'Formations suivies','c.coursesPh':'Ex : Cours d\'informatique de base — 2023',
+'c.obj':'Objectif professionnel','c.objPh':'Ex : Rejoindre une équipe dynamique où je peux appliquer et développer mes compétences.',
+'c.gen':'Générer le CV','c.print':'Imprimer / PDF','c.yourCv':'Ton CV','c.objective':'Objectif',
+'c.interview':'🎤 Simulateur d\'entretien','c.question':'QUESTION','c.answerPh':'Écris ou colle ta réponse...','c.evaluate':'Évaluer la réponse','c.nextQ':'Question suivante','c.global':'Score global','c.feedback':'RETOUR',
+'c.clarity':'Clarté','c.structure':'Structure','c.confidence':'Confiance','c.relevance':'Pertinence',
+'c.tipShort':'Réponse courte : vise 90–120 mots.','c.tipLong':'Trop long : coupe 30% et garde l\'essentiel.','c.tipStructure':'Utilise une structure : point → raison → exemple.',
+'c.tipExample':'Ajoute un exemple concret (ce que tu as fait, où, le résultat).','c.tipNumber':'Ajoute un chiffre ou un résultat mesurable.','c.tipFirst':'Parle à la 1re personne : « j\'ai fait », « j\'ai appris ».','c.tipGreat':'Excellent. Répète-le à voix haute en 90 secondes.','c.tipMore':'Écris une réponse plus complète.',
+'i.sub':'Commence à gagner avec ce que tu sais déjà faire.','i.genT':'💡 Générateur d\'idées de business','i.genD':'Décris ta situation et nous générons des idées pratiques et réalistes.',
+'i.budget':'Budget (MT)','i.location':'Localisation','i.skills':'Compétences','i.skillPh':'Ex : Design graphique','i.generate':'Générer des idées','i.capital':'Capital nécessaire','i.budgetUsed':'Budget considéré',
+'m.sub':'Ton assistante personnelle. Elle transforme les conseils en actions.','m.ph':'Écris ta question...','m.send':'Envoyer',
+'m.greet':'Salut ! Je suis IMPA 🤖 — ton assistante personnelle.\n\nDemande-moi par exemple :\n• « Comment réviser pour l\'examen de demain ? »\n• « Aide-moi à créer un plan pour trouver un emploi. »\n• « Comment lancer un business avec 3 000 MT ? »\n• « Je procrastine. Que faire maintenant ? »',
+'m.note':'IMPA répond avec des plans pratiques, hors ligne, sans envoyer tes données ailleurs.',
+'m.q1':'Comment réviser pour l\'examen de demain ?','m.q2':'Crée un plan pour trouver un emploi','m.q3':'Comment lancer un business avec 3 000 MT ?','m.q4':'Je procrastine, que faire maintenant ?',
+'ip.plan':'PLAN','ip.study.t':'Plan de révision urgent',
+'ip.study.1':'Bloc 1 (25 min) — liste les 5 sujets les plus probables à l\'examen.','ip.study.2':'Bloc 2 (25 min) — fais 5 exercices SANS regarder la solution.','ip.study.3':'Bloc 3 (25 min) — corrige et note sur une fiche les erreurs répétées.','ip.study.4':'Bloc 4 (20 min) — explique à voix haute ce que tu as appris (technique Feynman).','ip.study.5':'10 dernières min — dors. Un cerveau fatigué mémorise moins.','ip.study.n':'Règle : 25 min de concentration + 5 de pause. Téléphone hors de la table.',
+'ip.job.t':'Plan pour trouver un emploi','ip.job.1':'Aujourd\'hui : liste 15 entreprises où tu veux travailler.','ip.job.2':'Aujourd\'hui : crée/mets à jour ton CV dans le module Carrière (1 page, axé résultats).','ip.job.3':'Demain : écris 3 versions de « Parle-moi de toi » (60–90 secondes).','ip.job.4':'Demain : envoie 5 candidatures personnalisées.','ip.job.5':'Cette semaine : demande à 2 personnes de simuler un entretien avec toi.','ip.job.6':'Toujours : note chaque candidature et relance après 7 jours.','ip.job.n':'Les chiffres battent la chance : 5 candidatures par jour pendant 2 semaines.',
+'ip.biz.t':'Plan pour démarrer avec peu de capital','ip.biz.1':'Étape 1 — écris le problème que tu vas résoudre et POUR QUI.','ip.biz.2':'Étape 2 — parle à 10 personnes de ce groupe (ne vends pas : pose des questions).','ip.biz.3':'Étape 3 — définis l\'offre la plus simple possible et son prix.','ip.biz.4':'Étape 4 — vends AVANT de produire à grande échelle.','ip.biz.5':'Étape 5 — réinvestis 50% du bénéfice, épargne 30%, utilise 20%.','ip.biz.6':'Étape 6 — en 30 jours mesure : clients, revenus, coûts, bénéfice.','ip.biz.n':'Un petit capital gagne par la vitesse, pas par le volume.','ip.biz.mt':'Tu as mentionné {v} MT. Garde un stock initial sous 60% de ce montant.',
+'ip.proc.t':'Plan anti-procrastination (maintenant)','ip.proc.1':'Règle des 2 minutes : commence juste 2 minutes. Arrête après si tu veux.','ip.proc.2':'Réduis l\'étape : « ouvrir le cahier à la page 12 ».','ip.proc.3':'Supprime les freins : téléphone dans une autre pièce, matériel prêt avant.','ip.proc.4':'Utilise le minuteur de 25 min dans le module Concentration, rien d\'autre.','ip.proc.5':'Récompense après : 10 min de quelque chose que tu aimes, seulement à la fin.','ip.proc.n':'Le but est de commencer, pas de finir. Commencer résout 80% du combat.',
+'ip.focus.t':'Protocole de concentration','ip.focus.1':'Choisis UNE tâche et écris-la sur un papier visible.','ip.focus.2':'Active le mode Concentration 25/50/90 min ici dans l\'app.','ip.focus.3':'Notifications coupées, téléphone hors de vue.','ip.focus.4':'Si une pensée arrive : note-la dans une liste « Plus tard » et reviens.','ip.focus.5':'À la fin, note combien de blocs tu as terminés.','ip.focus.n':'La profondeur bat la vitesse. 2 blocs finis > 6 blocs commencés.',
+'ip.habit.t':'Comment installer une habitude','ip.habit.1':'Déclencheur clair : « après X, je fais Y ».','ip.habit.2':'Rends-la minuscule : 5 min, pas 1 heure.','ip.habit.3':'Rends-la visible : coche-la chaque jour dans le module Habitudes.','ip.habit.4':'Ne manque jamais deux fois de suite.','ip.habit.5':'Après 21 jours, augmente la dose.','ip.habit.n':'Tu ne montes pas au niveau de tes objectifs. Tu descends au niveau de tes systèmes.',
+'ip.money.t':'Plan financier en 4 semaines','ip.money.1':'Semaine 1 — note TOUTES les dépenses, sans juger.','ip.money.2':'Semaine 2 — coupe 2 dépenses inutiles et crée une réserve.','ip.money.3':'Semaine 3 — fixe un % : 50% essentiel, 30% épargne, 20% libre.','ip.money.4':'Semaine 4 — ouvre une source de revenu supplémentaire (voir Revenus).','ip.money.n':'Épargner 100 MT par semaine = 5 200 MT par an. Commence aujourd\'hui.',
+'ip.conf.t':'Construire la confiance','ip.conf.1':'Tiens 3 petites promesses envers toi-même cette semaine.','ip.conf.2':'Parle 1 minute par jour à voix haute (enregistre-toi).','ip.conf.3':'Lance 3 nouvelles conversations avec une question simple.','ip.conf.4':'Note 1 victoire par jour ici dans l\'app.','ip.conf.5':'Va dans le module Carrière et utilise le Simulateur d\'entretien.','ip.conf.n':'La confiance, c\'est la mémoire des promesses tenues.',
+'ip.gen.body':'Organisons cela en étapes concrètes :\n\n• Écris exactement ce que tu veux atteindre (1 phrase).\n• Découpe-le en 3 tâches faisables AUJOURD\'HUI.\n• Bloque 25 min dans le module Concentration et fais le plus difficile en premier.\n• Note ton progrès — sans suivi, pas d\'évolution.\n\nDonne-moi plus de détails (délai, ressources, principal obstacle) et je le transforme en plan quotidien.',
+'ch.sub':'Choisis un défi. Tiens-le. Transforme-toi.','ch.days':'{n} jours','ch.enter':'Rejoindre le défi','ch.active':'Défi actif','ch.day':'Jour {a} sur {b}','ch.mark':'Marquer le jour d\'aujourd\'hui','ch.quit':'Quitter','ch.premium':'Défi Premium','ch.premT':'💎 Défi Premium','ch.started':'Défi lancé : {n}','ch.done':'🏆 Défi terminé : {n}','ch.dayDone':'Jour de défi terminé',
+'ch.c7.n':'7 Jours — Vaincre la procrastination','ch.c7.1':'Fais la tâche la plus difficile en premier','ch.c7.2':'Pas de réseaux sociaux avant midi','ch.c7.3':'Planifie la journée en 3 lignes',
+'ch.c21.n':'21 Jours — Construire la discipline','ch.c21.1':'Se lever à l\'heure prévue','ch.c21.2':'30 min d\'étude concentrée','ch.c21.3':'Journal de 3 lignes le soir',
+'ch.c30.n':'30 Jours — Transformer ta routine','ch.c30.1':'Sport ou marche de 20 min','ch.c30.2':'Pas de téléphone la 1re heure','ch.c30.3':'Bilan du jour',
+'ch.c90.n':'90 Jours — Ta meilleure version','ch.c90.1':'Objectif trimestriel revu','ch.c90.2':'Nouvelle compétence pratiquée','ch.c90.3':'Réseautage hebdomadaire',
+'cm.sub':'Tu ne construis pas cela seul.','cm.members':'{n} membres actifs','cm.rank':'🏆 Classement hebdomadaire','cm.week':'hebdomadaire','cm.disc':'💬 Discussions','cm.reply':'répondre','cm.ach':'🏅 Tes réussites','cm.you':'toi','cm.note':'Groupes de productivité, discussions et défis collectifs arrivent avec la communauté Pro.',
+'cm.a1':'7 premiers jours','cm.a2':'100 XP','cm.a3':'Niveau Focused','cm.a4':'10 sessions de concentration','cm.a5':'Objectif terminé',
+'cm.p1t':'7 jours sans manquer mon habitude d\'étude ! 🔥','cm.p2t':'Astuce : bloquer le téléphone pendant le bloc de concentration a tout changé.','cm.p3t':'J\'ai commencé à vendre du design aux commerces locaux. Premier client aujourd\'hui 💪','cm.p4t':'Quelqu\'un veut former un groupe d\'étude de maths ?',
+'p.sub':'Ton rapport de la semaine.','p.goals':'🎯 Objectifs','p.study':'📚 Études','p.habits':'🔥 Habitudes','p.sessions':'⏱️ Sessions','p.xp':'🏆 XP',
+'p.avgProgress':'progrès moyen','p.loggedTime':'temps enregistré','p.consistency':'régularité','p.focusBlocks':'blocs de concentration','p.total':'total cumulé',
+'p.perf':'Performance par domaine','p.quote':'« Tu as été meilleur cette semaine que la semaine dernière. Continue. »',
+'p.next':'Prochaines étapes suggérées','p.activity':'Journal d\'activité','p.lessons':'Leçons lues','p.habitsA':'Habitudes actives','p.subjects':'Matières','p.goalsN':'Objectifs','p.focusSessions':'Sessions de concentration',
+'p.s1':'Définis au moins 2 objectifs (un scolaire, un personnel).','p.s2':'Ajoute de petites habitudes : lire 10 pages, se lever tôt.','p.s3':'Fais trois blocs de 25 min cette semaine.','p.s4':'Lis ta première leçon de Développement personnel (+5 XP).','p.s5':'Remplis ton CV dans le module Carrière.','p.s6':'Crée tes matières dans le Centre d\'étude.','p.s7':'Excellent rythme. Augmente la difficulté et reste régulier.',
+'se.sub':'Personnalise ton expérience.','se.profile':'👤 Profil','se.name':'Nom','se.city':'Ville / Province','se.skill':'Compétence principale','se.skillPh':'Ex : Design graphique','se.save':'Enregistrer',
+'se.plan':'💎 Offre','se.freeActive':'Fonctions limitées','se.proActive':'Accès total actif','se.downgrade':'Revenir au gratuit','se.upgrade':'Passer au Pro','se.prices':'Prix : 49–99 MT/mois ou 499–799 MT/an.',
+'se.data':'📊 Données','se.export':'Exporter les données (JSON)','se.demo':'Charger des données d\'exemple','se.erase':'Tout effacer','se.note':'Tout est stocké localement sur ton appareil. Rien n\'est envoyé à des serveurs.',
+'se.lang':'🌐 Langue','se.langD':'Choisis la langue de l\'application.','se.security':'🔒 Sécurité',
+'mo.howT':'Comment ça marche 🔥','mo.howD':'Gagne de l\'XP en terminant des actions. L\'XP fait monter ton niveau.','mo.gotIt':'Compris',
+'mo.proT':'Passer au Pro 💎','mo.proD':'Débloque les habitudes illimitées, IMPA AI, le CV Builder, le Simulateur d\'entretien, l\'Income Center, les défis premium et l\'analytique avancée.',
+'mo.monthly':'Mensuel','mo.annual':'Annuel','mo.save':'économise ~15%','mo.activate':'Activer Pro (démo)','mo.notNow':'Pas maintenant','mo.demo':'Démo : aucun paiement n\'est effectué.',
+'mo.eraseConfirm':'Effacer toutes tes données ? Cette action est irréversible.',
+'mo.secure':'Connexion sécurisée (HTTPS)','mo.secureOff':'Non sécurisée — copie locale',
+'x.task':'Tâche terminée','x.study':'Session d\'étude','x.habit':'Habitude tenue','x.lesson':'Leçon lue','x.challenge':'Défi terminé','x.streak':'Série maintenue','x.focus':'Session de concentration','x.goalAction':'Action de l\'objectif','x.goalDone':'Objectif terminé 🎉','x.interview':'Entraînement entretien','x.saving':'Épargne enregistrée','x.ideas':'Idées de business générées','x.impa':'Interaction avec IMPA','x.daily':'Défi du jour terminé',
+'lv.1':'Beginner','lv.2':'Disciplined','lv.3':'Focused','lv.4':'Determined','lv.5':'Unstoppable','lv.6':'Leader',
+'cat.pessoal':'Personnel','cat.academico':'Scolaire','cat.carreira':'Carrière','cat.financeiro':'Financier',
+'da.ac.1':'Réviser 1 sujet (25 min)','da.ac.2':'Faire 5 exercices','da.ac.3':'Écrire 3 questions à poser',
+'da.car.1':'Lire 1 offre et adapter le CV','da.car.2':'Parler à 1 personne du secteur','da.car.3':'S\'entraîner sur 1 question d\'entretien',
+'da.fin.1':'Noter les dépenses du jour','da.fin.2':'Mettre 50 MT de côté','da.fin.3':'Chercher 1 piste de revenu',
+'da.pes.1':'Lire 10 pages','da.pes.2':'Écrire 1 réflexion','da.pes.3':'Tenir 1 promesse envers toi-même',
+'ls.1.t':'Discipline','ls.1.d':'La discipline n\'est pas de la motivation. C\'est décider avant que l\'émotion arrive.','ls.1.k1':'Règle des 2 minutes','ls.1.k2':'Environnement > volonté','ls.1.k3':'Petits engagements quotidiens',
+'ls.2.t':'Concentration','ls.2.d':'Se concentrer, c\'est choisir une chose et dire non à mille autres.','ls.2.k1':'Technique Pomodoro 25/5','ls.2.k2':'Bloquer les notifications','ls.2.k3':'Une tâche par bloc',
+'ls.3.t':'Intelligence émotionnelle','ls.3.d':'Remarque ce que tu ressens avant de réagir à ce que tu ressens.','ls.3.k1':'Nommer l\'émotion','ls.3.k2':'Pause de 6 secondes','ls.3.k3':'Journal émotionnel',
+'ls.4.t':'Communication','ls.4.d':'La clarté bat l\'éloquence. Dis moins, dis mieux.','ls.4.k1':'Structure : point → raison → exemple','ls.4.k2':'Écoute active','ls.4.k3':'Parle en phrases courtes',
+'ls.5.t':'Leadership','ls.5.d':'Diriger, c\'est servir avec une direction, pas commander avec l\'ego.','ls.5.k1':'Montre l\'exemple d\'abord','ls.5.k2':'Félicite en public','ls.5.k3':'Corrige en privé',
+'ls.6.t':'Confiance','ls.6.d':'La confiance est la mémoire des promesses tenues envers toi-même.','ls.6.k1':'Tiens de petites promesses','ls.6.k2':'Posture et voix','ls.6.k3':'Note tes victoires',
+'ls.7.t':'Productivité','ls.7.d':'Il ne s\'agit pas de faire plus. Il s\'agit de faire d\'abord ce qui compte.','ls.7.k1':'Règle 1-3-5','ls.7.k2':'Commence par le plus difficile','ls.7.k3':'Bilan du jour en 3 minutes',
+'ls.8.t':'Gestion du temps','ls.8.d':'On ne gère pas le temps. On gère l\'attention.','ls.8.k1':'Blocs de temps','ls.8.k2':'Priorités du jour','ls.8.k3':'Dimanche = planification',
+'ls.9.t':'Habitudes','ls.9.d':'Tu ne montes pas au niveau de tes objectifs. Tu descends au niveau de tes systèmes.','ls.9.k1':'Déclencheur + action + récompense','ls.9.k2':'Ne manque jamais deux fois','ls.9.k3':'Empile les habitudes',
+'ls.10.t':'État d\'esprit','ls.10.d':'Mentalité de croissance : pas encore, au lieu de je ne peux pas.','ls.10.k1':'Erreur = donnée, pas identité','ls.10.k2':'Célèbre le progrès','ls.10.k3':'Entoure-toi de bâtisseurs',
+'in.1.t':'Freelancing','in.1.d':'Vends des compétences que tu as déjà : design, rédaction, traduction, données, réseaux.','in.1.s1':'Crée 3 échantillons de travail','in.1.s2':'Profil sur plateformes + groupes locaux','in.1.s3':'Livraison impeccable, prix simple',
+'in.2.t':'Création de contenu','in.2.d':'Enseigne ce que tu sais. Ton audience locale devient des clients réels.','in.2.s1':'Choisis une niche précise','in.2.s2':'3 vidéos par semaine','in.2.s3':'Transforme les commentaires en services',
+'in.3.t':'Produits numériques','in.3.d':'Templates, ebooks, presets, mini-cours — crée une fois, vends souvent.','in.3.s1':'Résous un problème précis','in.3.s2':'Prix bas, volume élevé','in.3.s3':'Utilise les paiements mobiles locaux',
+'in.4.t':'Petits commerces','in.4.d':'Résous un problème de ton quartier avec un coût faible et une marge claire.','in.4.s1':'Valide avec 10 personnes','in.4.s2':'Commence avec un stock minimal','in.4.s3':'Contrôle les coûts chaque semaine',
+'in.5.t':'Marketing','in.5.d':'Les commerces locaux paient pour la visibilité et des réseaux bien gérés.','in.5.s1':'Pack : 3 posts + 1 vidéo/semaine','in.5.s2':'Montre les résultats avec des chiffres','in.5.s3':'Contrats mensuels, pas ponctuels',
+'in.6.t':'Services','in.6.d':'Cours, réparations, nettoyage, organisation, soutien scolaire, montage.','in.6.s1':'Choisis 1 service','in.6.s2':'Fixe un prix/heure','in.6.s3':'Demande un avis à chaque client',
+'in.7.t':'Outils IA','in.7.d':'Utilise l\'IA pour livrer plus vite : copy, design, transcription, analyse.','in.7.s1':'Apprends 3 outils à fond','in.7.s2':'Vends le résultat, pas l\'outil','in.7.s3':'Facture au projet',
+'in.8.t':'Opportunités en ligne','in.8.d':'Concours, bourses, microtâches et programmes pour les jeunes.','in.8.s1':'Postule à 5 par semaine','in.8.s2':'Garde les échéances dans un calendrier','in.8.s3':'Adapte ton CV à chaque candidature',
+'bi.micro':'micro','bi.small':'petite','bi.medium':'moyenne',
+'bi.1.t':'Service de {skill} pour commerces locaux à {loc}','bi.1.w':'Coût de départ faible, paiement au projet, demande constante.','bi.1.s1':'Crée 3 échantillons en 2 jours','bi.1.s2':'Visite 10 commerces locaux','bi.1.s3':'Offre de départ abordable + livraison rapide','bi.1.c':'~40% du budget en matériel',
+'bi.2.t':'Contenu payant pour des marques de {loc}','bi.2.w':'Les marques locales ont besoin de visibilité chaque semaine.','bi.2.s1':'Définis un pack mensuel (4 posts + 1 vidéo)','bi.2.s2':'Montre les résultats avec des chiffres','bi.2.s3':'Signe des contrats mensuels','bi.2.c':'Du temps, pas d\'argent',
+'bi.3.t':'Revente à valeur ajoutée (échelle {tier})','bi.3.w':'Achète bas, ajoute un service, revends avec marge.','bi.3.s1':'Choisis 1 produit demandé','bi.3.s2':'Achète un petit lot','bi.3.s3':'Revends avec livraison et garantie','bi.3.c':'Stock initial sous {v} MT',
+'bi.4.t':'Cours et formations en {skill}','bi.4.w':'Enseigne ce que tu sais — marge élevée, coût quasi nul.','bi.4.s1':'Groupes de 5–8 personnes','bi.4.s2':'Facture le mois à l\'avance','bi.4.s3':'Enregistre 1 cours pour le vendre ensuite','bi.4.c':'Espace + temps',
+'bi.5.t':'Services numériques ({skill}) pour des clients hors de {loc}','bi.5.w':'Travaille à distance et sois payé en devise stable.','bi.5.s1':'Profil professionnel + portfolio','bi.5.s2':'Postule à 5 offres par jour','bi.5.s3':'Livre impeccablement et demande un avis','bi.5.c':'Internet + ordinateur',
+'q.1':'Parle-moi de toi.','q.2':'Pourquoi veux-tu travailler avec nous ?','q.3':'Quelle est ta plus grande faiblesse ?','q.4':'Raconte-moi un défi que tu as surmonté.','q.5':'Où te vois-tu dans 3 ans ?','q.6':'Pourquoi devrions-nous t\'embaucher ?',
+'t.welcome':'🔥 Bienvenue, {name} ! Construisons.','t.goalCreated':'🎯 Objectif créé !','t.habitCreated':'🔥 Habitude créée !','t.habitLimit':'💎 Limite de l\'offre gratuite — passe au Pro','t.lessonRead':'Leçon lue','t.sessionDone':'🏆 Session terminée ! +{x} XP','t.proOn':'💎 Pro activé ! Tout est débloqué.','t.proOff':'Tu es revenu à l\'offre gratuite','t.saved':'Profil enregistré','t.exported':'Données exportées','t.demo':'Données d\'exemple chargées','t.erased':'Données effacées','t.typeGoal':'Écris ton objectif','t.typeAnswer':'Écris une réponse plus complète','t.cv':'📄 CV généré !','t.goodJob':'🎯 Bon travail !','t.nextLevel':'🎉 Tu es passé à {level} !','t.goalDone':'🏆 Objectif atteint : {n}','t.langChanged':'Langue modifiée',
+'sec.https':'Connexion sécurisée · HTTPS','sec.local':'Copie locale · sans serveur'
+}
+};
+/* ===================== i18n engine ===================== */
+const LANGS=[
+  {c:'pt',n:'Português',f:'🇲🇿'},
+  {c:'en',n:'English',f:'🇬🇧'},
+  {c:'es',n:'Español',f:'🇪🇸'},
+  {c:'fr',n:'Français',f:'🇫🇷'}
+];
+const LS='yi_state_v2';
+const $=s=>document.querySelector(s);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const today=()=>new Date().toISOString().slice(0,10);
+const fmt=n=>new Intl.NumberFormat(S.lang==='en'?'en-GB':'pt-MZ').format(Math.round(n));
+function t(k,v){
+  const d=I18N[S.lang]||I18N.pt;
+  let s=(d&&d[k]!=null)?d[k]:(I18N.pt[k]!=null?I18N.pt[k]:k);
+  if(v) Object.keys(v).forEach(x=>{ s=String(s).split('{'+x+'}').join(v[x]); });
+  return s;
+}
+function setLang(c,quiet){
+  if(!I18N[c]) c='pt';
+  S.lang=c; save();
+  document.documentElement.lang=c;
+  document.title=t('meta.title');
+  const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',t('meta.desc'));
+  if(S.loggedIn) showApp(); else renderLanding();
+  if(window._obOpen) renderOnboard();
+  if(!quiet) toast(t('t.langChanged'));
+}
+function langSwitcher(cls){
+  return `<div class="langsw ${cls||''}">${LANGS.map(l=>`<button class="${S.lang===l.c?'on':''}" onclick="setLang('${l.c}')" title="${l.n}">${l.f} ${l.c.toUpperCase()}</button>`).join('')}</div>`;
+}
+
+/* ===================== security / HTTPS ===================== */
+function isLocal(){ return /^(localhost|127\.|0\.0\.0\.0|\[::1\]|::1)$/.test(location.hostname)||location.protocol==='file:'; }
+function isSecure(){ return location.protocol==='https:'||location.protocol==='file:'||isLocal(); }
+(function forceHttps(){
+  if(location.protocol==='http:'&&!isLocal()){
+    location.replace('https://'+location.host+location.pathname+location.search+location.hash);
+  }
+})();
+
+/* ===================== data ===================== */
+const LEVELS=[{k:'lv.1',ic:'🥉',min:0},{k:'lv.2',ic:'🥈',min:300},{k:'lv.3',ic:'🥇',min:700},{k:'lv.4',ic:'🔥',min:1200},{k:'lv.5',ic:'⚡',min:2000},{k:'lv.6',ic:'👑',min:3200}];
+const XP={task:10,study:20,habit:10,lesson:5,challenge:50,streak:25,focus:50};
+const CATS={pessoal:{ic:'🌱',k:'cat.pessoal'},academico:{ic:'📚',k:'cat.academico'},carreira:{ic:'💼',k:'cat.carreira'},financeiro:{ic:'💰',k:'cat.financeiro'}};
+const DA={academico:['da.ac.1','da.ac.2','da.ac.3'],carreira:['da.car.1','da.car.2','da.car.3'],financeiro:['da.fin.1','da.fin.2','da.fin.3'],pessoal:['da.pes.1','da.pes.2','da.pes.3']};
+const LESSONS=[{id:1,ic:'🎯'},{id:2,ic:'🔍'},{id:3,ic:'🧠'},{id:4,ic:'🗣️'},{id:5,ic:'👑'},{id:6,ic:'💪'},{id:7,ic:'⚡'},{id:8,ic:'⏰'},{id:9,ic:'🔁'},{id:10,ic:'🌍'}];
+const INCOME=[{id:1,ic:'🧑‍💻'},{id:2,ic:'🎬'},{id:3,ic:'📦'},{id:4,ic:'🛒'},{id:5,ic:'📣'},{id:6,ic:'🧰'},{id:7,ic:'🤖'},{id:8,ic:'🌐'}];
+const CHALLENGES=[{id:'c7',d:7,ic:'⚡'},{id:'c21',d:21,ic:'🔥'},{id:'c30',d:30,ic:'🚀'},{id:'c90',d:90,ic:'👑'}];
+const NAV=[{id:'home',ic:'🏠',k:'n.home'},{id:'goals',ic:'🎯',k:'n.goals'},{id:'habits',ic:'🔥',k:'n.habits'},{id:'focus',ic:'⏱️',k:'n.focus'},{id:'study',ic:'📚',k:'n.study'},{id:'dev',ic:'🧠',k:'n.dev'},{id:'career',ic:'💼',k:'n.career',pro:1},{id:'income',ic:'💰',k:'n.income',pro:1},{id:'impa',ic:'🤖',k:'n.impa',pro:1,tag:'IA'},{id:'challenges',ic:'🏆',k:'n.challenges'},{id:'community',ic:'👥',k:'n.community'},{id:'progress',ic:'📊',k:'n.progress'},{id:'settings',ic:'⚙️',k:'n.settings'}];
+const IMPA=[
+  {p:'study',n:5,k:['estudar','exame','matemática','matematica','prova','teste','study','exam','math','revise','estudiar','examen','revisar','étudier','etudier','examen','réviser','reviser']},
+  {p:'job',n:6,k:['emprego','trabalho','cv','currículo','curriculo','entrevista','vaga','job','work','resume','interview','empleo','trabajo','entrevista','emploi','travail','entretien']},
+  {p:'biz',n:6,k:['negócio','negocio','empresa','renda','dinheiro','investir','começar','business','money','income','startup','dinero','emprender','argent','gagner','entreprise']},
+  {p:'proc',n:5,k:['procrastinar','procrastinação','procrastinacao','preguiça','preguica','não consigo','nao consigo','procrastinat','lazy','paresse','flojera']},
+  {p:'focus',n:5,k:['foco','concentrar','distra','atenção','atencao','focus','concentrat','distract','atención','concentración','concentration']},
+  {p:'habit',n:5,k:['hábito','habito','rotina','acordar','disciplina','habit','routine','wake up','rutina','habitude','discipline']},
+  {p:'money',n:4,k:['poupar','poupança','poupanca','orçamento','orcamento','financ','save money','saving','budget','ahorr','épargn','epargn']},
+  {p:'conf',n:5,k:['confiança','confianca','timidez','falar em público','publico','medo','confidence','shy','confianza','timidez','confiance','timidité']}
+];
+
+let S=load(), route='home', timer=null, F={mode:25,left:25*60,running:false};
+let OB={open:false,step:0};
+
+function blank(){return{loggedIn:false,onboarded:false,lang:(navigator.language||'pt').slice(0,2),name:'',area:'',skill:'',plan:'free',xp:740,streak:12,goals:[],habits:[],tasks:[],subjects:[],focusLog:[],lessonsRead:[],challenge:null,challengeDays:0,cv:{},chat:[],focusToday:0,finGoal:0,finSaved:0,created:today()};}
+function seed(){
+  const s=blank(); s.lang=S.lang||'pt'; s.name='Jovem'; s.area='Tete';
+  s.goals=[{id:uid(),cat:'academico',title:{pt:'Dominar Matemática',en:'Master Mathematics',es:'Dominar Matemáticas',fr:'Maîtriser les maths'},why:'',progress:70,created:today()},
+           {id:uid(),cat:'carreira',title:{pt:'Conseguir um estágio',en:'Land an internship',es:'Conseguir unas prácticas',fr:'Obtenir un stage'},why:'',progress:35,created:today()},
+           {id:uid(),cat:'financeiro',title:{pt:'Poupar 12.000 MT',en:'Save 12,000 MT',es:'Ahorrar 12.000 MT',fr:'Épargner 12 000 MT'},why:'',progress:25,created:today()}];
+  const ht=[{pt:'Acordar às 6h',en:'Wake up at 6am',es:'Levantarme a las 6',fr:'Se lever à 6h'},
+            {pt:'Ler 10 páginas',en:'Read 10 pages',es:'Leer 10 páginas',fr:'Lire 10 pages'},
+            {pt:'Estudar 1 hora',en:'Study for 1 hour',es:'Estudiar 1 hora',fr:'Étudier 1 heure'},
+            {pt:'Exercitar 20 min',en:'Exercise 20 min',es:'Ejercicio 20 min',fr:'Sport 20 min'}];
+  s.habits=ht.map((h,i)=>({id:uid(),title:h,days:i<3?[today()]:[]}));
+  s.tasks=[{pt:'Revisar 5 exercícios de Matemática',en:'Review 5 maths exercises',es:'Repasar 5 ejercicios',fr:'Reviser 5 exercices'},
+           {pt:'Ler 10 páginas do livro',en:'Read 10 pages of your book',es:'Leer 10 páginas',fr:'Lire 10 pages'},
+           {pt:'Treinar 20 minutos',en:'Train for 20 minutes',es:'Entrenar 20 minutos',fr:'S\'entraîner 20 min'},
+           {pt:'Planejar amanhã em 3 linhas',en:'Plan tomorrow in 3 lines',es:'Planear mañana en 3 líneas',fr:'Planifier demain en 3 lignes'}]
+    .map(x=>({id:uid(),title:x,xp:XP.task,done:false,date:today()}));
+  s.subjects=[{id:uid(),title:{pt:'Matemática',en:'Mathematics',es:'Matemáticas',fr:'Mathématiques'},progress:70,next:'',minutes:0},
+              {id:uid(),title:{pt:'Inglês',en:'English',es:'Inglés',fr:'Anglais'},progress:45,next:'',minutes:0}];
+  s.finGoal=12000; s.finSaved=3000;
+  return s;
+}
+function load(){try{const r=localStorage.getItem(LS);if(!r)return blank();const p=JSON.parse(r);return Object.assign(blank(),p);}catch(e){return blank();}}
+function save(){try{localStorage.setItem(LS,JSON.stringify(S));}catch(e){}}
+function tx(o){ if(o==null) return ''; if(typeof o==='string') return o; return o[S.lang]||o.pt||''; }
+function render(){ if(!S.loggedIn){ renderLanding(); return; } showApp(); }
+function persist(){ save(); render(); }
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function levelOf(xp){let cur=LEVELS[0],idx=0;LEVELS.forEach((l,i)=>{if(xp>=l.min){cur=l;idx=i;}});const next=LEVELS[idx+1];const pct=next?Math.min(100,Math.round((xp-cur.min)/(next.min-cur.min)*100)):100;return{cur,next,pct,idx};}
+function addXP(n,key,keyVars){
+  const b=levelOf(S.xp); S.xp+=n; const a=levelOf(S.xp);
+  toast('+'+n+' XP — '+t(key||'c.xp',keyVars));
+  if(a.idx>b.idx) setTimeout(()=>toast(t('t.nextLevel',{level:a.cur.ic+' '+t(a.cur.k)})),420);
+  save();
+}
+function toast(msg){const e=document.createElement('div');e.className='toast';e.textContent=msg;$('#toasts').appendChild(e);setTimeout(()=>{e.style.opacity='0';e.style.transition='.3s';setTimeout(()=>e.remove(),320);},2600);}
+function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ===================== landing ===================== */
+function renderLanding(){
+  const sec=isSecure();
+  $('#landing').innerHTML=`
+  <div class="nav">
+    <div class="logo"><span class="fl">🔥</span> Young Implacável</div>
+    <div class="row" style="gap:10px">${langSwitcher()}
+      <button class="btn ghost sm" onclick="openAuth('login')">${t('a.login')}</button>
+      <button class="btn primary sm" onclick="openAuth('signup')">${t('a.signup')}</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div>
+      <span class="badge warn">${t('l.badge')}</span>
+      <h1>${t('l.h1a')}<br><em>${t('l.h1b')}</em></h1>
+      <p class="lead">${t('l.lead')}</p>
+      <div class="cta">
+        <button class="btn primary" onclick="openAuth('signup')">${t('l.cta1')}</button>
+        <button class="btn" onclick="document.getElementById('precos').scrollIntoView({behavior:'smooth'})">${t('l.cta2')}</button>
+      </div>
+      <div class="stats">
+        <div><b>12</b><span class="small muted">${t('l.s1')}</span></div>
+        <div><b>+740</b><span class="small muted">${t('l.s2')}</span></div>
+        <div><b>12</b><span class="small muted">${t('l.s3')}</span></div>
+      </div>
+      <p class="tiny dim" style="margin-top:18px"><span class="secdot"></span>${sec?t('sec.https'):t('sec.local')}</p>
+    </div>
+    <div class="preview"><div class="pmini">
+      <div class="pcard between"><div><div class="tiny muted bold">${t('l.badge')}</div><div class="bold">${t('h.heroT',{name:'Samuel'})}</div></div><span class="badge pro">🔥 ${t('lv.4')}</span></div>
+      <div class="pcard"><div class="between small"><span class="muted bold">🔥 ${t('c.streak')}</span><span class="bold" style="color:var(--acc)">12 ${t('c.days')}</span></div><div class="bar" style="margin-top:9px"><i style="width:64%"></i></div></div>
+      <div class="pcard"><div class="small muted bold" style="margin-bottom:9px">${t('h.tasksToday')}</div><div class="list">
+        <div class="item"><div class="chk on">✓</div><div class="txt">${t('da.ac.1')}</div></div>
+        <div class="item"><div class="chk on">✓</div><div class="txt">${t('ob.h2')}</div></div>
+        <div class="item"><div class="chk"></div><div class="txt">${t('ob.h4')}</div></div>
+      </div></div>
+      <div class="pcard row" style="gap:14px"><div class="lvl">⏱️</div><div><div class="tiny muted bold">${t('h.focusMode')}</div><div class="bold">25:00</div></div></div>
+    </div></div>
+  </div>
+  <div class="features">
+    <h2 class="center" style="margin-bottom:8px">${t('l.featTitle')}</h2>
+    <p class="center muted" style="margin-bottom:26px">${t('l.featSub')}</p>
+    <div class="fgrid">${Array.from({length:12},(_,i)=>`<div class="fcard"><h3>${t('f'+(i+1)+'.t')}</h3><p class="small muted" style="margin-top:6px">${t('f'+(i+1)+'.d')}</p></div>`).join('')}</div>
+  </div>
+  <div class="pricing" id="precos">
+    <h2 class="center" style="margin-bottom:8px">${t('l.priceTitle')}</h2>
+    <p class="center muted" style="margin-bottom:26px">${t('l.priceSub')}</p>
+    <div class="pgrid">
+      <div class="plan"><span class="badge">🆓 ${t('l.free')}</span>
+        <div class="price">${t('l.freePrice')}</div><div class="small muted">${t('l.freePer')}</div>
+        <ul>${[1,2,3,4,5,6].map(i=>`<li><i>✓</i> ${t('l.freeF'+i)}</li>`).join('')}</ul>
+        <button class="btn block" onclick="openAuth('signup')">${t('l.startFree')}</button></div>
+      <div class="plan hot"><span class="badge pro">💎 ${t('l.pro')}</span>
+        <div class="price">${t('l.proPrice')}<span style="font-size:15px;font-weight:600;color:var(--muted)">${t('l.proPer')}</span></div>
+        <div class="small muted">${t('l.proNote')}</div>
+        <ul>${[1,2,3,4,5,6,7,8].map(i=>`<li><i>✓</i> ${t('l.proF'+i)}</li>`).join('')}</ul>
+        <button class="btn primary block" onclick="openAuth('signup')">${t('l.tryPro')}</button></div>
+    </div>
+  </div>
+  <footer>${t('l.footer')}</footer>`;
+}
+
+/* ===================== auth modal ===================== */
+function openAuth(mode){
+  $('#modalBody').innerHTML=`
+    <div class="between" style="margin-bottom:14px"><div class="logo"><span class="fl">🔥</span> Young Implacável</div>${langSwitcher()}</div>
+    <h2>${mode==='signup'?t('a.signup'):t('a.welcomeBack')}</h2>
+    <p class="muted small" style="margin:8px 0 18px">${mode==='signup'?t('a.subSignup'):t('a.createSub')}</p>
+    <label class="fld"><span>${t('a.email')}</span><input type="email" placeholder="${t('a.emailPh')}"></label>
+    <label class="fld"><span>${t('a.pass')}</span><input type="password" placeholder="${t('a.passPh')}"></label>
+    <button class="btn primary block" onclick="startOnboarding('${mode}')">${mode==='signup'?t('a.createBtn'):t('a.loginBtn')}</button>
+    <p class="tiny dim center" style="margin-top:12px">🔒 ${isSecure()?t('sec.https'):t('sec.local')}<br>${t('a.demoNote')}</p>`;
+  $('#modal').classList.add('on');
+}
+function closeModal(){$('#modal').classList.remove('on');}
+
+/* ===================== onboarding guide ===================== */
+function startOnboarding(){
+  closeModal();
+  OB={open:true,step:1,name:'',city:'',cat:'academico',habit:null,planChoice:'free'};
+  window._obOpen=true;
+  $('#onboard').classList.add('on');
+  renderOnboard();
+}
+function obGo(n){ OB.step=Math.max(1,Math.min(6,OB.step+n)); renderOnboard(); }
+function obPickCat(c){ OB.cat=c; renderOnboard(); }
+function obPickHabit(k){ OB.habit=k; renderOnboard(); }
+function renderOnboard(){
+  const total=6, st=OB.step;
+  const read=(id,val)=>{const e=$('#'+id); if(e) OB[val]=e.value;};
+  const steps={
+  1:()=>`<span class="big">🔥</span><h2>${t('ob.s1t')}</h2><p class="muted" style="margin:10px 0 18px">${t('ob.s1d')}</p>
+      <div class="col">${[t('ob.s1a'),t('ob.s1b'),t('ob.s1c')].map(x=>`<div class="item small"><div class="chk on">✓</div><div class="txt">${x}</div></div>`).join('')}</div>`,
+  2:()=>`<span class="big">🌐</span><h2>${t('ob.s2t')}</h2><p class="muted" style="margin:10px 0 4px">${t('ob.s2d')}</p>
+      <div class="langcards">${LANGS.map(l=>`<div class="langcard ${S.lang===l.c?'on':''}" onclick="setLang('${l.c}',true);renderOnboard()"><b>${l.f} ${l.n}</b><span>${l.c.toUpperCase()}</span></div>`).join('')}</div>`,
+  3:()=>`<span class="big">👤</span><h2>${t('ob.s3t')}</h2><p class="muted" style="margin:10px 0 18px">${t('ob.s3d')}</p>
+      <label class="fld"><span>${t('a.name')}</span><input id="obName" placeholder="${t('a.namePh')}" value="${esc(OB.name)}" oninput="OB.name=this.value"></label>
+      <label class="fld"><span>${t('a.city')}</span><input id="obCity" placeholder="${t('a.cityPh')}" value="${esc(OB.city)}" oninput="OB.city=this.value"></label>`,
+  4:()=>`<span class="big">🎯</span><h2>${t('ob.s4t')}</h2><p class="muted" style="margin:10px 0 18px">${t('ob.s4d')}</p>
+      <div class="langcards">${Object.entries(CATS).map(([k,c])=>`<div class="langcard ${OB.cat===k?'on':''}" onclick="obPickCat('${k}')"><b>${c.ic} ${t(c.k)}</b><span>${t(DA[k][0])}</span></div>`).join('')}</div>`,
+  5:()=>`<span class="big">🔥</span><h2>${t('ob.s5t')}</h2><p class="muted" style="margin:10px 0 18px">${t('ob.s5d')}</p>
+      <div class="langcards">${[1,2,3,4].map(i=>`<div class="langcard ${OB.habit===i?'on':''}" onclick="obPickHabit(${i})"><b>${t('ob.h'+i)}</b><span>+${XP.habit} XP</span></div>`).join('')}</div>`,
+  6:()=>`<span class="big">🚀</span><h2>${t('ob.s6t')}</h2><p class="muted" style="margin:10px 0 18px">${t('ob.s6d')}</p>
+      <div class="col">${[t('ob.ready1'),t('ob.ready2'),t('ob.ready3'),t('ob.ready4')].map(x=>`<div class="item small"><div class="chk on">✓</div><div class="txt">${x}</div></div>`).join('')}</div>`
+  };
+  $('#onboard').innerHTML=`<div class="ob">
+    <div class="between" style="margin-bottom:14px">
+      <div class="logo"><span class="fl">🔥</span> Young Implacável</div>
+      <span class="tiny muted">${t('ob.of',{n:st,t:total})}</span>
+    </div>
+    <div class="obsteps">${Array.from({length:total},(_,i)=>`<i class="${i<st?'on':''}"></i>`).join('')}</div>
+    <div class="obstep on">${steps[st]()}</div>
+    <div class="obnav">
+      <div>${st>1?`<button class="btn ghost" onclick="obGo(-1)">${t('ob.back')}</button>`:''}</div>
+      <div class="row">
+        ${st<6?`<button class="btn ghost sm" onclick="obGo(1)">${t('ob.skip')}</button>`:''}
+        ${st<6?`<button class="btn primary" onclick="obGo(1)">${t('ob.next')}</button>`
+             :`<button class="btn primary" onclick="finishOnboarding()">${t('ob.finish')}</button>`}
+      </div>
+    </div>
+  </div>`;
+}
+function finishOnboarding(){
+  const sc=seed();
+  sc.loggedIn=true; sc.onboarded=true; sc.lang=S.lang;
+  sc.name=(OB.name||'').trim()||'Jovem'; sc.area=(OB.city||'').trim();
+  const titles={academico:{pt:'Dominar uma matéria',en:'Master a subject',es:'Dominar una materia',fr:'Maîtriser une matière'},
+                carreira:{pt:'Conseguir um emprego',en:'Get a job',es:'Conseguir empleo',fr:'Trouver un emploi'},
+                financeiro:{pt:'Aumentar o rendimento',en:'Increase my income',es:'Aumentar mis ingresos',fr:'Augmenter mes revenus'},
+                pessoal:{pt:'Construir disciplina',en:'Build discipline',es:'Construir disciplina',fr:'Construire ma discipline'}};
+  sc.goals=[{id:uid(),cat:OB.cat,title:titles[OB.cat],why:'',progress:0,created:today()}];
+  const habitT={1:{pt:'Acordar cedo',en:'Wake up early',es:'Madrugar',fr:'Se lever tôt'},2:{pt:'Ler 10 páginas',en:'Read 10 pages',es:'Leer 10 páginas',fr:'Lire 10 pages'},
+                3:{pt:'Estudar 1 hora',en:'Study for 1 hour',es:'Estudiar 1 hora',fr:'Étudier 1 heure'},4:{pt:'Exercitar 20 minutos',en:'Exercise for 20 minutes',es:'Ejercicio 20 minutos',fr:'Sport 20 minutes'}};
+  sc.habits=[{id:uid(),title:habitT[OB.habit||2],days:[]}];
+  OB.open=false; window._obOpen=false;
+  $('#onboard').classList.remove('on');
+  S=sc; save(); showApp();
+  setTimeout(()=>toast(t('a.welcomeToast',{name:S.name})),250);
+}
+function logout(){ S.loggedIn=false; save(); $('#app').style.display='none'; $('#onboard').classList.remove('on'); renderLanding(); scrollTop(); }
+
+/* ===================== app shell ===================== */
+function showApp(){
+  $('#landing').innerHTML='';
+  $('#app').style.display='block';
+  $('#navUpgrade').textContent=t('n.upgrade');
+  $('#navLogout').textContent=t('n.logout');
+  $('#sideLang').innerHTML=`<div class="tiny muted bold" style="margin-bottom:6px;padding:0 2px">${t('l.langLabel')}</div>`+langSwitcher();
+  $('#sideNav').innerHTML=NAV.map(n=>`<div class="navitem ${n.id===route?'on':''}" onclick="go('${n.id}')"><span class="ic">${n.ic}</span><span>${t(n.k)}</span>${n.pro&&S.plan!=='pro'?'<span class="tag">PRO</span>':''}</div>`).join('');
+  const mob=['home','goals','habits','focus','impa','progress'];
+  $('#mobileBar').innerHTML=mob.map(id=>{const n=NAV.find(x=>x.id===id);return `<div class="mi ${id===route?'on':''}" onclick="go('${id}')"><span>${n.ic}</span>${t(n.k)}</div>`;}).join('')+`<div class="mi" onclick="go('settings')"><span>⚙️</span>${t('n.more')}</div>`;
+  renderView();
+}
+function go(id){ route=id; showApp(); scrollTop(); }
+function renderView(){
+  const LV=levelOf(S.xp);
+  $('#lvlIcon').textContent=LV.cur.ic;
+  $('#lvlName').textContent=t(LV.cur.k);
+  $('#xpText').textContent=fmt(S.xp)+' XP · '+LV.pct+'% → '+(LV.next?t(LV.next.k):t('c.max'));
+  const nav=NAV.find(n=>n.id===route);
+  $('#crumb').textContent=t(nav.k).toUpperCase();
+  const h=new Date().getHours();
+  const greet=h<12?t('h.greetM'):h<19?t('h.greetA'):t('h.greetE');
+  $('#viewTitle').textContent=route==='home'?(greet+', '+S.name+'! 🔥'):t(nav.k);
+  const V={home:vHome,goals:vGoals,habits:vHabits,focus:vFocus,study:vStudy,dev:vDev,career:vCareer,income:vIncome,impa:vImpa,challenges:vChallenges,community:vCommunity,progress:vProgress,settings:vSettings};
+  $('#view').innerHTML=(V[route]||vHome)();
+  if(route==='focus') mountFocus();
+  if(route==='impa') mountImpa();
+}
+function proGate(label){ if(S.plan==='pro') return ''; return `<div class="lock"><div style="font-size:30px">💎</div><div class="bold">${label} · PRO</div><p class="small muted" style="max-width:300px">${t('mo.proD')}</p><button class="btn primary" onclick="openPricing()">${t('l.tryPro')}</button></div>`; }
+
+/* ===================== modal: help / pricing ===================== */
+function openPricing(){ openModal('pricing'); }
+function openModal(kind){
+  const b=$('#modalBody');
+  if(kind==='help'){
+    const labels={task:'x.task',study:'x.study',habit:'x.habit',lesson:'x.lesson',challenge:'x.challenge',streak:'x.streak',focus:'x.focus'};
+    b.innerHTML=`<h2>${t('mo.howT')}</h2><p class="muted small" style="margin:10px 0 16px">${t('mo.howD')}</p>
+      <div class="list">${Object.entries(XP).map(([k,v])=>`<div class="item"><div class="grow">${t(labels[k])}</div><span class="badge warn">+${v} XP</span></div>`).join('')}</div>
+      <div class="divider"></div>
+      <div class="list">${LEVELS.map(l=>`<div class="item"><div class="grow"><b>${l.ic} ${t(l.k)}</b></div><span class="badge">${fmt(l.min)} XP</span></div>`).join('')}</div>
+      <div class="divider"></div>
+      <p class="small ${isSecure()?'muted':'bold'}">${isSecure()?('🔒 '+t('mo.secure')):('⚠️ '+t('mo.secureOff'))}</p>
+      <button class="btn block" style="margin-top:14px" onclick="closeModal()">${t('mo.gotIt')}</button>`;
+  } else {
+    b.innerHTML=`<div class="between"><h2>${t('mo.proT')}</h2><span class="badge pro">PRO</span></div>
+      <p class="muted small" style="margin:10px 0 16px">${t('mo.proD')}</p>
+      <div class="list">
+        <div class="item"><div class="grow">${t('mo.monthly')}</div><b>${t('l.proPrice')}${t('l.proPer')}</b></div>
+        <div class="item"><div class="grow">${t('mo.annual')} <span class="badge ok">${t('mo.save')}</span></div><b>499 MT</b></div>
+      </div>
+      <div class="divider"></div>
+      <button class="btn primary block" onclick="activatePro()">${t('mo.activate')}</button>
+      <button class="btn ghost block" style="margin-top:8px" onclick="closeModal()">${t('mo.notNow')}</button>
+      <p class="tiny dim center" style="margin-top:12px">${t('mo.demo')}</p>`;
+  }
+  $('#modal').classList.add('on');
+}
+function activatePro(){ S.plan='pro'; save(); closeModal(); toast(t('t.proOn')); renderView(); }
+
+/* ===================== HOME ===================== */
+function vHome(){
+  const td=today();
+  const tasks=S.tasks.filter(x=>!x.date||x.date===td);
+  const doneT=tasks.filter(x=>x.done).length;
+  const habitPct=Math.round(S.habits.reduce((a,h)=>a+((h.days||[]).includes(td)?1:0),0)/Math.max(1,S.habits.length)*100);
+  const main=S.goals[0]; const LV=levelOf(S.xp);
+  return `
+  <div class="hero-card">
+    <div class="between wrap">
+      <div style="flex:1;min-width:240px"><h2>${t('h.heroT',{name:S.name})}</h2><p class="quote">${t('h.quote')}</p></div>
+      <div class="row" style="gap:10px"><div class="badge warn">🔥 ${t('h.streakLbl')}: ${S.streak} ${t('c.days')}</div><div class="badge">${LV.cur.ic} ${t(LV.cur.k)}</div></div>
+    </div>
+    <div class="bar" style="margin-top:16px"><i style="width:${LV.pct}%"></i></div>
+    <div class="between small muted" style="margin-top:6px"><span>${fmt(S.xp)} XP</span><span>${LV.next?fmt(LV.next.min-S.xp)+' '+t('h.toNext',{level:t(LV.next.k)}):t('h.maxLevel')}</span></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="k">${t('h.kGoals')}</div><div class="v">${S.goals.length}</div><div class="tiny muted">${S.goals.length?Math.round(S.goals.reduce((a,g)=>a+g.progress,0)/S.goals.length)+'% '+t('h.avgProgress'):t('h.createFirst')}</div></div>
+    <div class="kpi"><div class="k">${t('h.kTasks')}</div><div class="v">${doneT}/${tasks.length}</div><div class="tiny muted">${t('h.doneToday')}</div></div>
+    <div class="kpi"><div class="k">${t('h.kHabits')}</div><div class="v">${habitPct}%</div><div class="tiny muted">${t('h.today')}</div></div>
+    <div class="kpi"><div class="k">${t('h.kFocus')}</div><div class="v">${S.focusToday}</div><div class="tiny muted">${t('h.today')}</div></div>
+  </div>
+  <div class="cols2">
+    <div class="card">
+      <div class="between" style="margin-bottom:12px"><h3>${t('h.tasksToday')}</h3><span class="badge">${doneT}/${tasks.length}</span></div>
+      <div class="list">${tasks.length?tasks.map(x=>`<div class="item ${x.done?'done':''}"><div class="chk ${x.done?'on':''}" onclick="toggleTask('${x.id}')">✓</div><div class="txt grow">${esc(tx(x.title))}</div><button class="del" onclick="delTask('${x.id}')">✕</button></div>`).join(''):'<p class="muted small">'+t('h.noTasks')+'</p>'}</div>
+      <div class="row" style="margin-top:12px"><input id="newTask" placeholder="${t('h.addTaskPh')}" onkeydown="if(event.key==='Enter')addTask()"><button class="btn sm primary" onclick="addTask()">+</button></div>
+    </div>
+    <div class="card">
+      <div class="between" style="margin-bottom:12px"><h3>${t('h.mainGoal')}</h3><button class="btn sm ghost" onclick="go('goals')">${t('h.manage')}</button></div>
+      ${main?`<div class="small muted bold">${CATS[main.cat].ic} ${t(CATS[main.cat].k)}</div>
+        <div class="bold" style="font-size:17px;margin:4px 0 10px">${esc(tx(main.title))}</div>
+        <div class="bar"><i style="width:${main.progress}%"></i></div>
+        <div class="between small muted" style="margin-top:6px"><span>${t('h.donePct',{p:main.progress})}</span><span>${esc(tx(main.why))}</span></div>
+        <div class="divider"></div><div class="tiny muted bold" style="margin-bottom:8px">${t('h.dailyActions')}</div>
+        <div class="list">${DA[main.cat].map(a=>`<div class="item small"><div class="chk" onclick="addXP(${XP.task},'x.goalAction');toast(t('t.goodJob'))">✓</div><div class="txt">${t(a)}</div></div>`).join('')}</div>`:`<p class="muted small">${t('h.noGoals')}</p>`}
+    </div>
+  </div>
+  <div class="cols2" style="margin-top:16px">
+    <div class="card"><h3 style="margin-bottom:12px">${t('h.habitsToday')}</h3>
+      <div class="list">${S.habits.map(h=>`<div class="item ${(h.days||[]).includes(td)?'done':''}"><div class="chk ${(h.days||[]).includes(td)?'on':''}" onclick="toggleHabit('${h.id}')">✓</div><div class="txt grow">${esc(tx(h.title))}</div><span class="tiny muted">${streakOf(h)}${t('c.days')[0]}</span></div>`).join('')||'<p class="muted small">'+t('h.noHabits')+'</p>'}</div>
+      ${S.plan!=='pro'&&S.habits.length>=3?`<p class="tiny" style="margin-top:10px;color:var(--warn)">${t('h.freeLimit')} <a onclick="openPricing()" style="color:var(--acc);cursor:pointer">${t('h.upgradeLink')}</a></p>`:''}
+    </div>
+    <div class="card">
+      <div class="between" style="margin-bottom:12px"><h3>${t('h.finGoal')}</h3><button class="btn sm ghost" onclick="editFin()">${t('h.edit')}</button></div>
+      <div class="between small"><span class="muted">${t('h.saved')}</span><b>${fmt(S.finSaved)} MT / ${fmt(S.finGoal)} MT</b></div>
+      <div class="bar green" style="margin:10px 0 6px"><i style="width:${S.finGoal?Math.min(100,Math.round(S.finSaved/S.finGoal*100)):0}%"></i></div>
+      <div class="small muted">${S.finGoal?t('h.pctGoal',{p:Math.round(S.finSaved/S.finGoal*100)}):t('h.setGoal')}</div>
+      <div class="divider"></div>
+      <div class="between" style="gap:8px"><input id="finAdd" type="number" placeholder="${t('h.addMt')}" style="max-width:150px"><button class="btn sm primary" onclick="addSaving()">${t('h.save')}</button></div>
+    </div>
+  </div>
+  <div class="cols2" style="margin-top:16px">
+    <div class="card"><div class="between" style="margin-bottom:12px"><h3>${t('h.studyPlan')}</h3><button class="btn sm ghost" onclick="go('study')">${t('h.view')}</button></div>
+      <div class="list">${S.subjects.slice(0,3).map(s=>`<div><div class="between small"><span class="bold">${esc(tx(s.title))}</span><span class="muted">${s.progress}%</span></div><div class="bar blue" style="margin:6px 0 4px"><i style="width:${s.progress}%"></i></div><div class="tiny muted">${s.next?'📅 '+esc(s.next):t('h.noReview')}</div></div>`).join('')||'<p class="muted small">'+t('st.none')+'</p>'}</div>
+    </div>
+    <div class="card"><h3 style="margin-bottom:12px">${t('h.challengeDay')}</h3>${dailyChallenge()}</div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="between wrap"><div><h3>${t('h.focusMode')}</h3><p class="muted small" style="margin-top:4px">${t('h.focusSub')}</p></div>
+      <div class="row">${[25,50,90].map(m=>`<button class="chip" onclick="go('focus');setTimeout(()=>pickFocus(${m}),50)">${m} min</button>`).join('')}
+      <button class="btn primary" onclick="go('focus')">${t('h.openFocus')}</button></div></div>
+  </div>`;
+}
+function dailyChallenge(){
+  const idx=new Date().getDate()%CHALLENGES.length, c=CHALLENGES[idx];
+  const task=c[1]?t('ch.'+c.id+'.1'):t('ch.'+c.id+'.1');
+  const key='dc_'+today(); const done=localStorage.getItem(key)==='1';
+  const tdef=c.tasks?c.tasks[0]:t('ch.'+c.id+'.1');
+  const tt=t('ch.'+c.id+'.'+((new Date().getDate()%3)+1));
+  return `<div class="item" style="align-items:flex-start"><div class="chk ${done?'on':''}" onclick="claimDaily('${key}')">✓</div>
+    <div class="grow"><div class="bold small">${c.ic} ${tt}</div>
+    <div class="tiny muted" style="margin-top:3px">${t('h.challengeWord')}: ${t('ch.'+c.id+'.n')} · ${t('h.worthXp',{x:XP.challenge})}</div></div></div>
+    <p class="tiny dim" style="margin-top:10px">${t('h.challengeNote')}</p>`;
+}
+function claimDaily(key){ if(localStorage.getItem(key)==='1') return; localStorage.setItem(key,'1'); addXP(XP.challenge,'x.daily'); persist(); }
+function toggleTask(id){ const x=S.tasks.find(v=>v.id===id); if(!x) return; x.done=!x.done; if(x.done) addXP(XP.task,'x.task'); else S.xp=Math.max(0,S.xp-XP.task); persist(); }
+function addTask(){ const i=$('#newTask'); if(!i||!i.value.trim()) return; S.tasks.unshift({id:uid(),title:i.value.trim(),xp:XP.task,done:false,date:today()}); persist(); }
+function delTask(id){ S.tasks=S.tasks.filter(x=>x.id!==id); persist(); }
+function toggleHabit(id){ const h=S.habits.find(x=>x.id===id); if(!h) return; h.days=h.days||[]; const td=today(); if(h.days.includes(td)){h.days=h.days.filter(d=>d!==td);S.xp=Math.max(0,S.xp-XP.habit);} else {h.days.push(td);addXP(XP.habit,'x.habit');} persist(); }
+function streakOf(h){ let n=0; const d=new Date(); for(let i=0;i<400;i++){ const k=new Date(d); k.setDate(d.getDate()-i); if((h.days||[]).includes(k.toISOString().slice(0,10))) n++; else if(i>0) break; } return n; }
+function editFin(){ const g=prompt(t('h.finGoal'),S.finGoal||10000); if(g===null) return; S.finGoal=Math.max(0,Number(g)||0); persist(); }
+function addSaving(){ const i=$('#finAdd'); const v=Number(i&&i.value); if(!v) return; S.finSaved+=v; addXP(5,'x.saving'); persist(); }
+
+/* ===================== GOALS ===================== */
+function vGoals(){
+  const cat=window._goalCat||'all';
+  const list=cat==='all'?S.goals:S.goals.filter(g=>g.cat===cat);
+  return `<div class="sechead"><div><p>${t('g.sub')}</p></div><button class="btn primary" onclick="addGoalForm()">${t('g.new')}</button></div>
+  <div class="scroller" style="margin-bottom:16px">
+    <div class="chip ${cat==='all'?'on':''}" onclick="setGoalCat('all')">${t('g.all')} (${S.goals.length})</div>
+    ${Object.entries(CATS).map(([k,c])=>`<div class="chip ${cat===k?'on':''}" onclick="setGoalCat('${k}')">${c.ic} ${t(c.k)}</div>`).join('')}
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+    ${list.map(g=>`<div class="card">
+      <div class="between"><span class="badge">${CATS[g.cat].ic} ${t(CATS[g.cat].k)}</span><button class="del" onclick="delGoal('${g.id}')">✕</button></div>
+      <h3 style="margin:10px 0 4px">${esc(tx(g.title))}</h3><p class="small muted">${esc(tx(g.why))}</p>
+      <div class="bar" style="margin:14px 0 6px"><i style="width:${g.progress}%"></i></div>
+      <div class="between small muted"><span>${g.progress}%</span><span>${g.progress>=100?t('g.completed'):t('g.inProgress')}</span></div>
+      <div class="divider"></div><div class="tiny muted bold" style="margin-bottom:8px">${t('h.dailyActions')}</div>
+      <div class="list">${DA[g.cat].map(a=>`<div class="item small"><div class="chk" onclick="addXP(${XP.task},'x.goalAction');toast(t('t.goodJob'))">✓</div><div class="txt">${t(a)}</div></div>`).join('')}</div>
+      <input type="range" min="0" max="100" value="${g.progress}" style="margin-top:12px" oninput="setProgress('${g.id}',this.value)">
+    </div>`).join('')||`<div class="card center"><p class="muted">${t('g.none')}</p><button class="btn primary" style="margin-top:12px" onclick="addGoalForm()">${t('g.create')}</button></div>`}
+  </div>`;
+}
+function setGoalCat(c){ window._goalCat=c; renderView(); }
+function setProgress(id,v){ const g=S.goals.find(x=>x.id===id); if(!g) return; const b=g.progress; g.progress=Number(v); if(b<100&&g.progress>=100){ addXP(50,'x.goalDone'); toast(t('t.goalDone',{n:tx(g.title)})); } save(); }
+function addGoalForm(){
+  $('#modalBody').innerHTML=`<h2>${t('g.new')}</h2>
+    <label class="fld"><span>${t('g.cat')}</span><select id="gCat">${Object.entries(CATS).map(([k,c])=>`<option value="${k}">${c.ic} ${t(c.k)}</option>`).join('')}</select></label>
+    <label class="fld"><span>${t('g.objective')}</span><input id="gTitle" placeholder="${t('g.objectivePh')}"></label>
+    <label class="fld"><span>${t('g.why')}</span><input id="gWhy" placeholder="${t('g.whyPh')}"></label>
+    <button class="btn primary block" onclick="createGoal()">${t('g.createBtn')}</button>`;
+  $('#modal').classList.add('on');
+}
+function createGoal(){ const c=$('#gCat').value,ti=$('#gTitle').value.trim(),w=$('#gWhy').value.trim(); if(!ti) return toast(t('g.errTitle')); S.goals.push({id:uid(),cat:c,title:ti,why:w,progress:0,created:today()}); save(); closeModal(); renderView(); toast(t('t.goalCreated')); }
+function delGoal(id){ S.goals=S.goals.filter(g=>g.id!==id); persist(); }
+
+/* ===================== HABITS ===================== */
+function vHabits(){
+  const td=today(), free=S.plan!=='pro';
+  return `<div class="sechead"><div><p>${t('ha.sub')}</p></div><button class="btn primary" onclick="addHabit()">${t('ha.new')}</button></div>
+  <div class="kpis">
+    <div class="kpi"><div class="k">${t('ha.streakCur')}</div><div class="v">${S.streak}</div><div class="tiny muted">${t('ha.consecutive')}</div></div>
+    <div class="kpi"><div class="k">${t('ha.today')}</div><div class="v">${S.habits.filter(h=>(h.days||[]).includes(td)).length}/${S.habits.length}</div><div class="tiny muted">${t('ha.done')}</div></div>
+    <div class="kpi"><div class="k">${t('ha.week')}</div><div class="v">${Math.round(S.habits.reduce((a,h)=>a+(h.days||[]).length,0)/Math.max(1,S.habits.length*7)*100)}%</div><div class="tiny muted">${t('ha.consistency')}</div></div>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+    ${S.habits.map(h=>`<div class="card">
+      <div class="between"><h3>${esc(tx(h.title))}</h3><button class="del" onclick="delHabit('${h.id}')">✕</button></div>
+      <div class="row" style="margin:12px 0 6px"><span class="badge warn">🔥 ${streakOf(h)} ${t('ha.days')}</span><span class="tiny muted">${(h.days||[]).length} ${t('ha.records')}</span></div>
+      <div class="daygrid">${Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-(6-i));const k=d.toISOString().slice(0,10);const on=(h.days||[]).includes(k);return `<div class="day ${on?'on':''}" onclick="toggleHabitDay('${h.id}','${k}')">${d.getDate()}</div>`;}).join('')}</div>
+      <div class="divider"></div>
+      <button class="btn sm ${(h.days||[]).includes(td)?'':'primary'}" onclick="toggleHabit('${h.id}')">${(h.days||[]).includes(td)?t('ha.doneToday'):t('ha.mark')}</button>
+    </div>`).join('')}
+    ${free?`<div class="card center" style="border-style:dashed"><div style="font-size:26px">💎</div><h3 style="margin:8px 0 4px">${t('ha.limitT')}</h3><p class="muted small">${t('ha.limitD')}</p><button class="btn primary" style="margin-top:12px" onclick="openPricing()">${t('ha.pro')}</button></div>`:''}
+  </div>`;
+}
+function toggleHabitDay(id,k){ const h=S.habits.find(x=>x.id===id); if(!h) return; h.days=h.days||[]; if(h.days.includes(k)) h.days=h.days.filter(d=>d!==k); else h.days.push(k); save(); renderView(); }
+function addHabit(){ if(S.plan!=='pro'&&S.habits.length>=3){ openPricing(); return toast(t('t.habitLimit')); } const v=prompt(t('ha.promptNew'),t('ob.h2')); if(!v||!v.trim()) return; S.habits.push({id:uid(),title:v.trim(),days:[]}); persist(); toast(t('t.habitCreated')); }
+function delHabit(id){ S.habits=S.habits.filter(h=>h.id!==id); persist(); }
+
+/* ===================== FOCUS ===================== */
+function vFocus(){
+  return `<div class="sechead"><div><p>${t('fo.sub')}</p></div><span class="badge warn">${t('fo.sessions',{n:S.focusToday})}</span></div>
+  <div class="card pad" style="max-width:640px;margin:0 auto"><div class="timer">
+    <div class="row" style="justify-content:center;margin-bottom:18px">${[25,50,90].map(m=>`<button class="chip ${F.mode===m?'on':''}" onclick="pickFocus(${m})">${m} min</button>`).join('')}</div>
+    <div class="dial" id="dial"><div class="big" id="clock">${mmss(F.left)}</div></div>
+    <p class="muted bold" style="margin-bottom:18px">${t('fo.mode')}<br><span class="small" style="font-weight:400">${t('fo.modeSub')}</span></p>
+    <div class="row" style="justify-content:center"><button class="btn primary" id="fBtn" onclick="toggleFocus()">${F.running?t('fo.pause'):t('fo.start')}</button><button class="btn" onclick="resetFocus()">${t('fo.reset')}</button></div>
+    <p class="tiny dim" style="margin-top:16px">${t('fo.earn',{x:XP.focus})}</p>
+  </div></div>
+  <div class="cols2" style="margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto">
+    <div class="card"><h3>${t('fo.rules')}</h3><div class="list" style="margin-top:10px">${[1,2,3,4].map(i=>`<div class="item small"><div class="txt">• ${t('fo.r'+i)}</div></div>`).join('')}</div></div>
+    <div class="card"><h3>${t('fo.history')}</h3><p class="small muted" style="margin-top:8px">${t('fo.total')}: <b>${S.focusLog.length}</b></p><p class="small muted">${t('fo.timeFocused')}: <b>${Math.round(S.focusLog.reduce((a,x)=>a+x.min,0)/60*10)/10} h</b></p>
+      <div class="divider"></div><div class="list">${S.focusLog.slice(-5).reverse().map(x=>`<div class="item small"><div class="txt grow">${x.date}</div><span class="badge">${x.min} min</span></div>`).join('')||'<p class="small muted">'+t('fo.none')+'</p>'}</div></div>
+  </div>`;
+}
+function mmss(s){const m=Math.floor(s/60),x=s%60;return String(m).padStart(2,'0')+':'+String(x).padStart(2,'0');}
+function pickFocus(m){ F.mode=m; F.left=m*60; F.running=false; clearInterval(timer); timer=null; renderView(); }
+function mountFocus(){ const c=$('#clock'); if(c) c.textContent=mmss(F.left); const d=$('#dial'); if(d) d.style.background=`conic-gradient(#ff6b2c ${(1-F.left/(F.mode*60))*360}deg, transparent 0deg)`; const b=$('#fBtn'); if(b) b.textContent=F.running?t('fo.pause'):t('fo.start'); }
+function toggleFocus(){
+  if(F.running){ clearInterval(timer); timer=null; F.running=false; }
+  else{ F.running=true; timer=setInterval(()=>{ F.left--; mountFocus();
+    if(F.left<=0){ clearInterval(timer); timer=null; F.running=false; F.left=F.mode*60; S.focusToday++; S.focusLog.push({date:today(),min:F.mode}); S.xp+=XP.focus; toast(t('t.sessionDone',{x:XP.focus})); save(); renderView(); } },1000); }
+  mountFocus();
+}
+function resetFocus(){ clearInterval(timer); timer=null; F.running=false; F.left=F.mode*60; mountFocus(); }
+
+/* ===================== STUDY ===================== */
+function vStudy(){
+  return `<div class="sechead"><div><p>${t('st.sub')}</p></div><button class="btn primary" onclick="addSubject()">${t('st.new')}</button></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+    ${S.subjects.map(s=>`<div class="card"><div class="between"><h3>📚 ${esc(tx(s.title))}</h3><button class="del" onclick="delSubject('${s.id}')">✕</button></div>
+      <div class="bar blue" style="margin:14px 0 6px"><i style="width:${s.progress}%"></i></div>
+      <div class="between small muted"><span>${t('st.progress')}: ${s.progress}%</span><span>${s.minutes||0} ${t('st.min')}</span></div>
+      <div class="divider"></div><div class="small">📅 ${t('st.next')}: <b>${s.next?esc(s.next):t('st.none2')}</b></div>
+      <div class="row" style="margin-top:12px"><button class="btn sm" onclick="logStudy('${s.id}',30)">${t('st.add30')}</button><button class="btn sm" onclick="logStudy('${s.id}',60)">${t('st.add60')}</button><button class="btn sm ghost" onclick="setReview('${s.id}')">${t('st.schedule')}</button></div></div>`).join('')||`<div class="card center"><p class="muted">${t('st.none')}</p></div>`}
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="margin-bottom:12px">${t('st.cal')}</h3>
+    <div class="cal">${next7().map(d=>`<div class="t"><b>${d.d}</b>${d.w}</div>`).join('')}</div>
+    <p class="tiny muted" style="margin-top:12px">${t('st.spaced')}</p></div>
+  ${S.plan!=='pro'?`<div class="card" style="margin-top:16px;position:relative"><h3>${t('st.personalT')}</h3><p class="muted small">${t('st.personalD')}</p>${proGate(t('st.personalT'))}<div style="height:120px"></div></div>`:''}`;
+}
+function next7(){ const names=['S','T','Q','Q','S','S','D']; const out=[]; for(let i=0;i<7;i++){const d=new Date();d.setDate(d.getDate()+i);out.push({d:d.getDate(),w:names[d.getDay()]});} return out; }
+function addSubject(){ const v=prompt(t('st.promptName'),t('ls.2.t')); if(!v||!v.trim()) return; S.subjects.push({id:uid(),title:v.trim(),progress:0,next:'',minutes:0}); persist(); }
+function delSubject(id){ S.subjects=S.subjects.filter(s=>s.id!==id); persist(); }
+function logStudy(id,m){ const s=S.subjects.find(x=>x.id===id); if(!s) return; s.minutes=(s.minutes||0)+m; s.progress=Math.min(100,s.progress+Math.round(m/6)); addXP(XP.study,'x.study'); persist(); }
+function setReview(id){ const s=S.subjects.find(x=>x.id===id); if(!s) return; const v=prompt(t('st.promptReview'),''); if(v===null) return; s.next=v; persist(); }
+
+/* ===================== DEVELOPMENT ===================== */
+function vDev(){
+  const list=S.plan==='pro'?LESSONS:LESSONS.slice(0,4);
+  return `<div class="sechead"><div><p>${t('d.sub')}</p></div><span class="badge">${S.lessonsRead.length}/${LESSONS.length}</span></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(320px,1fr))">
+    ${list.map(l=>{const read=S.lessonsRead.includes(l.id);return `<div class="card">
+      <div class="row"><div class="n">${l.ic}</div><div class="grow"><h3>${t('ls.'+l.id+'.t')}</h3><div class="tiny muted">${read?t('d.read')+' · +'+XP.lesson+' XP':t('d.unread')}</div></div></div>
+      <p class="small muted" style="margin:12px 0">${t('ls.'+l.id+'.d')}</p>
+      <div class="list">${[1,2,3].map(k=>`<div class="item small"><div class="txt">• ${t('ls.'+l.id+'.k'+k)}</div></div>`).join('')}</div>
+      <button class="btn ${read?'':'primary'} sm block" style="margin-top:12px" onclick="readLesson(${l.id})" ${read?'disabled':''}>${read?t('d.readBtn'):t('d.mark',{x:XP.lesson})}</button></div>`;}).join('')}
+  </div>
+  ${S.plan!=='pro'?`<div class="card" style="margin-top:16px;text-align:center"><h3>${t('d.full')}</h3><p class="muted small">${t('d.fullD')}</p><button class="btn primary" style="margin-top:10px" onclick="openPricing()">${t('d.unlock')}</button></div>`:''}`;
+}
+function readLesson(id){ if(S.lessonsRead.includes(id)) return; S.lessonsRead.push(id); addXP(XP.lesson,'x.lesson'); persist(); }
+
+/* ===================== CAREER ===================== */
+function vCareer(){
+  const c=S.cv||{};
+  return `<div class="sechead"><div><p>${t('c.sub')}</p></div><span class="badge ${S.plan==='pro'?'pro':''}">${S.plan==='pro'?t('c.pro'):t('c.free')}</span></div>
+  <div class="cols2">
+    <div class="card" style="position:relative"><h3 style="margin-bottom:12px">${t('c.cv')}</h3>
+      <label class="fld"><span>${t('c.fullName')}</span><input id="cvName" value="${esc(c.name||S.name||'')}"></label>
+      <label class="fld"><span>${t('c.contact')}</span><input id="cvContact" value="${esc(c.contact||'')}" placeholder="${t('c.contactPh')}"></label>
+      <label class="fld"><span>${t('c.edu')}</span><textarea id="cvEdu" placeholder="${t('c.eduPh')}">${esc(c.edu||'')}</textarea></label>
+      <label class="fld"><span>${t('c.exp')}</span><textarea id="cvExp" placeholder="${t('c.expPh')}">${esc(c.exp||'')}</textarea></label>
+      <label class="fld"><span>${t('c.skills')}</span><input id="cvSkills" placeholder="${t('c.skillsPh')}" value="${esc(c.skills||'')}"></label>
+      <label class="fld"><span>${t('c.courses')}</span><input id="cvCourses" placeholder="${t('c.coursesPh')}" value="${esc(c.courses||'')}"></label>
+      <label class="fld"><span>${t('c.obj')}</span><textarea id="cvObj" placeholder="${t('c.objPh')}">${esc(c.obj||'')}</textarea></label>
+      <button class="btn primary block" onclick="genCV()">${t('c.gen')}</button>${proGate(t('c.cv'))}</div>
+    <div class="card" style="position:relative"><h3 style="margin-bottom:12px">${t('c.interview')}</h3>
+      <div class="small muted bold">${t('c.question')}</div>
+      <p class="bold" style="margin:6px 0 12px" id="qText">${t('q.1')}</p>
+      <textarea id="ansInput" placeholder="${t('c.answerPh')}"></textarea>
+      <button class="btn primary block" style="margin-top:10px" onclick="evalAnswer()">${t('c.evaluate')}</button>
+      <button class="btn sm ghost" style="margin-top:8px" onclick="nextQuestion()">${t('c.nextQ')}</button>
+      <div id="fb" style="margin-top:14px"></div>${proGate(t('c.interview'))}</div>
+  </div>`;
+}
+function genCV(){
+  const g=id=>($('#'+id)?$('#'+id).value.trim():'');
+  S.cv={name:g('cvName'),contact:g('cvContact'),edu:g('cvEdu'),exp:g('cvExp'),skills:g('cvSkills'),courses:g('cvCourses'),obj:g('cvObj')}; save();
+  const c=S.cv;
+  $('#modalBody').innerHTML=`<div class="between" style="margin-bottom:12px"><h2>${t('c.yourCv')}</h2><button class="btn sm" onclick="window.print()">${t('c.print')}</button></div>
+    <div class="cv"><h1>${esc(c.name||'—')}</h1><p style="color:#666;font-size:12px">${esc(c.contact||'')}</p>
+      ${c.obj?`<h3>${t('c.objective')}</h3><p>${esc(c.obj)}</p>`:''}
+      ${c.edu?`<h3>${t('c.edu')}</h3><p>${esc(c.edu).replace(/\n/g,'<br>')}</p>`:''}
+      ${c.exp?`<h3>${t('c.exp')}</h3><p>${esc(c.exp).replace(/\n/g,'<br>')}</p>`:''}
+      ${c.skills?`<h3>${t('c.skills')}</h3><ul>${c.skills.split(/,|\n/).filter(Boolean).map(s=>`<li>${esc(s.trim())}</li>`).join('')}</ul>`:''}
+      ${c.courses?`<h3>${t('c.courses')}</h3><p>${esc(c.courses)}</p>`:''}
+    </div><button class="btn block" style="margin-top:14px" onclick="closeModal()">${t('mo.gotIt')}</button>`;
+  $('#modal').classList.add('on'); toast(t('t.cv'));
+}
+let qi=0;
+function nextQuestion(){ qi=(qi+1)%6; const q=$('#qText'); if(q) q.textContent=t('q.'+(qi+1)); const f=$('#fb'); if(f) f.innerHTML=''; }
+function evalAnswer(){
+  const a=($('#ansInput')&&$('#ansInput').value||'').trim();
+  if(a.length<15){ toast(t('c.tipMore')); return; }
+  const words=a.split(/\s+/).length, hasN=/\d/.test(a);
+  const hasEx=/(exemplo|example|ejemplo|exemple|quando|when|cuando|quand|project|projeto|proyecto)/i.test(a);
+  const hasSt=/(primeiro|because|porque|parce que|therefore|portanto|então|entonces|donc|primeiro|first|primero|d'abord)/i.test(a);
+  const fp=/\b(eu|fiz|aprendi|consigo|sou|i |my |me |yo |je |j'ai)\b/i.test(a);
+  const sc={clarity:Math.min(100,Math.round(Math.max(30,100-Math.abs(words-110)*0.5))),structure:hasSt?85:(hasEx?68:48),confidence:fp?85:55,relevance:(hasN||hasEx)?88:60};
+  const avg=Math.round(Object.values(sc).reduce((x,y)=>x+y,0)/4);
+  const tips=[];
+  if(words<60) tips.push(t('c.tipShort')); if(words>220) tips.push(t('c.tipLong'));
+  if(!hasSt) tips.push(t('c.tipStructure')); if(!hasEx) tips.push(t('c.tipExample'));
+  if(!hasN) tips.push(t('c.tipNumber')); if(!fp) tips.push(t('c.tipFirst'));
+  if(!tips.length) tips.push(t('c.tipGreat'));
+  const K={clarity:'c.clarity',structure:'c.structure',confidence:'c.confidence',relevance:'c.relevance'};
+  $('#fb').innerHTML=`<div class="card" style="background:var(--panel2)">
+    <div class="between"><b>${t('c.global')}</b><span class="badge ${avg>=75?'ok':avg>=55?'warn':'bad'}">${avg}/100</span></div><div class="divider"></div>
+    ${Object.entries(sc).map(([k,v])=>`<div style="margin-bottom:9px"><div class="between small"><span>${t(K[k])}</span><b>${v}%</b></div><div class="bar" style="margin-top:5px"><i style="width:${v}%"></i></div></div>`).join('')}
+    <div class="divider"></div><div class="tiny muted bold" style="margin-bottom:6px">${t('c.feedback')}</div>
+    <ul style="padding-left:18px" class="small">${tips.map(x=>`<li style="margin-bottom:4px">${x}</li>`).join('')}</ul></div>`;
+  addXP(10,'x.interview'); save();
+}
+
+/* ===================== INCOME ===================== */
+function vIncome(){
+  return `<div class="sechead"><div><p>${t('i.sub')}</p></div><span class="badge ${S.plan==='pro'?'pro':''}">${S.plan==='pro'?t('c.pro'):t('c.free')}</span></div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));position:relative">
+    ${INCOME.map(x=>`<div class="card"><div class="row"><div class="n">${x.ic}</div><h3 class="grow">${t('in.'+x.id+'.t')}</h3></div>
+      <p class="small muted" style="margin:12px 0">${t('in.'+x.id+'.d')}</p>
+      <div class="list">${[1,2,3].map(i=>`<div class="item small"><div class="txt">• ${t('in.'+x.id+'.s'+i)}</div></div>`).join('')}</div></div>`).join('')}
+    ${S.plan!=='pro'?proGate(t('n.income')):''}
+  </div>
+  <div class="card" style="margin-top:16px;position:relative">
+    <h3 style="margin-bottom:6px">${t('i.genT')}</h3><p class="muted small" style="margin-bottom:14px">${t('i.genD')}</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:12px">
+      <label class="fld"><span>${t('i.budget')}</span><input id="biBudget" type="number" value="2000"></label>
+      <label class="fld"><span>${t('i.location')}</span><input id="biLoc" value="${esc(S.area||'Tete')}"></label>
+      <label class="fld"><span>${t('i.skills')}</span><input id="biSkill" placeholder="${t('i.skillPh')}" value="${esc(S.skill||'')}"></label>
+    </div>
+    <button class="btn primary" onclick="genIdeas()">${t('i.generate')}</button>
+    <div id="ideas" style="margin-top:16px"></div>${S.plan!=='pro'?proGate(t('i.genT')):''}
+  </div>`;
+}
+function genIdeas(){
+  const b=Number($('#biBudget').value)||0, loc=$('#biLoc').value.trim()||'—', sk=$('#biSkill').value.trim()||'—';
+  S.skill=sk; save();
+  const tier=b<1500?t('bi.micro'):b<5000?t('bi.small'):t('bi.medium');
+  const vars={skill:sk,loc:loc,tier:tier,v:fmt(Math.round(b*0.6))};
+  const ids=b<1500?[1,2,4]:[1,2,3,4,5];
+  $('#ideas').innerHTML=ids.map((n,i)=>`<div class="card" style="margin-bottom:12px;background:var(--panel2)">
+    <b>${i+1}. ${t('bi.'+n+'.t',vars)}</b>
+    <p class="small muted" style="margin:8px 0">${t('bi.'+n+'.w')}</p>
+    <div class="list">${[1,2,3].map(s=>`<div class="item small"><div class="txt">→ ${t('bi.'+n+'.s'+s,vars)}</div></div>`).join('')}</div>
+    <div class="tiny dim" style="margin-top:8px">${t('i.capital')}: ${t('bi.'+n+'.c',vars)} · ${t('i.budgetUsed')}: ${fmt(b)} MT · ${esc(loc)}</div></div>`).join('');
+  addXP(10,'x.ideas'); save();
+}
+
+/* ===================== IMPA ===================== */
+function vImpa(){
+  const msgs=S.chat.length?S.chat:[{r:'ai',t:t('m.greet')}];
+  return `<div class="sechead"><div><p>${t('m.sub')}</p></div><span class="badge pro">🤖 IMPA AI</span></div>
+  <div class="card" style="position:relative">
+    <div class="chat" id="chat">${msgs.map(m=>`<div class="msg ${m.r}">${esc(m.t)}</div>`).join('')}</div>
+    <div class="row"><input id="impaInput" placeholder="${t('m.ph')}" onkeydown="if(event.key==='Enter')askImpa()"><button class="btn primary" onclick="askImpa()">${t('m.send')}</button></div>
+    <div class="scroller" style="margin-top:12px">${[1,2,3,4].map(i=>`<div class="chip" onclick="quickImpa(this)">${t('m.q'+i)}</div>`).join('')}</div>
+    ${S.plan!=='pro'?proGate('IMPA AI'):''}
+  </div><p class="tiny dim" style="margin-top:12px">${t('m.note')}</p>`;
+}
+function mountImpa(){ const c=$('#chat'); if(c) c.scrollTop=c.scrollHeight; }
+function quickImpa(el){ $('#impaInput').value=el.textContent; askImpa(); }
+function buildPlan(p,n){
+  const steps=[]; for(let i=1;i<=n;i++) steps.push('• '+t('ip.'+p+'.'+i));
+  return t('ip.plan')+': '+t('ip.'+p+'.t')+'\n\n'+steps.join('\n')+'\n\n'+t('ip.'+p+'.n');
+}
+function impaAnswer(q){
+  const s=q.toLowerCase();
+  for(const r of IMPA){ if(r.k.some(k=>s.includes(k))){
+    if(r.p==='biz'){ const m=q.match(/(\d[\d\s.,]{2,})/); const plan=buildPlan('biz',r.n); return m?plan+'\n\n'+t('ip.biz.mt',{v:m[1].trim()}):plan; }
+    return buildPlan(r.p,r.n);
+  }}
+  return t('ip.gen.body');
+}
+function askImpa(){
+  const i=$('#impaInput'); const q=(i&&i.value||'').trim(); if(!q) return;
+  S.chat.push({r:'me',t:q}); S.chat.push({r:'ai',t:impaAnswer(q)});
+  if(S.chat.length>40) S.chat=S.chat.slice(-40);
+  save(); i.value='';
+  const c=$('#chat'); c.innerHTML=S.chat.map(m=>`<div class="msg ${m.r}">${esc(m.t)}</div>`).join(''); c.scrollTop=c.scrollHeight;
+  addXP(2,'x.impa'); save();
+}
+
+/* ===================== CHALLENGES ===================== */
+function vChallenges(){
+  const cur=S.challenge;
+  return `<div class="sechead"><div><p>${t('ch.sub')}</p></div></div>
+  ${cur?`<div class="card" style="margin-bottom:16px"><div class="between wrap">
+      <div><h2>${cur.ic} ${t('ch.'+cur.id+'.n')}</h2><p class="muted small" style="margin-top:4px">${t('ch.day',{a:S.challengeDays,b:cur.d})}</p></div>
+      <div class="row"><button class="btn primary" onclick="challengeDay()">${t('ch.mark')}</button><button class="btn ghost" onclick="quitChallenge()">${t('ch.quit')}</button></div></div>
+      <div class="bar" style="margin-top:14px"><i style="width:${Math.round(S.challengeDays/cur.d*100)}%"></i></div>
+      <div class="divider"></div><div class="list">${[1,2,3].map(i=>`<div class="item small"><div class="chk"></div><div class="txt">${t('ch.'+cur.id+'.'+i)}</div></div>`).join('')}</div></div>`:''}
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+    ${CHALLENGES.map((c,i)=>{const prem=i>=2&&S.plan!=='pro';return `<div class="card" style="position:relative">
+      <div class="between"><span class="badge warn">${t('ch.days',{n:c.d})}</span>${prem?'<span class="badge pro">PRO</span>':''}</div>
+      <h3 style="margin:12px 0 4px">${c.ic} ${t('ch.'+c.id+'.n')}</h3>
+      <div class="list" style="margin-top:12px">${[1,2,3].map(k=>`<div class="item small"><div class="txt">• ${t('ch.'+c.id+'.'+k)}</div></div>`).join('')}</div>
+      <button class="btn ${cur&&cur.id===c.id?'':'primary'} block sm" style="margin-top:14px" onclick="joinChallenge('${c.id}')">${cur&&cur.id===c.id?t('ch.active'):t('ch.enter')}</button>
+      ${prem?`<div class="lock"><div style="font-size:26px">💎</div><div class="bold">${t('ch.premT')}</div><button class="btn primary sm" onclick="openPricing()">${t('l.tryPro')}</button></div>`:''}</div>`;}).join('')}
+  </div>`;
+}
+function joinChallenge(id){ const c=CHALLENGES.find(x=>x.id===id); if(!c) return; const idx=CHALLENGES.indexOf(c); if(idx>=2&&S.plan!=='pro'){ openPricing(); return; } S.challenge={id:c.id,d:c.d,ic:c.ic}; S.challengeDays=0; persist(); toast(t('ch.started',{n:t('ch.'+c.id+'.n')})); }
+function challengeDay(){ if(!S.challenge) return; S.challengeDays++; if(S.challengeDays>=S.challenge.d){ addXP(XP.challenge,'x.challenge'); toast(t('ch.done',{n:t('ch.'+S.challenge.id+'.n')})); } else addXP(XP.habit,'ch.dayDone'); persist(); }
+function quitChallenge(){ S.challenge=null; S.challengeDays=0; persist(); }
+
+/* ===================== COMMUNITY ===================== */
+function vCommunity(){
+  const board=[{n:'John',x:1240},{n:'Maria',x:1180},{n:'Carlos',x:1050},{n:S.name||t('cm.you'),x:S.xp,me:true},{n:'Amina',x:690},{n:'Bruno',x:540}].sort((a,b)=>b.x-a.x);
+  const users=['Maria','John','Carlos','Amina'];
+  return `<div class="sechead"><div><p>${t('cm.sub')}</p></div><span class="badge">${t('cm.members',{n:board.length})}</span></div>
+  <div class="cols2">
+    <div class="card"><div class="between" style="margin-bottom:14px"><h3>${t('cm.rank')}</h3><span class="tiny muted">XP</span></div>
+      <div class="lb">${board.map((b,i)=>`<div class="lbrow ${b.me?'me':''}"><div class="rank ${i===0?'g1':i===1?'g2':i===2?'g3':''}">${i+1}</div><div class="grow bold">${esc(b.n)}${b.me?' ('+t('cm.you')+')':''}</div><b>${fmt(b.x)}</b></div>`).join('')}</div></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3 style="margin-bottom:12px">${t('cm.disc')}</h3>
+        <div class="list">${users.map((u,i)=>`<div class="item" style="align-items:flex-start"><div class="lvl" style="width:32px;height:32px;font-size:14px;border-radius:9px">${u[0]}</div><div class="grow"><div class="small"><b>${u}</b></div><div class="small muted">${t('cm.p'+(i+1)+'t')}</div><div class="tiny dim" style="margin-top:5px">❤️ ${[24,18,31,12][i]} · ${t('cm.reply')}</div></div></div>`).join('')}</div></div>
+      <div class="card"><h3 style="margin-bottom:10px">${t('cm.ach')}</h3>
+        <div class="row wrap"><span class="badge ok">${t('cm.a1')}</span><span class="badge ok">${t('cm.a2')}</span>${S.xp>=700?`<span class="badge ok">${t('cm.a3')}</span>`:''}${S.focusLog.length>=10?`<span class="badge ok">${t('cm.a4')}</span>`:''}${S.goals.some(g=>g.progress>=100)?`<span class="badge ok">${t('cm.a5')}</span>`:''}</div>
+        <div class="divider"></div><div class="tiny muted">${t('cm.note')}</div></div>
+    </div>
+  </div>`;
+}
+
+/* ===================== PROGRESS ===================== */
+function vProgress(){
+  const avgGoal=S.goals.length?Math.round(S.goals.reduce((a,g)=>a+g.progress,0)/S.goals.length):0;
+  const habitPct=Math.round(S.habits.reduce((a,h)=>a+(h.days||[]).length,0)/Math.max(1,S.habits.length*7)*100);
+  const studyH=Math.round(S.subjects.reduce((a,s)=>a+(s.minutes||0),0)/60*10)/10;
+  const LV=levelOf(S.xp);
+  const data=[{l:t('p.goals'),v:avgGoal,c:''},{l:t('p.study'),v:Math.min(100,studyH/10*100),c:'blue'},{l:t('p.habits'),v:habitPct,c:'green'},{l:t('p.sessions'),v:Math.min(100,S.focusLog.length/12*100),c:'pink'}];
+  return `<div class="sechead"><div><p>${t('p.sub')}</p></div><span class="badge ${LV.pct>=50?'ok':'warn'}">${LV.cur.ic} ${t(LV.cur.k)}</span></div>
+  <div class="kpis">
+    <div class="kpi"><div class="k">${t('p.goals')}</div><div class="v">${avgGoal}%</div><div class="tiny muted">${t('p.avgProgress')}</div></div>
+    <div class="kpi"><div class="k">${t('p.study')}</div><div class="v">${studyH}h</div><div class="tiny muted">${t('p.loggedTime')}</div></div>
+    <div class="kpi"><div class="k">${t('p.habits')}</div><div class="v">${habitPct}%</div><div class="tiny muted">${t('p.consistency')}</div></div>
+    <div class="kpi"><div class="k">${t('p.sessions')}</div><div class="v">${S.focusLog.length}</div><div class="tiny muted">${t('p.focusBlocks')}</div></div>
+    <div class="kpi"><div class="k">${t('p.xp')}</div><div class="v">${fmt(S.xp)}</div><div class="tiny muted">${t('p.total')}</div></div>
+  </div>
+  <div class="card"><h3 style="margin-bottom:16px">${t('p.perf')}</h3>
+    ${data.map(d=>`<div style="margin-bottom:15px"><div class="metric"><span>${d.l}</span><b>${Math.round(d.v)}%</b></div><div class="bar ${d.c}"><i style="width:${Math.min(100,d.v)}%"></i></div></div>`).join('')}
+    <div class="divider"></div><p class="center" style="font-style:italic;color:var(--muted)">${t('p.quote')}</p></div>
+  <div class="cols2" style="margin-top:16px">
+    <div class="card"><h3>${t('p.next')}</h3><div class="list" style="margin-top:12px">${suggestions().map(s=>`<div class="item small"><div class="txt">→ ${s}</div></div>`).join('')}</div></div>
+    <div class="card"><h3>${t('p.activity')}</h3><div class="list" style="margin-top:12px">
+      <div class="item small"><div class="txt grow">${t('p.focusSessions')}</div><b>${S.focusLog.length}</b></div>
+      <div class="item small"><div class="txt grow">${t('p.lessons')}</div><b>${S.lessonsRead.length}</b></div>
+      <div class="item small"><div class="txt grow">${t('p.habitsA')}</div><b>${S.habits.length}</b></div>
+      <div class="item small"><div class="txt grow">${t('p.subjects')}</div><b>${S.subjects.length}</b></div>
+      <div class="item small"><div class="txt grow">${t('p.goalsN')}</div><b>${S.goals.length}</b></div>
+    </div></div>
+  </div>`;
+}
+function suggestions(){
+  const out=[];
+  if(S.goals.length<2) out.push(t('p.s1'));
+  if(S.habits.length<3) out.push(t('p.s2'));
+  if(S.focusLog.length<3) out.push(t('p.s3'));
+  if(!S.lessonsRead.length) out.push(t('p.s4'));
+  if(!(S.cv&&S.cv.name)) out.push(t('p.s5'));
+  if(!S.subjects.length) out.push(t('p.s6'));
+  if(!out.length) out.push(t('p.s7'));
+  return out.slice(0,4);
+}
+
+/* ===================== SETTINGS ===================== */
+function vSettings(){
+  return `<div class="sechead"><div><p>${t('se.sub')}</p></div></div>
+  <div class="cols2">
+    <div class="card"><h3 style="margin-bottom:14px">${t('se.profile')}</h3>
+      <label class="fld"><span>${t('se.name')}</span><input id="sName" value="${esc(S.name||'')}"></label>
+      <label class="fld"><span>${t('se.city')}</span><input id="sArea" value="${esc(S.area||'')}"></label>
+      <label class="fld"><span>${t('se.skill')}</span><input id="sSkill" value="${esc(S.skill||'')}" placeholder="${t('se.skillPh')}"></label>
+      <button class="btn primary" onclick="saveProfile()">${t('se.save')}</button></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3 style="margin-bottom:14px">${t('se.plan')}</h3>
+        <div class="between" style="margin-bottom:12px"><span class="badge ${S.plan==='pro'?'pro':''}">${S.plan==='pro'?t('c.pro'):t('c.free')}</span><span class="small muted">${S.plan==='pro'?t('se.proActive'):t('se.freeActive')}</span></div>
+        ${S.plan==='pro'?`<button class="btn danger block" onclick="S.plan='free';save();renderView();toast(t('t.proOff'))">${t('se.downgrade')}</button>`:`<button class="btn primary block" onclick="openPricing()">${t('se.upgrade')}</button>`}
+        <div class="divider"></div><div class="tiny muted">${t('se.prices')}</div></div>
+      <div class="card"><h3 style="margin-bottom:14px">${t('se.lang')}</h3><p class="small muted" style="margin-bottom:10px">${t('se.langD')}</p>${langSwitcher()}</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="margin-bottom:12px">${t('se.security')}</h3>
+    <p class="small ${isSecure()?'muted':'bold'}">${isSecure()?('🔒 '+t('mo.secure')):('⚠️ '+t('mo.secureOff'))}</p>
+    <p class="tiny dim" style="margin-top:8px">${location.origin&&location.origin!=='null'?esc(location.origin):''}</p>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="margin-bottom:12px">${t('se.data')}</h3>
+    <div class="row wrap"><button class="btn sm" onclick="exportData()">${t('se.export')}</button><button class="btn sm" onclick="seedDemo()">${t('se.demo')}</button><button class="btn sm danger" onclick="resetAll()">${t('se.erase')}</button></div>
+    <p class="tiny dim" style="margin-top:10px">${t('se.note')}</p></div>`;
+}
+function saveProfile(){ S.name=$('#sName').value.trim()||S.name; S.area=$('#sArea').value.trim(); S.skill=$('#sSkill').value.trim(); save(); toast(t('t.saved')); renderView(); }
+function exportData(){ const b=new Blob([JSON.stringify(S,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='young-implacavel.json'; a.click(); toast(t('t.exported')); }
+function seedDemo(){ const n=S.name,a=S.area,lg=S.lang,p=S.plan; S=seed(); S.name=n||'Jovem'; S.area=a; S.lang=lg; S.plan=p; S.loggedIn=true; S.onboarded=true; persist(); toast(t('t.demo')); }
+function resetAll(){ if(!confirm(t('mo.eraseConfirm'))) return; localStorage.removeItem(LS); S=blank(); save(); $('#app').style.display='none'; renderLanding(); toast(t('t.erased')); }
+
+/* ===================== boot ===================== */
+save();
+document.documentElement.lang=S.lang||'pt';
+document.title=t('meta.title');
+(function(){
+  const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',t('meta.desc'));
+  if(S.loggedIn) showApp(); else renderLanding();
+  window.addEventListener('beforeunload',save);
+})();
+</script>
+</body>
+</html>
